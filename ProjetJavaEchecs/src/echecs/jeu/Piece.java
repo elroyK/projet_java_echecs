@@ -5,7 +5,7 @@ package echecs.jeu;
  * date de création : 25/11/14
  * date de modification : 26/11/14
  */
-public class Piece {
+abstract public class Piece {
 	protected String nom;
 	protected String addIcone; // Adresse de l'image
 	protected boolean inGame;
@@ -27,9 +27,7 @@ public class Piece {
 		pos.setY(y);	
 	}
 	
-	public void move() {
-		// TODO : ?? 
-	}
+	abstract public void move();
 	
 	
 	/* GETTERS ET SETTERS */
