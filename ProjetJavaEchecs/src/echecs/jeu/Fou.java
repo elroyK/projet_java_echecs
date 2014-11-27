@@ -3,7 +3,7 @@ package echecs.jeu;
  * Classe Fou, représentant la pièce Fou
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 26/11/14
+ * date de modification : 27/11/14
  */
 	
 	public class Fou extends Piece {
@@ -25,8 +25,10 @@ package echecs.jeu;
 		
 		public void move(){
 			
-			int tempX;
-			int tempY;
+			Position work [] = new Position[14]; 
+			int tempX = pos.getX() + 1;
+			int tempY = pos.getY() + 1;
+			int i = 0;
 			
 			//TODO : AJOUTER les conditions avec le(s) future(s) méthode(s) (quand le fou est 
 			//     			  entourré ou tombe sur une pièce et qu'il puisse la prendre ou pas)
@@ -35,44 +37,54 @@ package echecs.jeu;
 			//						qui ressortent de chaque boucle dans une seule variable... ?
 			
 			/*boucle pour la diagonale haute droite */
-			for (int i = 0; i < 7-pos.getX(); i++) {
-				for (int j = 0; j <7-pos.getY(); j++) {
-					tempX = pos.getX();
-					pos.setX(tempX+1);
-					tempY = pos.getY();
-					pos.setY(tempY+1);
-					}
-				}
+			while ((tempX <= 8)&&(tempY <= 8)) {
+				work[i].setX(tempX);
+				work[i].setY(tempY);
+				i++;
+				tempX++;
+				tempY++;
+			}
+			
+			tempX = pos.getX() - 1;
+			tempY = pos.getY() + 1;
 			
 			/*boucle pour la diagonale haute gauche*/
-			for (int i = 0; i < 7-pos.getX(); i--) {
-				for (int j = 0; j <7-pos.getY(); j++) {
-					tempX = pos.getX();
-					pos.setX(tempX-1);
-					tempY = pos.getY();
-					pos.setY(tempY+1);
-					}
-				}
-					
-			/*boucle pour la diagonale basse droite */
-			for (int i = 0; i < 7-pos.getX(); i++) {
-				for (int j = 0; j <7-pos.getY(); j--) {
-					tempX = pos.getX();
-					pos.setX(tempX+1);
-					tempY = pos.getY();
-					pos.setY(tempY-1);
-					}
-				}	
+			while ((tempX >= 1)&&(tempY <= 8)) {
+				work[i].setX(tempX);
+				work[i].setY(tempY);
+				i++;
+				tempX--;
+				tempY++;
+			}
 			
-			/*boucle pour la diagonale basse gauche */
-			for (int i = 0; i < 7-pos.getX(); i--) {
-				for (int j = 0; j <7-pos.getY(); j--) {
-					tempX = pos.getX();
-					pos.setX(tempX-1);
-					tempY = pos.getY();
-					pos.setY(tempY-1);
-					}
-				}
+			tempX = pos.getX() + 1;
+			tempY = pos.getY() - 1;
+			
+			/*boucle pour la diagonale basse droite*/
+			while ((tempX >= 8)&&(tempY <= 1)) {
+				work[i].setX(tempX);
+				work[i].setY(tempY);
+				i++;
+				tempX++;
+				tempY--;
+			}
+			
+			tempX = pos.getX() - 1;
+			tempY = pos.getY() - 1;
+			
+			/*boucle pour la diagonale basse gauche*/
+			while ((tempX >= 1)&&(tempY <= 1)) {
+				work[i].setX(tempX);
+				work[i].setY(tempY);
+				i++;
+				tempX--;
+				tempY--;
+			}
+			
+			//TODO Tests savoir première rencontrée sur chaque axe méthode à part
+			//TODO Eclaircir cases jusque première pièce incluse
+			//TODO Mouvement en lui même
+			
 		}
 	}
 					

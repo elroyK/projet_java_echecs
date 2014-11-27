@@ -3,7 +3,7 @@ package echecs.jeu;
  * Classe Piece, représentant une pièce de l'échiquier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 26/11/14
+ * date de modification : 27/11/14
  */
 abstract public class Piece {
 	protected String nom;
@@ -30,7 +30,7 @@ abstract public class Piece {
 	abstract public void move();
 	
 	public void kill(){
-		//
+		this.setInGame(false);
 	}
 	
 	/* GETTERS ET SETTERS */
