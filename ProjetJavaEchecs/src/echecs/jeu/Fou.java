@@ -23,18 +23,12 @@ package echecs.jeu;
 		 * Procédure permettant le déplacement du Fou
 		 */
 		
-		public void move(){
+		public Position[] generateDeplacements(){
 			
 			Position work [] = new Position[14]; 
 			int tempX = pos.getX() + 1;
 			int tempY = pos.getY() + 1;
 			int i = 0;
-			
-			//TODO : AJOUTER les conditions avec le(s) future(s) méthode(s) (quand le fou est 
-			//     			  entourré ou tombe sur une pièce et qu'il puisse la prendre ou pas)
-			
-			// TODO : SUGGESTION : il faudrait pas mettre l'ensemble des positions possibles 
-			//						qui ressortent de chaque boucle dans une seule variable... ?
 			
 			/*boucle pour la diagonale haute droite */
 			while ((tempX <= 8)&&(tempY <= 8)) {
@@ -80,6 +74,12 @@ package echecs.jeu;
 				tempX--;
 				tempY--;
 			}
+			
+			return work;
+		}
+		
+		public void move() {
+			Position[] deplacements = this.generateDeplacements();
 			
 			//TODO Tests savoir première rencontrée sur chaque axe méthode à part
 			//TODO Eclaircir cases jusque première pièce incluse
