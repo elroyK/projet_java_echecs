@@ -30,7 +30,7 @@ abstract public class Piece {
 	abstract public void move();
 	
 	public void kill(){
-		
+		//
 	}
 	
 	/* GETTERS ET SETTERS */
