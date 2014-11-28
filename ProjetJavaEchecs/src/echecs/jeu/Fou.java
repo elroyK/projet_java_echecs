@@ -84,7 +84,7 @@ package echecs.jeu;
 			//TODO Tests savoir première rencontrée sur chaque axe méthode à part
 			//TODO Eclaircir cases jusque première pièce incluse
 			//TODO Mouvement en lui même
-			//TODO test commit Enzo		
+		
 		}
 	}
 					
