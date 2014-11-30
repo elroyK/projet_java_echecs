@@ -7,7 +7,7 @@ package echecs.jeu;
  */
 
 public class Cavalier extends Piece {
-	/*private static int NBMOV = 8;*/
+	private static int NBMOV = 8;
 	
 	/**
 	 * Constructeur de la classe Cavalier
@@ -19,18 +19,9 @@ public class Cavalier extends Piece {
 	public Cavalier(int x, int y, String addImage) {
 		super("Cavalier",addImage,true,x,y);
 	}
-/*
- 	// TODO : Implémenter la javadoc
+
 	public Position[] genererPos() {
-		Position work[] ;
-		
-		// Problème pour initialiser le tableau sinon logiquement ça devrait retourner toutes les positions possible
-		// 
-		//
-		
-		for (int i=0;i<NBMOV;i++) {
-			work[i]= new Position();
-		}
+		Position work[] = new Position[NBMOV];
 		
 		work[0].setX(this.pos.getX()+1);
 		work[0].setX(this.pos.getX()+2);
@@ -56,13 +47,17 @@ public class Cavalier extends Piece {
 		work[7].setX(this.pos.getX()-2);
 		work[7].setX(this.pos.getX()-1);
 		
-		return work; 
-		
+		return work; 	
 	}
-	*/
 	
 	public void move() {
-		/*Position tbPos[] = this.genererPos();*/
-		
+		Position tbPos[] = this.genererPos();
+		boolean work[];
+		for (int i=0;i<tbPos.length;i++) {
+			// TODO : COMPARARER LES POSITIONS DU TABLEAU DE POSITION POSSIBLE
+			//      : AVEC LES POSITIONS DES TABLEAU DE PIECES NOIRES ET BLANCHES 
+			//      : POUR DEFINIR LES BOUTONS CLIQUABLES OU NON 
+			//      : LE TABLEAU WORK S AJOUTE AU tbPos true : cliquable
+			//                                          false: non cliquable
+		}
 	}
-}
