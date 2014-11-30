@@ -28,7 +28,12 @@ public class Pion extends Piece {
 	 * Si c'est joueur noir => les pièces descendent
 	 * Si c'est joueur blanc => les pièces montent
 	 */
-	public void move(String jColor) {		
+	@Override
+	public void move() {
+		String jColor;
+		//TODO Trouver une autre manière de dire que jColor est la couleur du joueur, hors paramètres. Pour un paramètre, il faut que la super
+		//classe (donc Pièce) ait le paramètre aussi. Alors il faut que toutes les pièces demandent la couleur en paramètre, mais toutes
+		//n'en ont pas besoin
 		if (jColor==COULNOIR) {
 			if (isDejaJoue()) {
 				this.pos.setY(this.pos.getY()-1);

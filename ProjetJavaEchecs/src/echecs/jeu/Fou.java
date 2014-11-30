@@ -78,6 +78,7 @@ package echecs.jeu;
 			return work;
 		}
 		
+		@Override
 		public void move() {
 			Position[] deplacements = this.generateDeplacements();
 			
