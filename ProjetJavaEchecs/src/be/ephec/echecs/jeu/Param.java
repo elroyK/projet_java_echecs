@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Param, représentant les paramètres de la partie
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

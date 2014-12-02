@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Echiquier, représentant le plateau du jeu (8/8 cases)
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

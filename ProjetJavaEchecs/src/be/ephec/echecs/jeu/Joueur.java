@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Joueur, représentant un joueur
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

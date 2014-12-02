@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Cavalier, représentant la pièce Cavalier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

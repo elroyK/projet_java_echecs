@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Fou, représentant la pièce Fou
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

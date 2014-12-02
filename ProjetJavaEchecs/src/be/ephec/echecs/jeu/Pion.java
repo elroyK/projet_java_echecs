@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Pion, représentant la pièce Pion
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

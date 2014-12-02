@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Case, représentant une case de l'échiquier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

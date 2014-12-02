@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Reine, représentant la pièce Reine
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Tour, représentant la pièce Tour
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo

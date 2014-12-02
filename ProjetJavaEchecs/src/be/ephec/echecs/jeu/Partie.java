@@ -1,4 +1,4 @@
-package echecs.jeu;
+package be.ephec.echecs.jeu;
 /**
  * Classe Partie, programme mère du projet
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
