@@ -61,3 +61,4 @@ public class Cavalier extends Piece {
 			//                                          false: non cliquable
 		}
 	}
+}
