@@ -21,6 +21,8 @@ public class Echiquier {
 			for (j=0;j<NBCASE;j++) {
 				echiq[i][j]= new Case(work);
 				echiq[i][j].setEstOccupe(Case.LIBRE);
+				echiq[i][j].pos.setX(i);
+				echiq[i][j].pos.setY(j);
 				/* Inverse la couleur quand on incrémente */
 				if (work==true) {work=false;}
 				else {work=true;}

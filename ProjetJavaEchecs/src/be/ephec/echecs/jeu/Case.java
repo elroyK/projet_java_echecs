@@ -16,6 +16,7 @@ public class Case {
 	protected boolean couleur; /* noire (false) - blanc (true) */
 //	protected JButton button;
 	protected String estOccupe;
+	protected Position pos;
 	
 	/**
 	 * Constructeur de la classe Case

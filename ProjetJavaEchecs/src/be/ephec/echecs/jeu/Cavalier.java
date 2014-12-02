@@ -50,12 +50,19 @@ public class Cavalier extends Piece {
 		return work; 	
 	}
 	
-	public void move() {
+	public void move(Echiquier plateau) {
 		Position tbPos[] = this.genererPos();
-		boolean work[];
-		for (int i=0;i<Param.NBCASETOTAL;i++) {
-			for (int j=0;i<tbPos.length;j++){
-				if (tbPos[j].equals())
+		for (int i=0;i<8;i++) {
+			for (int j=0;j<8;j++){
+				
+				for (int w=0;w<8;w++) {
+					if (tbPos[w].equals(plateau.echiq[i][j].pos)) {
+						// TODO : set cliquable
+					} else {
+						// TODO : set non cliquable
+					}
+				}
+				
 			}
 		}
 	}

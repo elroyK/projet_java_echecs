@@ -7,7 +7,7 @@ package be.ephec.echecs.jeu;
  */
 
 public class Param {
-	public static int NBCASETOTAL = 64;
+	public static int NBCASE = 8;
 	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
 	protected Position clic1 = new Position();
