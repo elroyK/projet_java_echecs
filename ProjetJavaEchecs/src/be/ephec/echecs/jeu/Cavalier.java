@@ -53,12 +53,10 @@ public class Cavalier extends Piece {
 	public void move() {
 		Position tbPos[] = this.genererPos();
 		boolean work[];
-		for (int i=0;i<tbPos.length;i++) {
-			// TODO : COMPARARER LES POSITIONS DU TABLEAU DE POSITION POSSIBLE
-			//      : AVEC LES POSITIONS DES TABLEAU DE PIECES NOIRES ET BLANCHES 
-			//      : POUR DEFINIR LES BOUTONS CLIQUABLES OU NON 
-			//      : LE TABLEAU WORK S AJOUTE AU tbPos true : cliquable
-			//                                          false: non cliquable
+		for (int i=0;i<Param.NBCASETOTAL;i++) {
+			for (int j=0;i<tbPos.length;j++){
+				if (tbPos[j].equals())
+			}
 		}
 	}
 }

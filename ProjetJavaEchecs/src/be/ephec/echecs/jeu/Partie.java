@@ -129,7 +129,6 @@ public class Partie {
 		this.plateau.echiq[4][0].setEstOccupe("NOIR");
 		this.jB.tbPiece[15] = new Reine(3,0,"");
 		this.plateau.echiq[5][0].setEstOccupe("NOIR");		
-		
 	}
 	
 	/**
