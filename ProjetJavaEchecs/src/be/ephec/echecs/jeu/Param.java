@@ -7,6 +7,7 @@ package be.ephec.echecs.jeu;
  */
 
 public class Param {
+	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
 	protected Position clic1 = new Position();
 	protected Position clic2 = new Position();

@@ -9,9 +9,9 @@ package be.ephec.echecs.jeu;
 //import javax.swing.JButton;
 
 public class Case {
-	protected static String BLANC = "BLANC";
-	protected static String NOIR  = "NOIR";
-	protected static String LIBRE = "LIBRE";
+	public static String BLANC = "BLANC";
+	public static String NOIR  = "NOIR";
+	public static String LIBRE = "LIBRE";
 	
 	protected boolean couleur; /* noire (false) - blanc (true) */
 //	protected JButton button;
@@ -68,5 +68,13 @@ public class Case {
 
 	public void setCouleur(Boolean couleur) {
 		this.couleur = couleur;
+	}
+
+	public String getEstOccupe() {
+		return estOccupe;
+	}
+
+	public void setEstOccupe(String estOccupe) {
+		this.estOccupe = estOccupe;
 	}
 }

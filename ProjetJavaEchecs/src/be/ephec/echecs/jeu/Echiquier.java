@@ -6,7 +6,7 @@ package be.ephec.echecs.jeu;
  * date de modification : 25/11/14
  */
 public class Echiquier {
-	private Case echiq[][];
+	protected Case echiq[][];
 	private static int NBCASE = 8;
 	
 	public Echiquier() {
@@ -19,7 +19,8 @@ public class Echiquier {
 			else {work=false;}
 			
 			for (j=0;j<NBCASE;j++) {
-				echiq[i][j]= new Case(work);	
+				echiq[i][j]= new Case(work);
+				echiq[i][j].setEstOccupe(Case.LIBRE);
 				/* Inverse la couleur quand on incrémente */
 				if (work==true) {work=false;}
 				else {work=true;}
