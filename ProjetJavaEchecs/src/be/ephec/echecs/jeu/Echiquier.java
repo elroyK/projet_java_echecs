@@ -18,7 +18,7 @@ public class Echiquier {
 			if ((i % 2) == 0) {	work=true;} 
 			else {work=false;}
 			
-			for (j=0;j<NBCASE;i++) {
+			for (j=0;j<NBCASE;j++) {
 				echiq[i][j]= new Case(work);	
 				/* Inverse la couleur quand on incrémente */
 				if (work==true) {work=false;}

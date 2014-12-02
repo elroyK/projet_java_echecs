@@ -10,6 +10,7 @@ public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
 	private Joueur  jA = new Joueur("","blanc");
 	private Joueur  jB = new Joueur("","noir"); 
+	private Echiquier plateau = new Echiquier();
 	private Param settings = new Param();
 	private boolean reset;
 	
@@ -60,79 +61,42 @@ public class Partie {
 	 * initialisation, initialise toutes les pièces à leurs places respectives
 	 */
 	public void initialisation() {
-		// TODO : Implémenter les classes Reines, Roi et Tour pour qu' initialisation() compile.
-		for (int i=0;i<Joueur.getNBPIECE();i++){
-			// Initalisation pièces blanches
-			switch (i) {
-				case 0: this.jA.tbPiece[i] = new Pion(0,6,"");
-						break;
-				case 1: this.jA.tbPiece[i] = new Pion(1,6,"");
-						break;
-				case 2: this.jA.tbPiece[i] = new Pion(2,6,"");
-						break;
-				case 3: this.jA.tbPiece[i] = new Pion(3,6,"");
-						break;
-				case 4: this.jA.tbPiece[i] = new Pion(4,6,"");
-						break;
-				case 5: this.jA.tbPiece[i] = new Pion(5,6,"");
-						break;
-				case 6: this.jA.tbPiece[i] = new Pion(6,6,"");
-						break;
-				case 7: this.jA.tbPiece[i] = new Pion(7,6,"");
-						break;
-				case 8: this.jA.tbPiece[i] = new Cavalier(1,7,"");
-						break;
-				case 9: this.jA.tbPiece[i] = new Cavalier(6,7,"");
-						break;
-				case 10: this.jA.tbPiece[i] = new Tour(0,7,"");
-						break;
-				case 11: this.jA.tbPiece[i] = new Tour(7,7,"");
-						break;
-				case 12: this.jA.tbPiece[i] = new Fou(2,7,"");
-						break;
-				case 13: this.jA.tbPiece[i] = new Fou(5,7,"");
-						break;
-				case 14: this.jA.tbPiece[i] = new Roi(3,7,"");
-				break;	
-				default: this.jA.tbPiece[i] = new Reine(4,7,"");
-					break;
-				}
-			// Initialisation pièces noires
-			switch (i) {
-				case 0: this.jB.tbPiece[i] = new Pion(0,1,"");
-					break;
-				case 1: this.jB.tbPiece[i] = new Pion(1,1,"");
-					break;
-				case 2: this.jB.tbPiece[i] = new Pion(2,1,"");
-					break;
-				case 3: this.jB.tbPiece[i] = new Pion(3,1,"");
-					break;
-				case 4: this.jB.tbPiece[i] = new Pion(4,1,"");
-					break;
-				case 5: this.jB.tbPiece[i] = new Pion(5,1,"");
-					break;
-				case 6: this.jB.tbPiece[i] = new Pion(6,1,"");
-					break;
-				case 7: this.jB.tbPiece[i] = new Pion(7,1,"");
-					break;
-				case 8: this.jB.tbPiece[i] = new Cavalier(1,0,"");
-					break;
-				case 9: this.jB.tbPiece[i] = new Cavalier(6,0,"");
-					break;
-				case 10: this.jB.tbPiece[i] = new Tour(0,0,"");
-					break;
-				case 11: this.jB.tbPiece[i] = new Tour(7,0,"");
-					break;
-				case 12: this.jB.tbPiece[i] = new Fou(2,0,"");
-					break;
-				case 13: this.jB.tbPiece[i] = new Fou(5,0,"");
-					break;
-				case 14: this.jB.tbPiece[i] = new Roi(4,0,"");
-					break;	
-				default: this.jB.tbPiece[i] = new Reine(3,0,"");
-					break;
-			}
-		}
+		// Initialisation pièces blanches
+		this.jA.tbPiece[0] = new Pion(0,6,"");
+		this.jA.tbPiece[1] = new Pion(1,6,"");
+		this.jA.tbPiece[2] = new Pion(2,6,"");
+		this.jA.tbPiece[3] = new Pion(3,6,"");
+		this.jA.tbPiece[4] = new Pion(4,6,"");
+		this.jA.tbPiece[5] = new Pion(5,6,"");
+		this.jA.tbPiece[6] = new Pion(6,6,"");
+		this.jA.tbPiece[7] = new Pion(7,6,"");
+		this.jA.tbPiece[8] = new Cavalier(1,7,"");
+		this.jA.tbPiece[9] = new Cavalier(6,7,"");
+		this.jA.tbPiece[10] = new Tour(0,7,"");
+		this.jA.tbPiece[11] = new Tour(7,7,"");
+		this.jA.tbPiece[12] = new Fou(2,7,"");
+		this.jA.tbPiece[13] = new Fou(5,7,"");
+		this.jA.tbPiece[14] = new Roi(3,7,"");
+		this.jA.tbPiece[15] = new Reine(4,7,"");
+		// Initialisation pièces noires
+		this.jB.tbPiece[0] = new Pion(0,1,"");
+		this.jB.tbPiece[1] = new Pion(1,1,"");
+		this.jB.tbPiece[2] = new Pion(2,1,"");
+		this.jB.tbPiece[3] = new Pion(3,1,"");
+		this.jB.tbPiece[4] = new Pion(4,1,"");
+		this.jB.tbPiece[5] = new Pion(5,1,"");
+		this.jB.tbPiece[6] = new Pion(6,1,"");
+		this.jB.tbPiece[7] = new Pion(7,1,"");
+		this.jB.tbPiece[8] = new Cavalier(1,0,"");
+		this.jB.tbPiece[9] = new Cavalier(6,0,"");
+		this.jB.tbPiece[10] = new Tour(0,0,"");
+		this.jB.tbPiece[11] = new Tour(7,0,"");
+		this.jB.tbPiece[12] = new Fou(2,0,"");
+		this.jB.tbPiece[13] = new Fou(5,0,"");
+		this.jB.tbPiece[14] = new Roi(4,0,"");
+		this.jB.tbPiece[15] = new Reine(3,0,"");
+		
+	}
 	}
 	
 	/**

@@ -9,8 +9,13 @@ package be.ephec.echecs.jeu;
 //import javax.swing.JButton;
 
 public class Case {
-	private boolean couleur; /* noire (false) - blanc (true) */
-//	private JButton button;  
+	protected static String BLANC = "BLANC";
+	protected static String NOIR  = "NOIR";
+	protected static String LIBRE = "LIBRE";
+	
+	protected boolean couleur; /* noire (false) - blanc (true) */
+//	protected JButton button;
+	protected String estOccupe;
 	
 	/**
 	 * Constructeur de la classe Case
