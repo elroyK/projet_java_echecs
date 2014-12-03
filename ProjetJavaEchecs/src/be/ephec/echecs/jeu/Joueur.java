@@ -22,11 +22,9 @@ public class Joueur {
 	 * @param n : nom du joueur
 	 * @param c : couleur du joueur
 	 */
-	public Joueur(String n, String c) {	
+	public Joueur(String n) {	
 		this.setNom(n);
-		this.setNbVict(0);
-		this.setColor(c);
-		
+		this.setNbVict(0);	
 	}
 	
 	// GETTERS ET SETTERS
