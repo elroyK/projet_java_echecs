@@ -7,6 +7,10 @@ package be.ephec.echecs.jeu;
  */
 	
 	public class Fou extends Piece {
+		
+		public Fou() {
+			super();
+		}
 	
 		/**
 		 * Constructeur de la classe Fou

@@ -12,6 +12,10 @@ abstract public class Piece {
 	protected boolean inGame;
 	protected Position pos = new Position();
 	
+	public Piece() {
+		
+	}
+	
 	/**
 	 * Constructeur à 5 paramètres de la classe Piece
 	 * @param n : nom de la pièce
@@ -28,7 +32,6 @@ abstract public class Piece {
 		pos.setY(y);	
 	}
 	
-	abstract public void move(Echiquier plateau);
 	abstract public Position[] genererPos();
 	
 	/**
@@ -37,6 +40,15 @@ abstract public class Piece {
 	
 	public void kill(){
 		this.setInGame(false);
+	}
+	
+	public void move(Echiquier plateau) {
+		Position tbPos[] = this.genererPos();
+		this.genererCaseCliquable(plateau, tbPos);
+		// TODO : AFFICHER LES CASES DISPOBIBLES EN VERT
+		// TODO : CHOPER LA POSITION CLIQUE PAR LE JOUEUR
+		Position zone = new Position(0,0); // A IMPLEMENTER AVEC LA POSITION DU JOUEUR
+		this.deplacement(plateau,zone);
 	}
 	
 	/**

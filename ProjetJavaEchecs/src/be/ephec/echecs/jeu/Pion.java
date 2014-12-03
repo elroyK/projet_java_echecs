@@ -48,23 +48,6 @@ public class Pion extends Piece {
 	}
 	
 	/**
-	 * Permet de bouger le pion
-	 * @param jColor : Couleur du joueur (noir ou blanc)
-	 * Si c'est joueur noir => les pièces descendent
-	 * Si c'est joueur blanc => les pièces montent
-	 */
-	@Override
-	public void move(Echiquier plateau) {
-
-		Position tbPos[] = this.genererPos();
-		this.genererCaseCliquable(plateau, tbPos);
-		// TODO : AFFICHER LES CASES DISPOBIBLES EN VERT
-		// TODO : CHOPER LA POSITION CLIQUE PAR LE JOUEUR
-		Position zone = new Position(0,0); // A IMPLEMENTER AVEC LA POSITION DU JOUEUR
-		this.deplacement(plateau,zone); 
-	}
-	
-	/**
 	 * Permet de promouvoir un pion en n'importe quel pièce "morte"
 	 * @param jCol : Couleur du joueur (noir ou blanc)
 	 * Si c'est joueur noir => les pièces descendent

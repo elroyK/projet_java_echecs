@@ -49,13 +49,4 @@ public class Cavalier extends Piece {
 		
 		return work; 	
 	}
-	
-	public void move(Echiquier plateau) {
-		Position tbPos[] = this.genererPos();
-		this.genererCaseCliquable(plateau, tbPos);
-		// TODO : AFFICHER LES CASES DISPOBIBLES EN VERT
-		// TODO : CHOPER LA POSITION CLIQUE PAR LE JOUEUR
-		Position zone = new Position(0,0); // A IMPLEMENTER AVEC LA POSITION DU JOUEUR
-		this.deplacement(plateau,zone);
-	}
 }
