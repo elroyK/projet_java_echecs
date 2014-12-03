@@ -3,7 +3,7 @@ package be.ephec.echecs.jeu;
  * Classe Fou, représentant la pièce Fou
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 27/11/14
+ * date de modification : 03/02/14
  */
 	
 	public class Fou extends Piece {
@@ -25,7 +25,7 @@ package be.ephec.echecs.jeu;
 		 * @return work = tableau de la classe Position, contenant un couple de coord (x,y)
 		 */
 		
-		public Position[] generateDeplacements(){
+		public Position[] genererPos(){
 			
 			Position work [] = new Position[14]; 
 			int tempX = pos.getX() + 1;
@@ -82,12 +82,12 @@ package be.ephec.echecs.jeu;
 		
 		/**
 		 * Méthode qui illustre le mouvement de la pièce. Compare le tableau de position possible généré
-		 * par generateDeplacements() avec l'ensemble des positions sur l'échiquier
+		 * par genererPos() avec l'ensemble des positions sur l'échiquier
 		 * L'algo règle les cases cliquables ou non en fonction de certaines conditions (règle du jeu...)
 		 */
 		
 		public void move(Echiquier plateau) {
-			Position[] deplacements = this.generateDeplacements();
+			Position[] deplacements = this.genererPos();
 			for (int i=0;i<8;i++) {
 				for (int j=0;j<8;j++){
 					
