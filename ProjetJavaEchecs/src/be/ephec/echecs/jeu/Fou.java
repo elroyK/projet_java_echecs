@@ -3,7 +3,7 @@ package be.ephec.echecs.jeu;
  * Classe Fou, représentant la pièce Fou
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 03/02/14
+ * date de modification : 03/12/14
  */
 	
 	public class Fou extends Piece {
