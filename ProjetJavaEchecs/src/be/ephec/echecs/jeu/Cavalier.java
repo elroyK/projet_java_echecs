@@ -24,28 +24,28 @@ public class Cavalier extends Piece {
 		Position work[] = new Position[NBMOV];
 		
 		work[0].setX(this.pos.getX()+1);
-		work[0].setX(this.pos.getX()+2);
+		work[0].setX(this.pos.getY()+2);
 		
 		work[1].setX(this.pos.getX()+1);
-		work[1].setX(this.pos.getX()-2);
+		work[1].setX(this.pos.getY()-2);
 		
 		work[2].setX(this.pos.getX()+2);
-		work[2].setX(this.pos.getX()+1);
+		work[2].setX(this.pos.getY()+1);
 		
 		work[3].setX(this.pos.getX()+2);
-		work[3].setX(this.pos.getX()-1);
+		work[3].setX(this.pos.getY()-1);
 		
 		work[4].setX(this.pos.getX()-1);
-		work[4].setX(this.pos.getX()+2);
+		work[4].setX(this.pos.getY()+2);
 		
 		work[5].setX(this.pos.getX()-1);
-		work[5].setX(this.pos.getX()-2);
+		work[5].setX(this.pos.getY()-2);
 		
 		work[6].setX(this.pos.getX()-2);
-		work[6].setX(this.pos.getX()+1);
+		work[6].setX(this.pos.getY()+1);
 		
 		work[7].setX(this.pos.getX()-2);
-		work[7].setX(this.pos.getX()-1);
+		work[7].setX(this.pos.getY()-1);
 		
 		return work; 	
 	}
