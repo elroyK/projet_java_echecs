@@ -60,7 +60,7 @@ public class Cavalier extends Piece {
 					if (tbPos[w].equals(plateau.echiq[i][j].pos)) {
 						// TODO : set cliquable
 						switch (plateau.echiq[i][j].getEstOccupe()) {
-						case (Case.NOIR) : 
+						case (Case.NOIR) : if (this.getColor())
 						}
 					} else {
 						// TODO : set non cliquable

@@ -7,6 +7,10 @@ package be.ephec.echecs.jeu;
  */
 
 public class Param {
+	public static String BLANC = "BLANC";
+	public static String NOIR  = "NOIR";
+	public static String LIBRE = "LIBRE";
+	
 	public static int NBCASE = 8;
 	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
