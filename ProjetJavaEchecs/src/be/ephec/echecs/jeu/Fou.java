@@ -83,13 +83,29 @@ package be.ephec.echecs.jeu;
 			for (int i=0;i<8;i++) {
 				for (int j=0;j<8;j++){
 					
+					//TODO : Simplifier le code en remettant tout en différentes méhodes
 					for (int w=0;w<8;w++) {
 						if (deplacements[w].equals(plateau.echiq[i][j].pos)) {
+							//pièce qui se déplace est de couleur noire
+							if(this.getColor()== Param.NOIR){
+								//si la pièce qui est sur une position possible est blanche
+								if(plateau.echiq[i][j].getEstOccupe()==Param.BLANC){
+									plateau.echiq[i][j].setCliquable(true);
+								}
+							}
+							//pièce qui se déplace est de couleur noire
+							if(this.getColor()== Param.BLANC){
+								//si la pièce qui est sur une position possible est noire
+								if(plateau.echiq[i][j].getEstOccupe()==Param.NOIR){
+									plateau.echiq[i][j].setCliquable(true);
+									}
+							}
+							else{
+									plateau.echiq[i][j].setCliquable(false);
+								}
 							
-							// TODO : set cliquable	
-						} else {
-							// TODO : set non cliquable
-						}
+								
+						} 
 					}
 				}
 			}
