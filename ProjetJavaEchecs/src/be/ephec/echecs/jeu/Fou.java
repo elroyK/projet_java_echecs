@@ -16,11 +16,13 @@ package be.ephec.echecs.jeu;
 		 */
 		
 		public Fou (int x, int y, String addImage) {
-			super("Pion",addImage,true,x,y);
+			super("Fou",addImage,true,x,y);
 		}
 		
 		/**
-		 * Procédure permettant le déplacement du Fou
+		 * Procédure qui génère l'ensemble des positions possible de la pièce à partir
+		 * de sa position actuelle
+		 * @return work = tableau de la classe Position, contenant un couple de coord (x,y)
 		 */
 		
 		public Position[] generateDeplacements(){
@@ -78,12 +80,19 @@ package be.ephec.echecs.jeu;
 			return work;
 		}
 		
+		/**
+		 * Méthode qui illustre le mouvement de la pièce. Compare le tableau de position possible généré
+		 * par generateDeplacements() avec l'ensemble des positions sur l'échiquier
+		 * L'algo règle les cases cliquables ou non en fonction de certaines conditions (règle du jeu...)
+		 */
+		
 		public void move(Echiquier plateau) {
 			Position[] deplacements = this.generateDeplacements();
 			for (int i=0;i<8;i++) {
 				for (int j=0;j<8;j++){
 					
 					//TODO : Simplifier le code en remettant tout en différentes méhodes
+					// TODO : Ajouter methode kill
 					for (int w=0;w<8;w++) {
 						if (deplacements[w].equals(plateau.echiq[i][j].pos)) {
 							//pièce qui se déplace est de couleur noire
@@ -92,20 +101,26 @@ package be.ephec.echecs.jeu;
 								if(plateau.echiq[i][j].getEstOccupe()==Param.BLANC){
 									plateau.echiq[i][j].setCliquable(true);
 								}
-							}
-							//pièce qui se déplace est de couleur noire
+									else{
+										plateau.echiq[i][j].setCliquable(false);
+									}
+								}
+							//pièce qui se déplace est de couleur blanche
 							if(this.getColor()== Param.BLANC){
 								//si la pièce qui est sur une position possible est noire
 								if(plateau.echiq[i][j].getEstOccupe()==Param.NOIR){
 									plateau.echiq[i][j].setCliquable(true);
 									}
-							}
-							else{
+								else{
 									plateau.echiq[i][j].setCliquable(false);
 								}
-							
-								
+							}
+														
 						} 
+						else{
+							plateau.echiq[i][j].setCliquable(false);
+						}
+					
 					}
 				}
 			}
