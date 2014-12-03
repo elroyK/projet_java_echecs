@@ -1,20 +1,25 @@
 package be.ephec.echecs.jeu;
+
+import java.awt.Color;
+
+import javax.swing.JButton;
+
 /**
  * Classe Case, représentant une case de l'échiquier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 25/11/14
+ * date de modification : 03/12/14
  */
 
 //import javax.swing.JButton;
 
-public class Case {
+public class Case extends JButton {
 	public static String BLANC = "BLANC";
 	public static String NOIR  = "NOIR";
 	public static String LIBRE = "LIBRE";
 	
-	protected boolean couleur; /* noire (false) - blanc (true) */
-//	protected JButton button;
+	protected boolean couleur; /* noir (false) - blanc (true) */
+    protected boolean cliquable;
 	protected String estOccupe;
 	protected Position pos;
 	
@@ -26,14 +31,13 @@ public class Case {
 	public Case(Boolean col) {
 		if (col == true) {
 			setCouleur(true);
-			setBackground(couleur);
+			setBackgroundColor(couleur);
 		} else {
-			setCouleur(true);
-			setBackground(couleur);
+			setCouleur(false);
+			setBackgroundColor(couleur);
 		}
 		
-		/* TODO : Mettre le JButton en invisible
-		 * 		: Définir la taille d'un coté en pixels
+		/* TODO : Définir la taille d'un coté en pixels
 		 */
 	}
 
@@ -42,12 +46,21 @@ public class Case {
 	 * @param col : couleur 
 	 */
 	
-	public void setBackground(Boolean col) {
+	public void setBackgroundColor(Boolean col) {
 		if (col==true){
-			// TODO : METTRE LA COULEUR DU BOUTON EN BLANC
+			this.setBackground(Color.WHITE);
 		} else  {
-			// TODO : METTRE LA COULEUR DU BOUTON EN NOIR
+			this.setBackground(Color.BLACK);
 		}
+	}
+	
+	
+	/**
+	 * Permet de mettre le fond de la case en bleu si jamais elle est cliquable.
+	 * Doit être exécutée sur chaque case au moment de la sélection d'une pièce à déplacer.
+	 */
+	public void isCliquable() {
+		if (this.getCliquable()) this.setBackground(new Color(51, 153, 255));
 	}
 	
 	/**
@@ -63,11 +76,11 @@ public class Case {
 	 * TOUS LES GETTERS ET SETTERS
 	 */
 	
-	public Boolean getCouleur() {
+	public boolean getCouleur() {
 		return couleur;
 	}
 
-	public void setCouleur(Boolean couleur) {
+	public void setCouleur(boolean couleur) {
 		this.couleur = couleur;
 	}
 
@@ -77,5 +90,13 @@ public class Case {
 
 	public void setEstOccupe(String estOccupe) {
 		this.estOccupe = estOccupe;
+	}
+	
+	public void setCliquable(boolean clic) {
+		this.cliquable = clic;
+	}
+	
+	public boolean getCliquable() {
+		return cliquable;
 	}
 }

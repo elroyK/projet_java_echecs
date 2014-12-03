@@ -50,6 +50,7 @@ public class Cavalier extends Piece {
 		return work; 	
 	}
 	
+	@Override
 	public void move(Echiquier plateau) {
 		Position tbPos[] = this.genererPos();
 		for (int i=0;i<8;i++) {
