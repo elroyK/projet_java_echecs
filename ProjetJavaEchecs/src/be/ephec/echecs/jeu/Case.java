@@ -26,6 +26,7 @@ public class Case extends JButton {
 	/**
 	 * Constructeur de la classe Case
 	 * @param col : Booleen représentant true (Blanc) et false(Noir)
+	 * 
 	 */
 	
 	public Case(Boolean col) {

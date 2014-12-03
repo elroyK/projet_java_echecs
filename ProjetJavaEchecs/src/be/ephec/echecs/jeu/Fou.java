@@ -78,15 +78,21 @@ package be.ephec.echecs.jeu;
 			return work;
 		}
 		
-		@Override
-		public void move() {
+		public void move(Echiquier plateau) {
 			Position[] deplacements = this.generateDeplacements();
-			
-			//TODO Tests savoir première rencontrée sur chaque axe méthode à part
-			//TODO Eclaircir cases jusque première pièce incluse
-			//TODO Mouvement en lui même
-		
-		
+			for (int i=0;i<8;i++) {
+				for (int j=0;j<8;j++){
+					
+					for (int w=0;w<8;w++) {
+						if (deplacements[w].equals(plateau.echiq[i][j].pos)) {
+							
+							// TODO : set cliquable	
+						} else {
+							// TODO : set non cliquable
+						}
+					}
+				}
+			}
 		}
 	}
 					
