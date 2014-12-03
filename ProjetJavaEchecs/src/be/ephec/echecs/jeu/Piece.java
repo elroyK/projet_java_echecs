@@ -34,6 +34,12 @@ abstract public class Piece {
 		this.setInGame(false);
 	}
 	
+	/**
+	 * genererCaseCliquable : permet de générer les cases cliquables pour le déplacement de la pièce
+	 * @param plateau : Echiquier
+	 * @param tb : Tableau de position disponible pour les deplacements de la pièce
+	 */
+	
 	public void genererCaseCliquable(Echiquier plateau, Position tb[]) {
 		// PARCOURS L ECHIQUIER EN X
 		for (int i=0;i<8;i++) {
