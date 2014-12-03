@@ -16,6 +16,7 @@ public class Tour extends Piece {
 	 * @param x : position en x
 	 * @param y : position en y
 	 * @param addImage : adresse de l'image
+	 * 
 	 */
 	
 	public Tour (int x, int y, String addImage) {

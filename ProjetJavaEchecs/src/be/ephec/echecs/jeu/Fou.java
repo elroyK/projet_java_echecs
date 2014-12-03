@@ -33,7 +33,7 @@ package be.ephec.echecs.jeu;
 			int i = 0;
 			
 			/*boucle pour la diagonale haute droite */
-			while ((tempX <= 8)&&(tempY <= 8)) {
+			while ((tempX <= 7)&&(tempY <= 7)) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
@@ -45,7 +45,7 @@ package be.ephec.echecs.jeu;
 			tempY = pos.getY() + 1;
 			
 			/*boucle pour la diagonale haute gauche*/
-			while ((tempX >= 1)&&(tempY <= 8)) {
+			while ((tempX >= 0)&&(tempY <= 7)) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
@@ -57,7 +57,7 @@ package be.ephec.echecs.jeu;
 			tempY = pos.getY() - 1;
 			
 			/*boucle pour la diagonale basse droite*/
-			while ((tempX >= 8)&&(tempY <= 1)) {
+			while ((tempX >= 7)&&(tempY <= 0)) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
@@ -69,7 +69,7 @@ package be.ephec.echecs.jeu;
 			tempY = pos.getY() - 1;
 			
 			/*boucle pour la diagonale basse gauche*/
-			while ((tempX >= 1)&&(tempY <= 1)) {
+			while ((tempX >= 0)&&(tempY <= 0)) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
