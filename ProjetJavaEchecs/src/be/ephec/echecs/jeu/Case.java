@@ -14,9 +14,7 @@ import javax.swing.JButton;
 //import javax.swing.JButton;
 
 public class Case extends JButton {
-	public static String BLANC = "BLANC";
-	public static String NOIR  = "NOIR";
-	public static String LIBRE = "LIBRE";
+
 	
 	protected boolean couleur; /* noir (false) - blanc (true) */
     protected boolean cliquable;
