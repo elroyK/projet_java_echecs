@@ -3,7 +3,7 @@ package be.ephec.echecs.jeu;
  * Classe Pion, représentant la pièce Pion
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 26/11/14
+ * date de modification : 03/12/14
  */
 
 public class Pion extends Piece {
@@ -23,6 +23,31 @@ public class Pion extends Piece {
 	}
 	
 	/**
+	 * @return : un tableau de position possible par le pion
+	 */
+	
+	public Position[] genererPos() {
+		
+		Position work[] = new Position[2];
+		
+		if (this.getColor() == Param.BLANC) {
+			work[0].setY(this.pos.getY()+1);
+			if (this.isDejaJoue()) {
+				work[1].setY(this.pos.getY()+2);
+				setDejaJoue(true);
+			}		
+		} else {
+			work[0].setY(this.pos.getY()-1);
+			if (this.isDejaJoue()) {
+				work[1].setY(this.pos.getY()-2);
+				setDejaJoue(true);
+			}
+		}
+		
+		return work;
+	}
+	
+	/**
 	 * Permet de bouger le pion
 	 * @param jColor : Couleur du joueur (noir ou blanc)
 	 * Si c'est joueur noir => les pièces descendent
@@ -30,23 +55,13 @@ public class Pion extends Piece {
 	 */
 	@Override
 	public void move(Echiquier plateau) {
-		int joueurActuel;
-		joueurActuel = game.settings.getJoueurActuel;
-		if (joueurActuel == 2) {
-			if (isDejaJoue()) {
-				this.pos.setY(this.pos.getY()-1);
-			} else {
-				this.pos.setY(this.pos.getY()-2);
-				setDejaJoue(true);
-			}
-		} else {
-			if (isDejaJoue()) {
-				this.pos.setY(this.pos.getY()+1);
-			} else {
-				this.pos.setY(this.pos.getY()+2);
-				setDejaJoue(true);
-			}
-		}
+
+		Position tbPos[] = this.genererPos();
+		this.genererCaseCliquable(plateau, tbPos);
+		// TODO : AFFICHER LES CASES DISPOBIBLES EN VERT
+		// TODO : CHOPER LA POSITION CLIQUE PAR LE JOUEUR
+		Position zone = new Position(0,0); // A IMPLEMENTER AVEC LA POSITION DU JOUEUR
+		this.deplacement(plateau,zone); 
 	}
 	
 	/**

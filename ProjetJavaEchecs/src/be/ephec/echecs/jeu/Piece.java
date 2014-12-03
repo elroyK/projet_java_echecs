@@ -29,6 +29,11 @@ abstract public class Piece {
 	}
 	
 	abstract public void move(Echiquier plateau);
+	abstract public Position[] genererPos();
+	
+	/**
+	 * kill : permet de tuer une pièce
+	 */
 	
 	public void kill(){
 		this.setInGame(false);
@@ -45,7 +50,7 @@ abstract public class Piece {
 		for (int i=0;i<8;i++) {
 			// PARCOURS L ECHIQUIER EN Y
 			for (int j=0;j<8;j++){	
-				// PARCOURS LE TABLEAU DE POSITION
+				// PARCOURS LE TABLEAU DE POSITION POSSIBLE PAR LA PIECE
 				for (int w=0;w<tb.length;w++) {
 					if (tb[w].equals(plateau.echiq[i][j].pos)) {
 						// SI LA CASE EST PRISE PAR UNE PIECE NOIRE
@@ -70,6 +75,23 @@ abstract public class Piece {
 				}
 			}
 		}	
+	}
+	
+	/**
+	 * deplacement, permet le déplacement d'une pièce sur l'echiquier
+	 * @param plateau : echiquier 
+	 * @param pos : position ou on veut déplacer le joueur
+	 */
+	
+	public void deplacement(Echiquier plateau, Position pos) {
+		if (plateau.echiq[pos.getX()][pos.getY()].getEstOccupe()!=Param.LIBRE) {
+			// TODO : KILL LA PIECE OCCUPE MAIS COMMENT ??
+			this.pos.setX(pos.getX());
+			this.pos.setY(pos.getY());
+		} else {
+			this.pos.setX(pos.getX());
+			this.pos.setY(pos.getY());
+		}
 	}
 	
 	/* GETTERS ET SETTERS */
