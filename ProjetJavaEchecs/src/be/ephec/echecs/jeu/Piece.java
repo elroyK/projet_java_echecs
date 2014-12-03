@@ -3,7 +3,7 @@ package be.ephec.echecs.jeu;
  * Classe Piece, représentant une pièce de l'échiquier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 27/11/14
+ * date de modification : 03/12/14
  */
 abstract public class Piece {
 	protected String nom;
