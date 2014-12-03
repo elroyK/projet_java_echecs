@@ -15,8 +15,8 @@ public class Position {
 	 */
 	
 	public Position() {
-		setX(0);
-		setY(0);
+		setX(-1);
+		setY(-1);
 	}
 	
 	/**

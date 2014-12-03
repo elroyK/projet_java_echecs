@@ -29,6 +29,11 @@ abstract public class Piece {
 	}
 	
 	abstract public void move(Echiquier plateau);
+	abstract public Position[] genererPos();
+	
+	/**
+	 * kill : permet de tuer une pièce
+	 */
 	
 	public void kill(){
 		this.setInGame(false);
