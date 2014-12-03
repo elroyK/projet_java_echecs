@@ -29,7 +29,7 @@ public class Pion extends Piece {
 	 * Si c'est joueur blanc => les pièces montent
 	 */
 	@Override
-	public void move() {
+	public void move(Echiquier plateau) {
 		int joueurActuel;
 		joueurActuel = game.settings.getJoueurActuel;
 		if (joueurActuel == 2) {

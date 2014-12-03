@@ -8,8 +8,8 @@ package be.ephec.echecs.jeu;
 
 public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
-	private Joueur  jA = new Joueur("","blanc");
-	private Joueur  jB = new Joueur("","noir"); 
+	private Joueur  jA = new Joueur("");
+	private Joueur  jB = new Joueur(""); 
 	private Echiquier plateau = new Echiquier();
 	private Param settings = new Param();
 	private boolean reset;

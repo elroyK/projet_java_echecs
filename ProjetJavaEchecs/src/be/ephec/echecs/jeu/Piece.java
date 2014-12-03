@@ -28,10 +28,42 @@ abstract public class Piece {
 		pos.setY(y);	
 	}
 	
-	abstract public void move();
+	abstract public void move(Echiquier plateau);
 	
 	public void kill(){
 		this.setInGame(false);
+	}
+	
+	public void genererCaseCliquable(Echiquier plateau, Position tb[]) {
+		// PARCOURS L ECHIQUIER EN X
+		for (int i=0;i<8;i++) {
+			// PARCOURS L ECHIQUIER EN Y
+			for (int j=0;j<8;j++){	
+				// PARCOURS LE TABLEAU DE POSITION
+				for (int w=0;w<tb.length;w++) {
+					if (tb[w].equals(plateau.echiq[i][j].pos)) {
+						// SI LA CASE EST PRISE PAR UNE PIECE NOIRE
+						if (plateau.echiq[i][j].getEstOccupe()==Param.NOIR) {
+							// SI LA COULEUR DE CETTE PIECE EST NOIRE
+							if (this.getColor()==Param.NOIR) {
+								plateau.echiq[i][j].setCliquable(false);
+							} else {
+								plateau.echiq[i][j].setCliquable(true);
+							}
+						} // SI LA CASE EST PRISE PAR UNE PIECE NOIRE
+						else if (plateau.echiq[i][j].getEstOccupe()==Param.BLANC){
+							// SI LA COULEUR DE CETTE PIECE EST BLANCHE
+							if (this.getColor()==Param.BLANC) {
+								plateau.echiq[i][j].setCliquable(false);
+							} else {
+								plateau.echiq[i][j].setCliquable(true);
+							}	
+							
+						}
+					}
+				}
+			}
+		}	
 	}
 	
 	/* GETTERS ET SETTERS */
@@ -66,14 +98,7 @@ abstract public class Piece {
 
 	public void setColor(String color) {
 		this.color = color;
-	}
-
-	public void move(Echiquier plateau) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+	}	
 }
 
 
