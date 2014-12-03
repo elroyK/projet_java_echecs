@@ -7,7 +7,7 @@ package be.ephec.echecs.jeu;
  */
 	
 	public class Fou extends Piece {
-		
+		final static int NBMOV = 14;
 		public Fou() {
 			super();
 		}
@@ -31,7 +31,7 @@ package be.ephec.echecs.jeu;
 		
 		public Position[] genererPos(){
 			
-			Position work [] = new Position[14]; 
+			Position work [] = new Position[NBMOV]; 
 			int tempX = pos.getX() + 1;
 			int tempY = pos.getY() + 1;
 			int i = 0;

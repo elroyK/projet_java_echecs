@@ -7,7 +7,7 @@ package be.ephec.echecs.jeu;
  */
 
 public class Cavalier extends Piece {
-	private static int NBMOV = 8;
+	final static int NBMOV = 8;
 	
 	/**
 	 * Constructeur de la classe Cavalier

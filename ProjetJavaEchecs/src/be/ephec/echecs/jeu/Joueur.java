@@ -8,7 +8,7 @@ package be.ephec.echecs.jeu;
 
 public class Joueur {
 	// Constante
-	protected static int NBPIECE = 16;
+	final static int NBPIECE = 16;
 
 	protected String nom;
 	protected int nbVict;
