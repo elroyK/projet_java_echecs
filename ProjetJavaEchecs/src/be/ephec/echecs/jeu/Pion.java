@@ -30,8 +30,7 @@ public class Pion extends Piece {
 	 */
 	@Override
 	public void move(Echiquier plateau) {
-		int joueurActuel;
-		joueurActuel = game.settings.getJoueurActuel;
+		
 		if (joueurActuel == 2) {
 			if (isDejaJoue()) {
 				this.pos.setY(this.pos.getY()-1);
