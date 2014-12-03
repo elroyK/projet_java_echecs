@@ -12,7 +12,7 @@ public class Joueur {
 
 	protected String nom;
 	protected int nbVict;
-	protected String color;
+	
 	
 	// Tableau de 16 pièces
 	protected Piece[] tbPiece = new Piece[NBPIECE];
@@ -51,11 +51,4 @@ public class Joueur {
 		this.nbVict = nbVict;
 	}
 
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
 }
