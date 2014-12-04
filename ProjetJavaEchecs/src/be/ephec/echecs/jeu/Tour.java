@@ -32,12 +32,11 @@ public class Tour extends Piece {
 	 * @return work = tableau de la classe Position, contenant un couple de coord (x,y)
 	 */
 
-	//TODO : completer l'algo (boucle générale ou pas ? ...) 
 	public Position[] genererPos(){
 		
 		Position work [] = new Position[NBMOV]; 
 		int tempX = pos.getX() + 1;
-		int tempY = pos.getY() + 1;
+		int tempY = pos.getY();
 		int i = 0;
 		
 		/*boucle pour l'horizontale droite */
@@ -57,7 +56,8 @@ public class Tour extends Piece {
 			i++;
 			tempX--;
 		}
-		tempX = pos.getX() + 1;
+		tempX = pos.getX();
+		tempY = pos.getY() + 1;
 		
 		
 		/*boucle pour la verticale haute*/
@@ -76,8 +76,7 @@ public class Tour extends Piece {
 			i++;
 			tempY--;
 			}
-		tempY = pos.getY() + 1;
-		
+			
 		return work;
 	}
 }
