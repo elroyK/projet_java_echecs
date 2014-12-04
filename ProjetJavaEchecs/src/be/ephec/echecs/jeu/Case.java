@@ -28,7 +28,7 @@ public class Case extends JButton {
 	 * 
 	 */
 	
-	public Case(Boolean col, int id) {
+	public Case(Boolean col) {
 		if (col == true) {
 			setCouleur(true);
 			setBackgroundColor(couleur);
@@ -36,7 +36,6 @@ public class Case extends JButton {
 			setCouleur(false);
 			setBackgroundColor(couleur);
 		}
-		this.setId(id);
 		
 	}
 

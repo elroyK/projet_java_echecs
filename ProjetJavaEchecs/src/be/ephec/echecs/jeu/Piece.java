@@ -11,6 +11,7 @@ abstract public class Piece {
 	protected String addIcone; // Adresse de l'image
 	protected boolean inGame;
 	protected Position pos = new Position();
+	protected int id;
 	
 	public Piece() {
 		
@@ -138,6 +139,14 @@ abstract public class Piece {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}	
 }
 

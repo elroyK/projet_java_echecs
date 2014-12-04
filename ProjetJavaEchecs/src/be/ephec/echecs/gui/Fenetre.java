@@ -30,41 +30,34 @@ public class Fenetre extends JFrame {
 
 
 	
-	public static int NBOUTONS = 64;
-	public static int x[] = {0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,
-		0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7};
-	public static int y[] = {0,0,0,0,0,0,0,0,
-		1,1,1,1,1,1,1,1,
-		2,2,2,2,2,2,2,2,
-		3,3,3,3,3,3,3,3,
-		4,4,4,4,4,4,4,4,
-		5,5,5,5,5,5,5,5,
-		6,6,6,6,6,6,6,6,
-		7,7,7,7,7,7,7,7};
-	public static int larg[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-	public static int haut[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-	public static int px[] = {100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8};
-	public static int py[] = {100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8,
-		100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8, 100/8};
+	public final int NBOUTONS = 64;
+	public final int NLIGNES = 8;
+	public int x[] = new int[NBOUTONS];
+	public int y[] = new int[NBOUTONS];
+	public int larg[] = new int[NBOUTONS];
+	public int haut[] = new int[NBOUTONS];
+	public int px[] = new int[NBOUTONS];
+	public int py[] = new int[NBOUTONS];
+	
+	public void creationTableaux(){
+		int i=0;
+		for (int yW=0; yW<NLIGNES; yW++){
+			for (int xW=0; xW<NLIGNES; xW++){
+				x[i]=xW;
+				y[i]=yW;
+				larg[i]=1;
+				haut[i]=1;
+				px[i]=100/8;
+				py[i]=100/8;
+				i++;
+			}
+		}
+	}
 	
 	
 	public Fenetre() {
 		boolean couleur = true;
+		this.creationTableaux();
 		setResizable(false);
 		setTitle("Jeu d'echecs");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +74,7 @@ public class Fenetre extends JFrame {
 			c.gridheight = haut[i];
 			c.weightx = px[i];
 			c.weighty = py[i];
-			contenu.add (new Case(couleur, i), c);
+			contenu.add (new Case(couleur), c);
 			
 			if (!((i+1)%8 == 0)){
 				if (couleur) couleur=false;
