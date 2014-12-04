@@ -81,6 +81,7 @@ package be.ephec.echecs.jeu;
 				tempY--;
 			}
 			
+			
 			return work;
 		}
 		
