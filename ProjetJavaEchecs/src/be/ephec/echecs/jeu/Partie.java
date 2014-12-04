@@ -1,4 +1,6 @@
 package be.ephec.echecs.jeu;
+
+import be.ephec.echecs.gui.*;
 /**
  * Classe Partie, programme mère du projet
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -17,6 +19,7 @@ public class Partie {
 	public static void main(String[] args) {
 		Partie game = new Partie();	
 		do {
+			Fenetre.main(null);
 			game.initialisation();
 			while (game.finPartie()==true) {
 				if (game.settings.getJoueurActuel() == 1)

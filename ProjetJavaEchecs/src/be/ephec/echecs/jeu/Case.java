@@ -20,6 +20,7 @@ public class Case extends JButton {
     protected boolean cliquable;
 	protected String estOccupe;
 	protected Position pos;
+	protected int id;
 	
 	/**
 	 * Constructeur de la classe Case
@@ -27,7 +28,7 @@ public class Case extends JButton {
 	 * 
 	 */
 	
-	public Case(Boolean col) {
+	public Case(Boolean col, int id) {
 		if (col == true) {
 			setCouleur(true);
 			setBackgroundColor(couleur);
@@ -35,9 +36,8 @@ public class Case extends JButton {
 			setCouleur(false);
 			setBackgroundColor(couleur);
 		}
+		this.setId(id);
 		
-		/* TODO : Définir la taille d'un coté en pixels
-		 */
 	}
 
 	/**
@@ -98,4 +98,13 @@ public class Case extends JButton {
 	public boolean getCliquable() {
 		return cliquable;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 }

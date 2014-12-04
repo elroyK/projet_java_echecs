@@ -1,4 +1,8 @@
 package be.ephec.echecs.jeu;
+
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Classe Echiquier, représentant le plateau du jeu (8/8 cases)
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -10,25 +14,11 @@ public class Echiquier {
 	private static int NBCASE = 8;
 	
 	public Echiquier() {
-		int i, j;
-		boolean work;
 		
-		for (i=0;i<NBCASE;i++) {		
-			/* Condition pour définir blanc ou noir */
-			if ((i % 2) == 0) {	work=true;} 
-			else {work=false;}
-			
-			for (j=0;j<NBCASE;j++) {
-				echiq[i][j]= new Case(work);
-				echiq[i][j].setEstOccupe(Param.LIBRE);
-				echiq[i][j].pos.setX(i);
-				echiq[i][j].pos.setY(j);
-				/* Inverse la couleur quand on incrémente */
-				if (work==true) {work=false;}
-				else {work=true;}
-				
-			}
 		}
+	
+	public void setEchiq(Case c, int x, int y){
+		echiq[x][y] = c;
 	}
 	
 }
