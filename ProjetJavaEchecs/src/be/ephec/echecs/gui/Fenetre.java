@@ -10,6 +10,13 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
+
+/**
+ * Classe Fenêtre, qui génère le visuel de l'échiquier
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
+ * date de création : 04/12/14
+ * date de modification : 04/12/14
+ */
 public class Fenetre extends JFrame {
 
 	/**

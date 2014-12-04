@@ -8,7 +8,7 @@ import javax.swing.JButton;
  * Classe Case, représentant une case de l'échiquier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 03/12/14
+ * date de modification : 04/12/14
  */
 
 //import javax.swing.JButton;
