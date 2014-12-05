@@ -6,10 +6,6 @@ import javax.swing.*;
 
 import java.awt.*;
 
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-
 
 /**
  * Classe Fenêtre, qui génère le visuel de l'échiquier
