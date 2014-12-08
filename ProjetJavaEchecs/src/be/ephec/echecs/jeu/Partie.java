@@ -19,7 +19,7 @@ public class Partie {
 	public static void main(String[] args) {
 		Partie game = new Partie();	
 		do {
-			Fenetre.main(null);
+			//Echiquier.main(null);
 			game.initialisation();
 			while (game.finPartie()==true) {
 				if (game.settings.getJoueurActuel() == 1)
@@ -65,6 +65,7 @@ public class Partie {
 	 */
 	public void initialisation() {
 		// Initialisation pièces blanches
+		Echiquier.main(null);
 		this.jA.tbPiece[0] = new Pion(0,6,"img/pionB.gif");
 		this.plateau.echiq[0][6].setEstOccupe("BLANC");
 		this.jA.tbPiece[1] = new Pion(1,6,"img/pionB.gif");

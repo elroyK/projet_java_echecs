@@ -14,8 +14,8 @@ import java.awt.*;
  */
 public class Echiquier extends JFrame {
 	
-	public final int NBOUTONS = 64;
-	public final int NLIGNES = 8;
+	static final int NBOUTONS = 64;
+	static final int NLIGNES = 8;
 	public int x[] = new int[NBOUTONS];
 	public int y[] = new int[NBOUTONS];
 	public int larg[] = new int[NBOUTONS];
@@ -76,13 +76,34 @@ public class Echiquier extends JFrame {
 			this.echiq[c.gridx][c.gridy] = new Case(couleur, c.gridx, c.gridy);
 			contenu.add (this.echiq[c.gridx][c.gridy], c);		
 			
-			
+		/*	this.echiq[c.gridx][c.gridy].setIcon(new ImageIcon(getClass().getResource("/img/pionB.gif")));*/
 			
 			if (!((i+1)%8 == 0)){
 				if (couleur) couleur=false;
 				else couleur=true;
 			}
 		}
-		}
-		
 	}
+	
+	public void actualiser(Joueur j1, Joueur j2){
+		//this.viderEchiquier(); 
+		//for (int i=0; i<Joueur.NBPIECE;i++){
+			if (j1.tbPiece[0].isInGame()){
+				this.echiq[j1.tbPiece[0].pos.getX()][j1.tbPiece[0].pos.getY()].actualise(j1.tbPiece[0].getAddIcone());
+			}
+			/*if (j2.tbPiece[i].isInGame()){
+				this.echiq[j2.tbPiece[i].pos.getX()][j2.tbPiece[i].pos.getY()].actualise(j2.tbPiece[i].getAddIcone()); 
+			}*/
+		//}
+	}
+	
+	
+	public void viderEchiquier(){
+		for (int i=0; i<Echiquier.NLIGNES;i++){
+			for (int j=0; j<Echiquier.NLIGNES;j++){
+				this.echiq[i][j].setIcon(null);
+			}
+		}
+	}
+		
+}

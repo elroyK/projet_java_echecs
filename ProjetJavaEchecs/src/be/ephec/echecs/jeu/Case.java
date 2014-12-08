@@ -9,7 +9,7 @@ import javax.swing.JButton;
  * Classe Case, représentant une case de l'échiquier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 04/12/14
+ * date de modification : 08/12/14
  */
 
 //import javax.swing.JButton;
@@ -37,10 +37,13 @@ public class Case extends JButton {
 			setCouleur(false);
 			setBackgroundColor(couleur);
 		}
-		
 		this.pos = new Position(x, y);
-		
 	}
+	
+	public void actualise(String add) {
+		this.setIcon(new ImageIcon(getClass().getResource(add)));
+	}
+	
 
 	/**
 	 * Permet de mettre le fond de la case en noir ou blanc
