@@ -64,7 +64,7 @@ public class Fenetre extends JFrame {
 		setResizable(false);
 		setTitle("Jeu d'echecs");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 800);
+		setBounds(100, 100, 600, 600);
 		Container contenu = getContentPane();
 		GridBagLayout g = new GridBagLayout();
 		contenu.setLayout(g);

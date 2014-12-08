@@ -65,74 +65,76 @@ public class Partie {
 	 */
 	public void initialisation() {
 		// Initialisation pièces blanches
-		this.jA.tbPiece[0] = new Pion(0,6,"");
+		this.jA.tbPiece[0] = new Pion(0,6,"img/pionB.gif");
 		this.plateau.echiq[0][6].setEstOccupe("BLANC");
-		this.jA.tbPiece[1] = new Pion(1,6,"");
+		this.jA.tbPiece[1] = new Pion(1,6,"img/pionB.gif");
 		this.plateau.echiq[1][6].setEstOccupe("BLANC");
-		this.jA.tbPiece[2] = new Pion(2,6,"");
+		this.jA.tbPiece[2] = new Pion(2,6,"img/pionB.gif");
 		this.plateau.echiq[2][6].setEstOccupe("BLANC");
-		this.jA.tbPiece[3] = new Pion(3,6,"");
+		this.jA.tbPiece[3] = new Pion(3,6,"img/pionB.gif");
 		this.plateau.echiq[3][6].setEstOccupe("BLANC");
-		this.jA.tbPiece[4] = new Pion(4,6,"");
+		this.jA.tbPiece[4] = new Pion(4,6,"img/pionB.gif");
 		this.plateau.echiq[4][6].setEstOccupe("BLANC");
-		this.jA.tbPiece[5] = new Pion(5,6,"");
+		this.jA.tbPiece[5] = new Pion(5,6,"img/pionB.gif");
 		this.plateau.echiq[5][6].setEstOccupe("BLANC");
-		this.jA.tbPiece[6] = new Pion(6,6,"");
+		this.jA.tbPiece[6] = new Pion(6,6,"img/pionB.gif");
 		this.plateau.echiq[6][6].setEstOccupe("BLANC");
-		this.jA.tbPiece[7] = new Pion(7,6,"");
+		this.jA.tbPiece[7] = new Pion(7,6,"img/pionB.gif");
 		this.plateau.echiq[7][6].setEstOccupe("BLANC");
 		
-		this.jA.tbPiece[8] = new Cavalier(1,7,"");
+		this.jA.tbPiece[8] = new Cavalier(1,7,"img/cavalierB.gif");
 		this.plateau.echiq[1][7].setEstOccupe("BLANC");
-		this.jA.tbPiece[9] = new Cavalier(6,7,"");
+		this.jA.tbPiece[9] = new Cavalier(6,7,"img/cavalierB.gif");
 		this.plateau.echiq[6][7].setEstOccupe("BLANC");
-		this.jA.tbPiece[10] = new Tour(0,7,"");
+		this.jA.tbPiece[10] = new Tour(0,7,"img/tourB.gif");
 		this.plateau.echiq[0][7].setEstOccupe("BLANC");
-		this.jA.tbPiece[11] = new Tour(7,7,"");
+		this.jA.tbPiece[11] = new Tour(7,7,"img/tourB.gif");
 		this.plateau.echiq[7][7].setEstOccupe("BLANC");
-		this.jA.tbPiece[12] = new Fou(2,7,"");
+		this.jA.tbPiece[12] = new Fou(2,7,"img/fouB.gif");
 		this.plateau.echiq[2][7].setEstOccupe("BLANC");
-		this.jA.tbPiece[13] = new Fou(5,7,"");
+		this.jA.tbPiece[13] = new Fou(5,7,"img/fouB.gif");
 		this.plateau.echiq[5][7].setEstOccupe("BLANC");
-		this.jA.tbPiece[14] = new Roi(3,7,"");
+		this.jA.tbPiece[14] = new Roi(3,7,"img/roiB.gif");
 		this.plateau.echiq[3][7].setEstOccupe("BLANC");
-		this.jA.tbPiece[15] = new Reine(4,7,"");
+		this.jA.tbPiece[15] = new Reine(4,7,"img/reineB.gif");
 		this.plateau.echiq[4][7].setEstOccupe("BLANC");
 		
 		// Initialisation pièces noires
-		this.jB.tbPiece[0] = new Pion(0,1,"");
+		this.jB.tbPiece[0] = new Pion(0,1,"img/pionN.gif");
 		this.plateau.echiq[0][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[1] = new Pion(1,1,"");
+		this.jB.tbPiece[1] = new Pion(1,1,"img/pionN.gif");
 		this.plateau.echiq[1][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[2] = new Pion(2,1,"");
+		this.jB.tbPiece[2] = new Pion(2,1,"img/pionN.gif");
 		this.plateau.echiq[2][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[3] = new Pion(3,1,"");
+		this.jB.tbPiece[3] = new Pion(3,1,"img/pionN.gif");
 		this.plateau.echiq[3][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[4] = new Pion(4,1,"");
+		this.jB.tbPiece[4] = new Pion(4,1,"img/pionN.gif");
 		this.plateau.echiq[4][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[5] = new Pion(5,1,"");
+		this.jB.tbPiece[5] = new Pion(5,1,"img/pionN.gif");
 		this.plateau.echiq[5][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[6] = new Pion(6,1,"");
+		this.jB.tbPiece[6] = new Pion(6,1,"img/pionN.gif");
 		this.plateau.echiq[6][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[7] = new Pion(7,1,"");
+		this.jB.tbPiece[7] = new Pion(7,1,"img/pionN.gif");
 		this.plateau.echiq[7][1].setEstOccupe("NOIR");
-		this.jB.tbPiece[8] = new Cavalier(1,0,"");
+		
+		this.jB.tbPiece[8] = new Cavalier(1,0,"img/cavalierN.gif");
 		this.plateau.echiq[1][0].setEstOccupe("NOIR");
-		this.jB.tbPiece[9] = new Cavalier(6,0,"");
+		this.jB.tbPiece[9] = new Cavalier(6,0,"img/cavalierN.gif");
 		this.plateau.echiq[6][0].setEstOccupe("NOIR");
-		this.jB.tbPiece[10] = new Tour(0,0,"");
+		this.jB.tbPiece[10] = new Tour(0,0,"img/tourN.gif");
 		this.plateau.echiq[0][0].setEstOccupe("NOIR");
-		this.jB.tbPiece[11] = new Tour(7,0,"");
+		this.jB.tbPiece[11] = new Tour(7,0,"img/tourN.gif");
 		this.plateau.echiq[7][0].setEstOccupe("NOIR");
-		this.jB.tbPiece[12] = new Fou(2,0,"");
+		this.jB.tbPiece[12] = new Fou(2,0,"img/fouN.gif");
 		this.plateau.echiq[2][0].setEstOccupe("NOIR");
-		this.jB.tbPiece[13] = new Fou(5,0,"");
+		this.jB.tbPiece[13] = new Fou(5,0,"img/fouN.gif");
 		this.plateau.echiq[5][0].setEstOccupe("NOIR");
-		this.jB.tbPiece[14] = new Roi(4,0,"");
+		this.jB.tbPiece[14] = new Roi(4,0,"img/roiN.gif");
 		this.plateau.echiq[4][0].setEstOccupe("NOIR");
-		this.jB.tbPiece[15] = new Reine(3,0,"");
+		this.jB.tbPiece[15] = new Reine(3,0,"img/reineN.gif");
 		this.plateau.echiq[5][0].setEstOccupe("NOIR");		
-	}
+}
+			
 	
 	/**
 	 * finPartie, permet de mettre fin à une partie
