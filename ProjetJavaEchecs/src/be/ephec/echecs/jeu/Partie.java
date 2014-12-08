@@ -1,6 +1,9 @@
 package be.ephec.echecs.jeu;
 
 import be.ephec.echecs.gui.*;
+
+import javax.swing.*;
+import java.awt.*;
 /**
  * Classe Partie, programme mère du projet
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -65,9 +68,10 @@ public class Partie {
 	 */
 	public void initialisation() {
 		// Initialisation pièces blanches
-		Echiquier.main(null);
-		this.jA.tbPiece[0] = new Pion(0,6,"img/pionB.gif");
+		plateau.main(null);
+		this.jA.tbPiece[0] = new Pion(0,6,"/img/pionB.gif");
 		this.plateau.echiq[0][6].setEstOccupe("BLANC");
+		this.plateau.echiq[0][6].setIcon(new ImageIcon("/img/pionB.gif"));
 		this.jA.tbPiece[1] = new Pion(1,6,"img/pionB.gif");
 		this.plateau.echiq[1][6].setEstOccupe("BLANC");
 		this.jA.tbPiece[2] = new Pion(2,6,"img/pionB.gif");
