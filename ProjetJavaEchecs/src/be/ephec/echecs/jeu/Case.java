@@ -2,6 +2,7 @@ package be.ephec.echecs.jeu;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -69,7 +70,7 @@ public class Case extends JButton {
 	 */
 	
 	public void setImage(String add) {
-		// TODO : METTRE UNE IMAGE EN FOND DE CASE
+		this.setIcon(new ImageIcon(add));
 	}
 	
 	/**
