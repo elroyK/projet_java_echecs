@@ -5,6 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.util.EventListener.*;
+import java.awt.event.*;
 
 /**
  * Classe Case, représentant une case de l'échiquier
@@ -40,13 +42,39 @@ public class Case extends JButton {
 		}
 		this.pos = new Position(x, y);
 		this.setPreferredSize(new Dimension(50, 50));
-	}
+		
+	/*	this.addActionListener(new ActionListener {
+			public void actionPerformed(ActionEvent arg0,this.pos){
+				Partie.settings.clic1 = new Position(pos);
+			}}); */
+	} 
+	
+	/**
+	 * Actualise l'image de fond d'une case
+	 */
 	
 	public void actualise(String add) {
 		this.setIcon(new ImageIcon(getClass().getResource(add)));
-		this.setVisible(true);
 	}
 	
+	/**
+	 *  NE MARCHE PAS
+	 */
+	
+	public void Clic(Partie game) {
+		if (game.settings.isClic()) {
+			// CLIC 1 : déclenche l'évènement tableau de case possibles pour un déplacement 
+			this.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent arg0){
+				}}); 
+		} else {
+			// CLIC 2 : déplace la pièce et plusieurs évenements peuvent se passer
+			this.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent arg0){
+				
+				}}); 	
+		}
+	}
 
 	/**
 	 * Permet de mettre le fond de la case en noir ou blanc
@@ -61,8 +89,8 @@ public class Case extends JButton {
 			this.setBackground(Color.BLACK);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Permet de mettre le fond de la case en bleu si jamais elle est cliquable.
 	 * Doit être exécutée sur chaque case au moment de la sélection d'une pièce à déplacer.
@@ -105,6 +133,10 @@ public class Case extends JButton {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Position getPos() {
+		return pos;
 	}
 	
 }

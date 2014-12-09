@@ -33,7 +33,7 @@ abstract public class Piece {
 		pos.setY(y);	
 	}
 	
-	abstract public Position[] genererPos();
+	abstract public Position[] genererPos(Echiquier plateau);
 	
 	/**
 	 * kill : permet de tuer une pièce
@@ -41,10 +41,11 @@ abstract public class Piece {
 	
 	public void kill(){
 		this.setInGame(false);
+		this.pos = new Position(8,8);
 	}
 	
 	public void move(Echiquier plateau) {
-		Position tbPos[] = this.genererPos();
+		Position tbPos[] = this.genererPos(plateau);
 		this.genererCaseCliquable(plateau, tbPos);
 		// TODO : AFFICHER LES CASES DISPOBIBLES EN VERT
 		// TODO : CHOPER LA POSITION CLIQUE PAR LE JOUEUR
