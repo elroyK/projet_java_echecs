@@ -62,6 +62,7 @@ public class Case extends JButton {
 		}
 	}
 	
+	public void addActionListener(new ActionListener())
 	
 	/**
 	 * Permet de mettre le fond de la case en bleu si jamais elle est cliquable.
