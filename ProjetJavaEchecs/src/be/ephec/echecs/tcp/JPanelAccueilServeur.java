@@ -3,15 +3,22 @@ package be.ephec.echecs.tcp;
 import java.awt.*;
 
 import javax.swing.*;
+
+import be.ephec.echecs.gui.ApplicationServeur;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 
 public class JPanelAccueilServeur extends JPanel {
-	private JTextField textField;	
+	private JTextField textField;
+	private ApplicationServeur applicationServeur; 
 	
-	public JPanelAccueilServeur() {
+	
+	
+	public JPanelAccueilServeur(ApplicationServeur applicationServeur) {
+		this.applicationServeur = applicationServeur;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0,0,0,0,0,0,0,0,0,0,};
 		gridBagLayout.rowHeights = new int[]{0,0,0,0,0,0,0,0};
@@ -42,7 +49,9 @@ public class JPanelAccueilServeur extends JPanel {
 		btnDemarrerLeServeur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			try{
-				ServeurTCP serveur = new ServeurTCP();
+				applicationServeur.setServeur(new ServeurTCP());
+				applicationServeur.getjFrameServeur().setContentPane(new JPanelServeur());
+				applicationServeur.getjFrameServeur().setVisible(true);
 				}catch (IOException e){
 					//TODO Auto-generated catch block
 					e.printStackTrace();
