@@ -26,17 +26,27 @@ public class Pion extends Piece {
 	 * @return : un tableau de position possible par le pion
 	 */
 	
-	public Position[] genererPos() {
+	public Position[] genererPos(Echiquier plateau) {
 		
 		Position work[] = new Position[2];
 		
 		if (this.getColor() == Param.BLANC) {
+			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].estOccupe;
+			if (isBusy != Param.LIBRE){
+				work[0] = null;
+				return work;
+			}
 			work[0].setY(this.pos.getY()+1);
 			if (this.isDejaJoue()) {
 				work[1].setY(this.pos.getY()+2);
 				setDejaJoue(true);
 			}		
 		} else {
+			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].estOccupe;
+			if (isBusy != Param.LIBRE){
+				work[0] = null;
+				return work;
+			}
 			work[0].setY(this.pos.getY()-1);
 			if (this.isDejaJoue()) {
 				work[1].setY(this.pos.getY()-2);
