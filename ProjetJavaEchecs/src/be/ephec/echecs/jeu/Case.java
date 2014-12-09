@@ -39,7 +39,7 @@ public class Case extends JButton {
 			setBackgroundColor(couleur);
 		}
 		this.pos = new Position(x, y);
-		setPreferredSize(new Dimension(50, 50));
+		this.setPreferredSize(new Dimension(50, 50));
 	}
 	
 	public void actualise(String add) {
