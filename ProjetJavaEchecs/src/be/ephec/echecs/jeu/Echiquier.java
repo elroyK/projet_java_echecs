@@ -30,7 +30,6 @@ public class Echiquier extends JFrame {
 			public void run() {
 				try {
 					Echiquier fen = new Echiquier();
-					fen.setVisible(true);
 					
 					
 					
