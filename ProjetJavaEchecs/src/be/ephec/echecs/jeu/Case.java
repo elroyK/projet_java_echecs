@@ -1,6 +1,7 @@
 package be.ephec.echecs.jeu;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,10 +39,12 @@ public class Case extends JButton {
 			setBackgroundColor(couleur);
 		}
 		this.pos = new Position(x, y);
+		setPreferredSize(new Dimension(50, 50));
 	}
 	
 	public void actualise(String add) {
 		this.setIcon(new ImageIcon(getClass().getResource(add)));
+		this.setVisible(true);
 	}
 	
 
@@ -53,6 +56,7 @@ public class Case extends JButton {
 	public void setBackgroundColor(Boolean col) {
 		if (col==true){
 			this.setBackground(Color.WHITE);
+	
 		} else  {
 			this.setBackground(Color.BLACK);
 		}
@@ -65,15 +69,6 @@ public class Case extends JButton {
 	 */
 	public void isCliquable() {
 		if (this.getCliquable()) this.setBackground(new Color(51, 153, 255));
-	}
-	
-	/**
-	 * Permet de mettre une icône representant une pièce sur une case
-	 * @param add : Adresse de l'image à mettre en fond
-	 */
-	
-	public void setImage(String add) {
-		this.setIcon(new ImageIcon(add));
 	}
 	
 	/**
