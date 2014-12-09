@@ -25,58 +25,70 @@ public class Roi extends Piece {
 				|| this.pos.getY()-1<0
 				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()-1].getEstOccupe() == isSameTeam)
 			work[0]=null;
-		else
+		else{
 			work[0].setX(this.pos.getX()+1);
 			work[0].setX(this.pos.getY()-1);
-		
+		}
 		
 		if(this.pos.getX()+1>7
-				|| this.pos.getY()-1<0
-				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()-1].getEstOccupe() == isSameTeam)
-			work[0]=null;
-		else
+				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()].getEstOccupe() == isSameTeam)
+			work[1]=null;
+		else{
 			work[1].setX(this.pos.getX()+1);
 			work[1].setX(this.pos.getY());
-		
-		if(this.pos.getX()+1>7
-				|| this.pos.getY()-1<0
-				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()-1].getEstOccupe() == isSameTeam)
-			work[0]=null;
-		else
-			work[2].setX(this.pos.getX()+1);
-			work[2].setX(this.pos.getY()+1);
-		
-		if(this.pos.getX()+1>7
-				|| this.pos.getY()-1<0
-				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()-1].getEstOccupe() == isSameTeam)
-			work[0]=null;
-		else
-			work[3].setX(this.pos.getX());
-			work[3].setX(this.pos.getY()-1);
-
+		}
 			
 		if(this.pos.getX()+1>7
-				|| this.pos.getY()-1<0
-				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()-1].getEstOccupe() == isSameTeam)
-			work[0]=null;
-		else
+				|| this.pos.getY()+1>7
+				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()+1].getEstOccupe() == isSameTeam)
+			work[2]=null;
+		else{
+			work[2].setX(this.pos.getX()+1);
+			work[2].setX(this.pos.getY()+1);
+		}
+			
+		if(this.pos.getY()-1<0
+				|| plateau.echiq[this.pos.getX()][this.pos.getY()-1].getEstOccupe() == isSameTeam)
+			work[3]=null;
+		else{
+			work[3].setX(this.pos.getX());
+			work[3].setX(this.pos.getY()-1);
+		}
+			
+		if(this.pos.getY()+1>7
+				|| plateau.echiq[this.pos.getX()][this.pos.getY()+1].getEstOccupe() == isSameTeam)
+			work[4]=null;
+		else{
 			work[4].setX(this.pos.getX());
 			work[4].setX(this.pos.getY()+1);
-
-		if(this.pos.getX()+1>7
+		}
+		
+		if(this.pos.getX()-1<0
 				|| this.pos.getY()-1<0
-				|| plateau.echiq[this.pos.getX()+1][this.pos.getY()-1].getEstOccupe() == isSameTeam)
-			work[0]=null;
-		else
+				|| plateau.echiq[this.pos.getX()-1][this.pos.getY()-1].getEstOccupe() == isSameTeam)
+			work[5]=null;
+		else{
 			work[5].setX(this.pos.getX()-1);
 			work[5].setX(this.pos.getY()-1);
+		}
 		
+		if(this.pos.getX()-1<0
+				|| plateau.echiq[this.pos.getX()-1][this.pos.getY()].getEstOccupe() == isSameTeam)
+			work[6]=null;
+		else{	
 			work[6].setX(this.pos.getX()-1);
 			work[6].setX(this.pos.getY());
+		}
 		
+		if(this.pos.getX()-1<0
+				|| this.pos.getY()+1>7
+				|| plateau.echiq[this.pos.getX()-1][this.pos.getY()+1].getEstOccupe() == isSameTeam)
+			work[7]=null;
+		else{		
 			work[7].setX(this.pos.getX()-1);
 			work[7].setX(this.pos.getY()+1);
-		
+		}
+			
 		return work; 	
 	}
 	
