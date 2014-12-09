@@ -17,7 +17,7 @@ public class JPanelAccueilServeur extends JPanel {
 	
 	
 	
-	public JPanelAccueilServeur(ApplicationServeur applicationServeur) {
+	public JPanelAccueilServeur(final ApplicationServeur applicationServeur) {
 		this.applicationServeur = applicationServeur;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0,0,0,0,0,0,0,0,0,0,};
