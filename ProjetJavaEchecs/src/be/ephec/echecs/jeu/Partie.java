@@ -13,11 +13,11 @@ import java.awt.*;
 
 public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
-	private Joueur  jA = new Joueur("");
-	private Joueur  jB = new Joueur(""); 
-	private Echiquier plateau = new Echiquier();
-	private Param settings = new Param();
-	private boolean reset;
+	protected Joueur  jA = new Joueur("");
+	protected Joueur  jB = new Joueur(""); 
+	protected Echiquier plateau = new Echiquier();
+	protected Param settings = new Param();
+	protected boolean reset;
 	
 	public static void main(String[] args) {
 		Partie game = new Partie();	

@@ -14,6 +14,7 @@ public class Param {
 	public static int NBCASE = 8;
 	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
+	protected boolean clic; // CLIQUE 1 ou 2
 	protected Position clic1 = new Position();
 	protected Position clic2 = new Position();
 	
@@ -24,8 +25,33 @@ public class Param {
 	
 	public Param() {
 		this.setJoueurActuel(1);
+		this.setClic(true); // mise à un du clic
 	}
 	
+	public Position getClic1() {
+		return clic1;
+	}
+
+	public void setClic1(Position clic1) {
+		this.clic1 = clic1;
+	}
+
+	public Position getClic2() {
+		return clic2;
+	}
+
+	public void setClic2(Position clic2) {
+		this.clic2 = clic2;
+	}
+
+	public boolean isClic() {
+		return clic;
+	}
+
+	public void setClic(boolean clic) {
+		this.clic = clic;
+	}
+
 	/**
 	 * Procédure chgmJoueurActuel, elle permet de changer de JoueurActuel 
 	 */
