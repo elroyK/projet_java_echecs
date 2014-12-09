@@ -32,15 +32,19 @@ public class Tour extends Piece {
 	 * @return work = tableau de la classe Position, contenant un couple de coord (x,y)
 	 */
 
-	public Position[] genererPos(){
+	public Position[] genererPos(Echiquier plateau){
 		
 		Position work [] = new Position[NBMOV]; 
 		int tempX = pos.getX() + 1;
 		int tempY = pos.getY();
 		int i = 0;
 		
+		work[i]=null;
+		
+		String isSameTeam = plateau.echiq[this.pos.getY()][this.pos.getX()].getEstOccupe();
+		
 		/*boucle pour l'horizontale droite */
-		while ((tempX <= 7)) {
+		while (tempX <= 7 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 			work[i].setX(tempX);
 			work[i].setY(tempY);
 			i++;
@@ -48,9 +52,10 @@ public class Tour extends Piece {
 		}
 		tempX = pos.getX() - 1;
 		
+		work[i]=null;
 		
 		/*boucle pour l'horizontale gauche*/
-		while ((tempX >= 0)) {
+		while (tempX >= 0 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 			work[i].setX(tempX);
 			work[i].setY(tempY);
 			i++;
@@ -59,9 +64,10 @@ public class Tour extends Piece {
 		tempX = pos.getX();
 		tempY = pos.getY() + 1;
 		
+		work[i]=null;
 		
 		/*boucle pour la verticale haute*/
-		while ((tempY <= 7)) {
+		while (tempY <= 7 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 			work[i].setY(tempY);
 			work[i].setX(tempX);
 			i++;
@@ -69,8 +75,10 @@ public class Tour extends Piece {
 		}
 		tempY = pos.getY() - 1;
 		
+		work[i]=null;
+		
 		/*boucle pour la verticale basse*/
-		while (tempY <= 0) {
+		while (tempY <= 0 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 			work[i].setX(tempX);
 			work[i].setY(tempY);
 			i++;

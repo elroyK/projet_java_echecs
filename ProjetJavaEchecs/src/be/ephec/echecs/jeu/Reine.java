@@ -24,11 +24,11 @@ public class Reine extends Piece {
 		super("Reine",addImage,true,x,y);
 	}
 	
-	public Position[] genererPos() {
+	public Position[] genererPos(Echiquier plateau) {
 		Position work1[] = new Position[NBMOV];
 		Position work2[] = new Position[NBMOV];
-		work1 = f.genererPos();
-		work2 = t.genererPos();
+		work1 = f.genererPos(plateau);
+		work2 = t.genererPos(plateau);
 		
 		Position work[] = new Position[2*NBMOV];
 		

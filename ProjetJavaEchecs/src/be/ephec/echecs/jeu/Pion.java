@@ -37,7 +37,7 @@ public class Pion extends Piece {
 				return work;
 			}
 			work[0].setY(this.pos.getY()+1);
-			if (this.isDejaJoue()) {
+			if (!this.isDejaJoue()) {
 				work[1].setY(this.pos.getY()+2);
 				setDejaJoue(true);
 			}		
@@ -48,7 +48,7 @@ public class Pion extends Piece {
 				return work;
 			}
 			work[0].setY(this.pos.getY()-1);
-			if (this.isDejaJoue()) {
+			if (!this.isDejaJoue()) {
 				work[1].setY(this.pos.getY()-2);
 				setDejaJoue(true);
 			}

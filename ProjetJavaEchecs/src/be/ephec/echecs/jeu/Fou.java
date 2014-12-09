@@ -29,15 +29,19 @@ package be.ephec.echecs.jeu;
 		 * @return work = tableau de la classe Position, contenant un couple de coord (x,y)
 		 */
 		
-		public Position[] genererPos(){
+		public Position[] genererPos(Echiquier plateau){
 			
 			Position work [] = new Position[NBMOV]; 
 			int tempX = pos.getX() + 1;
 			int tempY = pos.getY() + 1;
 			int i = 0;
 			
+			work[i]=null;
+			
+			String isSameTeam = plateau.echiq[this.pos.getY()][this.pos.getX()].getEstOccupe();
+			
 			/*boucle pour la diagonale haute droite */
-			while ((tempX <= 7)&&(tempY <= 7)) {
+			while ((tempX <= 7)&&(tempY <= 7) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
@@ -48,8 +52,10 @@ package be.ephec.echecs.jeu;
 			tempX = pos.getX() - 1;
 			tempY = pos.getY() + 1;
 			
+			work[i]=null;
+			
 			/*boucle pour la diagonale haute gauche*/
-			while ((tempX >= 0)&&(tempY <= 7)) {
+			while ((tempX >= 0)&&(tempY <= 7) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
@@ -60,8 +66,10 @@ package be.ephec.echecs.jeu;
 			tempX = pos.getX() + 1;
 			tempY = pos.getY() - 1;
 			
+			work[i]=null;
+			
 			/*boucle pour la diagonale basse droite*/
-			while ((tempX >= 7)&&(tempY <= 0)) {
+			while ((tempX >= 7)&&(tempY <= 0) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
@@ -72,8 +80,10 @@ package be.ephec.echecs.jeu;
 			tempX = pos.getX() - 1;
 			tempY = pos.getY() - 1;
 			
+			work[i]=null;
+			
 			/*boucle pour la diagonale basse gauche*/
-			while ((tempX >= 0)&&(tempY <= 0)) {
+			while ((tempX >= 0)&&(tempY <= 0) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
 				work[i].setX(tempX);
 				work[i].setY(tempY);
 				i++;
@@ -92,7 +102,7 @@ package be.ephec.echecs.jeu;
 		 */
 		
 		public void move(Echiquier plateau) {
-			Position[] deplacements = this.genererPos();
+			Position[] deplacements = this.genererPos(plateau);
 			for (int i=0;i<8;i++) {
 				for (int j=0;j<8;j++){
 					

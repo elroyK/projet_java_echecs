@@ -56,6 +56,10 @@ public class Case extends JButton {
 	 *  clic sur une case
 	 */
 	
+	public void actionClic1(ActionEvent arg0, Partie game){
+		game.settings.setClic1(this.getPos());
+	}
+	
 	public void Clic(Partie game) {
 		if (game.settings.isClic()) {
 			// CLIC 1 : déclenche l'évènement tableau de case possibles pour un déplacement 
