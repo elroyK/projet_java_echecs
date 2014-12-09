@@ -26,8 +26,14 @@ public class Partie {
 			game.initialisation();
 			while (game.finPartie()==true) {
 				game.plateau.setButtonNCliquable();
-				                                      
-                if (game.settings.getJoueurActuel() == 1)
+				
+				game.testPosPiece();
+				// IMPLEMENTATION A UN JOUEUR
+				
+				
+				// FIN DE L IMPLEMENATION				
+				
+               /* if (game.settings.getJoueurActuel() == 1)
 					// TOUR DU JOUEUR 1
 				{
 					/*
@@ -47,8 +53,8 @@ public class Partie {
 				{
 					/*
 					 *  TODO :  .... inversément 
-					 */
-				}
+					 
+				}*/
 				game.settings.chgmJoueurActuel();
 			}
 			
@@ -64,6 +70,26 @@ public class Partie {
 	
 	public Partie() {
 		this.reset = false;
+	}
+	
+	/**
+	 * Test les positions des pièces des deux joueurs si = -> kill une éventuelle pièce
+	 */
+	
+	public void testPosPiece (){
+		for (int i=0;i<Joueur.NBPIECE;i++) {
+			for (int j=0;j<Joueur.NBPIECE;i++) {
+				if (this.settings.getJoueurActuel()==1){
+					if (this.jA.tbPiece[i].pos.equals(this.jB.tbPiece[j].pos)) {
+						this.jB.tbPiece[i].kill();
+					}
+				} else {
+					if (this.jB.tbPiece[i].pos.equals(this.jB.tbPiece[j].pos)) {
+						this.jA.tbPiece[i].kill();
+					}
+				}	
+			}
+		}
 	}
 	
 	/**

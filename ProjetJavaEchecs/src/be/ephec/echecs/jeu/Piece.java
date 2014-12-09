@@ -41,6 +41,7 @@ abstract public class Piece {
 	
 	public void kill(){
 		this.setInGame(false);
+		this.pos = new Position(8,8); // ecartez du plateau pour des eventuelles bugs pendant les deplacements
 	}
 	
 	public void move(Echiquier plateau) {
