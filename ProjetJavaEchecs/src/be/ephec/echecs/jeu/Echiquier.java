@@ -56,6 +56,14 @@ public class Echiquier extends JFrame {
 		}
 	}
 	
+	public void setButtonNCliquable() {
+		for (int i=0;i<NLIGNES;i++) {
+			for (int j=0;j<NLIGNES;j++) {
+				this.echiq[i][j].setCliquable(false);
+			}
+		}
+	}
+	
 	
 	public Echiquier() {
 		boolean couleur = true;
