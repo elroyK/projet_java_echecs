@@ -22,10 +22,12 @@ public class Partie {
 	public static void main(String[] args) {
 		Partie game = new Partie();	
 		do {
-			//Echiquier.main(null);
+			Echiquier.main(null);
 			game.initialisation();
 			while (game.finPartie()==true) {
-				if (game.settings.getJoueurActuel() == 1)
+				game.plateau.setButtonNCliquable();
+				                                      
+                if (game.settings.getJoueurActuel() == 1)
 					// TOUR DU JOUEUR 1
 				{
 					/*
@@ -38,7 +40,7 @@ public class Partie {
 					 *  			p.s. : s'il clique sur une de ces pièces on rechange le premier clic ?
 					 *  		4.Après le second clic
 					 *  			faire le déplacement et eventuelles kills
-					 */				
+					 			
 					
 				} else
 					// TOUR DU JOUEUR 2
@@ -55,6 +57,7 @@ public class Partie {
 		 
 		 
 	}
+	
 	/**
 	 * Constructeur de la classe Partie
 	 */
@@ -68,7 +71,6 @@ public class Partie {
 	 */
 	public void initialisation() {
 		// Initialisation pièces blanches
-		plateau.main(null);
 		this.jA.tbPiece[0] = new Pion(0,6,"/img/pionB.gif");
 		this.plateau.echiq[0][6].setEstOccupe("BLANC");
 		this.plateau.echiq[0][6].actualise(this.jA.tbPiece[0].getAddIcone());

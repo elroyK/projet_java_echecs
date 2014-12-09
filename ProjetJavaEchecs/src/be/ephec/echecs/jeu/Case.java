@@ -92,7 +92,7 @@ public class Case extends JButton {
 	}
 	
 	public void setCliquable(boolean clic) {
-		this.cliquable = clic;
+		this.setEnabled(clic);
 	}
 	
 	public boolean getCliquable() {
