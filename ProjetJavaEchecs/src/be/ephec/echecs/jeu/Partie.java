@@ -27,7 +27,6 @@ public class Partie {
 			while (game.finPartie()==true) {
 				game.plateau.setButtonNCliquable();
 				
-				game.testPosPiece();
 				// IMPLEMENTATION A UN JOUEUR
 				
 				
