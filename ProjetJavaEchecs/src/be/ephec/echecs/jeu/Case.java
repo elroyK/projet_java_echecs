@@ -42,7 +42,12 @@ public class Case extends JButton {
 		}
 		this.pos = new Position(x, y);
 		this.setPreferredSize(new Dimension(50, 50));
-	}
+		
+	/*	this.addActionListener(new ActionListener {
+			public void actionPerformed(ActionEvent arg0,this.pos){
+				Partie.settings.clic1 = new Position(pos);
+			}}); */
+	} 
 	
 	/**
 	 * Actualise l'image de fond d'une case
@@ -53,20 +58,14 @@ public class Case extends JButton {
 	}
 	
 	/**
-	 *  clic sur une case
+	 *  NE MARCHE PAS
 	 */
-	
-	public void actionClic1(ActionEvent arg0, Partie game){
-		game.settings.setClic1(this.getPos());
-	}
 	
 	public void Clic(Partie game) {
 		if (game.settings.isClic()) {
 			// CLIC 1 : déclenche l'évènement tableau de case possibles pour un déplacement 
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
-					game.settings.setClic1(new Position());
-					this.wait();
 				}}); 
 		} else {
 			// CLIC 2 : déplace la pièce et plusieurs évenements peuvent se passer
