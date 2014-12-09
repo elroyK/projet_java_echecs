@@ -31,6 +31,9 @@ public class Echiquier extends JFrame {
 				try {
 					Echiquier fen = new Echiquier();
 					fen.setVisible(true);
+					
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,6 +64,7 @@ public class Echiquier extends JFrame {
 		setTitle("Jeu d'echecs");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
+		
 		Container contenu = getContentPane();
 		GridBagLayout g = new GridBagLayout();
 		contenu.setLayout(g);
@@ -76,19 +80,20 @@ public class Echiquier extends JFrame {
 			this.echiq[c.gridx][c.gridy] = new Case(couleur, c.gridx, c.gridy);
 			contenu.add (this.echiq[c.gridx][c.gridy], c);		
 			
-		/*	this.echiq[c.gridx][c.gridy].setIcon(new ImageIcon(getClass().getResource("/img/pionB.gif")));*/
-			
 			if (!((i+1)%8 == 0)){
 				if (couleur) couleur=false;
 				else couleur=true;
 			}
 		}
+		
+		
 	}
 	
 	public void actualiser(Joueur j1, Joueur j2){
 		//this.viderEchiquier(); 
 		//for (int i=0; i<Joueur.NBPIECE;i++){
 			if (j1.tbPiece[0].isInGame()){
+				this.echiq[0][1].setIcon(new ImageIcon(getClass().getResource("/img/pionB.gif")));
 				this.echiq[j1.tbPiece[0].pos.getX()][j1.tbPiece[0].pos.getY()].actualise(j1.tbPiece[0].getAddIcone());
 			}
 			/*if (j2.tbPiece[i].isInGame()){
