@@ -7,16 +7,14 @@ package be.ephec.echecs.jeu;
  */
 
 public class Param {
-	public static String BLANC = "BLANC";
-	public static String NOIR  = "NOIR";
-	public static String LIBRE = "LIBRE";
-	
-	public static int NBCASE = 8;
+	public final static String BLANC = "BLANC";
+	public final static String NOIR  = "NOIR";
+	public final static String LIBRE = "LIBRE";
 	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
-	protected static int clic; // CLIQUE 1 ou 2
-	protected static Position clic1 = new Position();
-	protected static Position clic2 = new Position();
+	public static int clic; // CLIQUE 1 ou 2
+	public static Position clic1 = new Position();
+	public static Position clic2 = new Position();
 	
 	/**
 	 * Constructeur de la classe Param 
@@ -25,31 +23,7 @@ public class Param {
 	
 	public Param() {
 		this.setJoueurActuel(1);
-		this.setClic(0); // mise à un du clic
-	}
-	
-	public Position getClic1() {
-		return clic1;
-	}
-
-	public void setClic1(Position clic1) {
-		this.clic1 = clic1;
-	}
-
-	public Position getClic2() {
-		return clic2;
-	}
-
-	public void setClic2(Position clic2) {
-		this.clic2 = clic2;
-	}
-
-	public int getClic() {
-		return clic;
-	}
-
-	public void setClic(int clic) {
-		this.clic = clic;
+		Param.clic = 0;
 	}
 
 	/**

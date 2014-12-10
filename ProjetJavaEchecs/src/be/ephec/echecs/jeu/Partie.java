@@ -17,7 +17,6 @@ public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
 	protected Joueur  jA = new Joueur("");
 	protected Joueur  jB = new Joueur("");
-	protected Joueur  jEnCours = new Joueur("");
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 	protected boolean reset;
@@ -92,8 +91,10 @@ public class Partie {
 	}
 	
 	/**
-	 * 
+	 * findPiece, trouve la pièce qui a été séléctionné 
+	 * @j : Le joueur à qui les pions appartiennent
 	 */
+	
 	public int findPiece(Joueur j)  {
 		int work=-1;
 		for (int i=0;i<Joueur.NBPIECE;i++) {
