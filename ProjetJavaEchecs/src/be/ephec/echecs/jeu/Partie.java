@@ -27,7 +27,6 @@ public class Partie {
 //		do {
 				Echiquier.main(null);
 				game.initialisation();
-				game.plateau.setButtonNCliquable();
 				game.plateau.echiq[4][7].setCliquable(true);
 				
 				//Début de tour
