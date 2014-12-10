@@ -16,6 +16,7 @@ import java.io.IOException;
 public class JPanelAccueilClient extends JPanel {
 	private JTextField textField;
 	private ApplicationClient applicationClient; 
+	private JTextField textField_1;
 	
 	
 	
@@ -27,6 +28,23 @@ public class JPanelAccueilClient extends JPanel {
 		gridBagLayout.columnWeights = new double[]{0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
+		
+		JLabel lblAdresseIp = new JLabel("Adresse IP");
+		GridBagConstraints gbc_lblAdresseIp = new GridBagConstraints();
+		gbc_lblAdresseIp.insets = new Insets(0, 0, 5, 5);
+		gbc_lblAdresseIp.anchor = GridBagConstraints.EAST;
+		gbc_lblAdresseIp.gridx = 7;
+		gbc_lblAdresseIp.gridy = 3;
+		add(lblAdresseIp, gbc_lblAdresseIp);
+		
+		textField_1 = new JTextField();
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_1.gridx = 8;
+		gbc_textField_1.gridy = 3;
+		add(textField_1, gbc_textField_1);
+		textField_1.setColumns(10);
 	
 	
 		JLabel lblNumDePort = new JLabel("Numero de port");
@@ -52,7 +70,7 @@ public class JPanelAccueilClient extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			try{
 				applicationClient.setClient(new ClientTCP());
-				applicationClient.getjFrameClient().setContentPane(new Echiquier());//remplacer le null par la fenetre de jeu
+				applicationClient.getjFrameClient().setContentPane(new Echiquier());
 				applicationClient.getjFrameClient().setVisible(true);
 				}catch (IOException e){
 					//TODO Auto-generated catch block
