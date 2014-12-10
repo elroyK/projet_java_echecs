@@ -19,6 +19,12 @@ public class Cavalier extends Piece {
 	public Cavalier(int x, int y, String addImage) {
 		super("Cavalier",addImage,true,x,y);
 	}
+	
+	/**
+	 * genererPos : créer un tableau de position possible pour le cavalier en fonction des cases de l'échiquier
+	 * @param : plateau : l'échiquier
+	 * @return : un tableau de position possible par le cavalier
+	 */
 
 	public Position[] genererPos(Echiquier plateau) {
 		Position work[] = new Position[NBMOV];
@@ -31,8 +37,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()+1][this.pos.getY()+2].estOccupe == isSameTeam)) {
 			work[i]=null;
 			i++;
-		}
-		else {
+		} else {
 			work[i].setX(this.pos.getX()+1);
 			work[i].setY(this.pos.getY()+2);
 			i++;
@@ -42,8 +47,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()+1][this.pos.getY()-2].estOccupe == isSameTeam)) {
 			work[i]=null;
 			i++;
-		}
-		else {
+		} else {
 			work[i].setX(this.pos.getX()+1);
 			work[i].setY(this.pos.getY()-2);
 			i++;
@@ -53,8 +57,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()+2][this.pos.getY()+1].estOccupe == isSameTeam)) {
 			work[i]=null;
 			i++;
-		}
-		else{		
+		} else{		
 			work[i].setX(this.pos.getX()+2);
 			work[i].setY(this.pos.getY()+1);
 			i++;
@@ -64,8 +67,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()+2][this.pos.getY()-1].estOccupe == isSameTeam)) {
 			work[i]=null;
 			i++;
-		}
-		else {
+		} else {
 			work[i].setX(this.pos.getX()+2);
 			work[i].setY(this.pos.getY()-1);
 			i++;
@@ -75,8 +77,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()-1][this.pos.getY()+2].estOccupe == isSameTeam)) {
 			work[4]=null;
 			i++;
-		}
-		else {
+		} else {
 			work[i].setX(this.pos.getX()-1);
 			work[i].setY(this.pos.getY()+2);
 			i++;
@@ -86,8 +87,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()-1][this.pos.getY()-2].estOccupe == isSameTeam)) {
 			work[i]=null;
 			i++;
-		}
-		else {
+		} else {
 			work[i].setX(this.pos.getX()-1);
 			work[i].setY(this.pos.getY()-2);
 			i++;
@@ -97,8 +97,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()-2][this.pos.getY()+1].estOccupe == isSameTeam)) {
 			work[i]=null;
 			i++;
-		}
-		else {
+		} else {
 			work[i].setX(this.pos.getX()-2);
 			work[i].setY(this.pos.getY()+1);
 			i++;
@@ -108,8 +107,7 @@ public class Cavalier extends Piece {
 				||(plateau.echiq[this.pos.getX()-2][this.pos.getY()-1].estOccupe == isSameTeam)) {
 			work[i]=null;
 			i++;
-		}
-		else {
+		} else {
 			work[i].setX(this.pos.getX()-2);
 			work[i].setY(this.pos.getY()-1);
 			i++;
