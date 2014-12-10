@@ -114,6 +114,9 @@ public class Case extends JButton {
 	
 	public void setCliquable(boolean clic) {
 		this.setEnabled(clic);
+		this.cliquable=clic;
+		this.isCliquable();
+		this.setVisible(true);
 	}
 	
 	public boolean getCliquable() {
