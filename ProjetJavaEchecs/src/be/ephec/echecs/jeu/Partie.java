@@ -21,22 +21,29 @@ public class Partie {
 	
 	public static void main(String[] args) {
 		Partie game = new Partie();	
-	//	do {
-			Echiquier.main(null);
-			game.initialisation();
-			game.plateau.setButtonNCliquable();
-			game.plateau.echiq[4][4].setCliquable(true);
-			
-			do {
-				if (Param.clic==0) {
-					
-				} else if (Param.clic==1) {
-					game.plateau.echiq[Param.clic1.getX()][Param.clic1.getY()].actualise("/img/pionB.gif");
-					game.plateau.setVisible(true);
-				}
+//		do {
+				Echiquier.main(null);
+				game.initialisation();
+				game.plateau.setButtonNCliquable();
+				game.plateau.echiq[4][4].setCliquable(true);
 				
-				
-			} while(Param.clic !=2);
+				do {
+					if (Param.clic==0) {
+						// TODO : proposer les pieces  possibles
+						
+					} else if (Param.clic==1) {
+						int i = game.findPiece(game.jA);
+						game.jA.tbPiece[i].move(game.plateau);
+						// TODO : proposer les cases de déplacement possible
+					} else {
+						if (Param.clic1==Param.clic2) {
+							Param.clic=0;
+						} else {
+							// TODO : faire le déplacement et faire un éventuelle kill
+						}
+						
+					}			
+				} while(Param.clic !=3);
 		
 			
 		/*	while (game.finPartie()==true) {
@@ -85,6 +92,19 @@ public class Partie {
 	public Partie() {
 		this.reset = false;
 		Param.clic = 0;
+	}
+	
+	/**
+	 * 
+	 */
+	public int findPiece(Joueur j)  {
+		int work=-1;
+		for (int i=0;i<Joueur.NBPIECE;i++) {
+			if (Param.clic1==j.tbPiece[i].pos) {
+				work=i;
+			}
+		}
+		return work;
 	}
 	
 	/**
