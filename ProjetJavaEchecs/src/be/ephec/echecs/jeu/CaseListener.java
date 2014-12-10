@@ -15,7 +15,7 @@ public class CaseListener implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.game.plateau.echiq[Param.clic1.getX()][Param.clic1.getY()].actions(game);
+		this.game.plateau.echiq[game.settings.clic1.getX()][game.settings.clic1.getY()].actions(game);
 	}
 
 }
