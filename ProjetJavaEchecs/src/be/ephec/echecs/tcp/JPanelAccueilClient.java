@@ -69,9 +69,11 @@ public class JPanelAccueilClient extends JPanel {
 		btnDemarrerLeClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			try{
+				// TODO A ameliorer ou update en fonction de ce qu'on décide d'afficher au lancement du serveur/client
 				applicationClient.setClient(new ClientTCP());
-				applicationClient.getjFrameClient().setContentPane(new Echiquier());
-				applicationClient.getjFrameClient().setVisible(true);
+				Partie frame = new Partie();
+				frame.main(null);                                  
+				applicationClient.getjFrameClient().setVisible(false);
 				}catch (IOException e){
 					//TODO Auto-generated catch block
 					e.printStackTrace();
