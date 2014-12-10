@@ -27,15 +27,18 @@ public class Partie {
 //		do {
 				Echiquier.main(null);
 				game.initialisation();
-				game.plateau.echiq[4][7].setCliquable(true);
 				
 				//Début de tour
 				
+				Piece[] workS = new Piece[Joueur.NBPIECE];
+				
 				if (game.settings.getJoueurActuel()==1)
-					game.jA.genererSelect(game.plateau);
-				else game.jB.genererSelect(game.plateau);
+					workS = game.jA.genererSelect(game.plateau);
+				else workS = game.jB.genererSelect(game.plateau);
 				
 				do {
+					for (int i = 0; i<Joueur.NBPIECE; i++)
+						game.plateau.echiq[workS[i].pos.getX()][workS[i].pos.getY()].setCliquable(true);
 					
 				} while(Param.clic !=2);
 		
@@ -235,6 +238,7 @@ public class Partie {
 		}
 		
 		this.plateau.setVisible(true);
+		this.settings.setJoueurActuel(1);
 }
 	
 	/**

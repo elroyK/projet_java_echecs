@@ -25,60 +25,94 @@ public class Cavalier extends Piece {
 		
 		String isSameTeam = plateau.echiq[this.pos.getX()][this.pos.getY()].getEstOccupe();
 		
+		int i=0;
+		
 		if ((((this.pos.getX()+1)>7)||((this.pos.getY()+2)>7))
-				||(plateau.echiq[this.pos.getX()+1][this.pos.getX()+2].estOccupe == isSameTeam)) work[0]=null;
+				||(plateau.echiq[this.pos.getX()+1][this.pos.getY()+2].estOccupe == isSameTeam)) {
+			work[i]=null;
+			i++;
+		}
 		else {
-			work[0].setX(this.pos.getX()+1);
-			work[0].setY(this.pos.getY()+2);
+			work[i].setX(this.pos.getX()+1);
+			work[i].setY(this.pos.getY()+2);
+			i++;
 		}
 		
 		if ((((this.pos.getX()+1)>7)||((this.pos.getY()-2)<0))
-				||(plateau.echiq[this.pos.getX()+1][this.pos.getX()-2].estOccupe == isSameTeam)) work[1]=null;
+				||(plateau.echiq[this.pos.getX()+1][this.pos.getY()-2].estOccupe == isSameTeam)) {
+			work[i]=null;
+			i++;
+		}
 		else {
-			work[1].setX(this.pos.getX()+1);
-			work[1].setY(this.pos.getY()-2);
+			work[i].setX(this.pos.getX()+1);
+			work[i].setY(this.pos.getY()-2);
+			i++;
 		}
 		
 		if ((((this.pos.getX()+2)>7)||((this.pos.getY()+1)>7))
-				||(plateau.echiq[this.pos.getX()+2][this.pos.getX()+1].estOccupe == isSameTeam)) work[2]=null;
+				||(plateau.echiq[this.pos.getX()+2][this.pos.getY()+1].estOccupe == isSameTeam)) {
+			work[i]=null;
+			i++;
+		}
 		else{		
-			work[2].setX(this.pos.getX()+2);
-			work[2].setY(this.pos.getY()+1);
+			work[i].setX(this.pos.getX()+2);
+			work[i].setY(this.pos.getY()+1);
+			i++;
 		}
 		
 		if ((((this.pos.getX()+2)>7)||((this.pos.getY()-1)<0))
-				||(plateau.echiq[this.pos.getX()+2][this.pos.getX()-1].estOccupe == isSameTeam)) work[3]=null;
+				||(plateau.echiq[this.pos.getX()+2][this.pos.getY()-1].estOccupe == isSameTeam)) {
+			work[i]=null;
+			i++;
+		}
 		else {
-			work[3].setX(this.pos.getX()+2);
-			work[3].setY(this.pos.getY()-1);
+			work[i].setX(this.pos.getX()+2);
+			work[i].setY(this.pos.getY()-1);
+			i++;
 		}
 		
 		if ((((this.pos.getX()-1)<0)||((this.pos.getY()+2)>0))
-				||(plateau.echiq[this.pos.getX()-1][this.pos.getX()+2].estOccupe == isSameTeam)) work[4]=null;
+				||(plateau.echiq[this.pos.getX()-1][this.pos.getY()+2].estOccupe == isSameTeam)) {
+			work[4]=null;
+			i++;
+		}
 		else {
-			work[4].setX(this.pos.getX()-1);
-			work[4].setY(this.pos.getY()+2);
+			work[i].setX(this.pos.getX()-1);
+			work[i].setY(this.pos.getY()+2);
+			i++;
 		}
 		
 		if ((((this.pos.getX()-1)<0)||((this.pos.getY()-2)<0))
-				||(plateau.echiq[this.pos.getX()-1][this.pos.getX()-2].estOccupe == isSameTeam)) work[5]=null;
+				||(plateau.echiq[this.pos.getX()-1][this.pos.getY()-2].estOccupe == isSameTeam)) {
+			work[i]=null;
+			i++;
+		}
 		else {
-			work[5].setX(this.pos.getX()-1);
-			work[5].setY(this.pos.getY()-2);
+			work[i].setX(this.pos.getX()-1);
+			work[i].setY(this.pos.getY()-2);
+			i++;
 		}
 		
 		if ((((this.pos.getX()-2)<0)||((this.pos.getY()+1)>7))
-				||(plateau.echiq[this.pos.getX()-2][this.pos.getX()+1].estOccupe == isSameTeam)) work[6]=null;
+				||(plateau.echiq[this.pos.getX()-2][this.pos.getY()+1].estOccupe == isSameTeam)) {
+			work[i]=null;
+			i++;
+		}
 		else {
-			work[6].setX(this.pos.getX()-2);
-			work[6].setY(this.pos.getY()+1);
+			work[i].setX(this.pos.getX()-2);
+			work[i].setY(this.pos.getY()+1);
+			i++;
 		}
 		
 		if ((((this.pos.getX()-2)<0)||((this.pos.getY()-1)<0))
-				||(plateau.echiq[this.pos.getX()-2][this.pos.getX()-1].estOccupe == isSameTeam)) work[7]=null;
+				||(plateau.echiq[this.pos.getX()-2][this.pos.getY()-1].estOccupe == isSameTeam)) {
+			work[i]=null;
+			i++;
+		}
 		else {
-			work[7].setX(this.pos.getX()-2);
-			work[7].setY(this.pos.getY()-1);
+			work[i].setX(this.pos.getX()-2);
+			work[i].setY(this.pos.getY()-1);
+			i++;
 		}
 			
 		return work; 	

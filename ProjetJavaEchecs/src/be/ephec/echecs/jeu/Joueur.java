@@ -45,7 +45,7 @@ public class Joueur {
 			if (this.tbPiece[i].isInGame()==true) {
 				int k=0;
 				Position tbPos[] = this.tbPiece[i].genererPos(plateau);
-				while (tbPos[k] == null && k<tbPos.length){
+				while (k<tbPos.length && tbPos[k] == null){
 					k++;
 				};
 				if (k<tbPos.length){
