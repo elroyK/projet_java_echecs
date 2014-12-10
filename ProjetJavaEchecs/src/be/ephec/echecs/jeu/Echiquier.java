@@ -16,6 +16,7 @@ public class Echiquier extends JFrame {
 	
 	static final int NBOUTONS = 64;
 	static final int NLIGNES = 8;
+	
 	public int x[] = new int[NBOUTONS];
 	public int y[] = new int[NBOUTONS];
 	public int larg[] = new int[NBOUTONS];
@@ -29,40 +30,17 @@ public class Echiquier extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Echiquier fen = new Echiquier();
-					
-					
-					
+					Echiquier fen = new Echiquier();	
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
-	public void creationTableaux(){
-		int i=0;
-		for (int yW=0; yW<NLIGNES; yW++){
-			for (int xW=0; xW<NLIGNES; xW++){
-				x[i]=xW;
-				y[i]=yW;
-				larg[i]=1;
-				haut[i]=1;
-				px[i]=100/8;
-				py[i]=100/8;
-				i++;
-			}
-		}
-	}
 	
-	public void setButtonCliquable(boolean b) {
-		for (int i=0;i<NLIGNES;i++) {
-			for (int j=0;j<NLIGNES;j++) {
-				this.echiq[i][j].setCliquable(b);
-			}
-		}
-	}
-	
+	/**
+	 * Constructeur de la classe Echiquier
+	 */
 	
 	public Echiquier() {
 		boolean couleur = true;
@@ -92,8 +70,37 @@ public class Echiquier extends JFrame {
 				else couleur=true;
 			}
 		}
-		
-		
+	}
+	
+	/**
+	 * Créé les paramètres pour les cases du GridBagLayout
+	 */
+
+	public void creationTableaux(){
+		int i=0;
+		for (int yW=0; yW<NLIGNES; yW++){
+			for (int xW=0; xW<NLIGNES; xW++){
+				x[i]=xW;
+				y[i]=yW;
+				larg[i]=1;
+				haut[i]=1;
+				px[i]=100/8;
+				py[i]=100/8;
+				i++;
+			}
+		}
+	}
+	
+	/**
+	 * setButtonCliquable : rend tous les boutons cliquables ou non
+	 * @param b : true, rend les boutons cliquables
+	 */
+	public void setButtonCliquable(boolean b) {
+		for (int i=0;i<NLIGNES;i++) {
+			for (int j=0;j<NLIGNES;j++) {
+				this.echiq[i][j].setCliquable(b);
+			}
+		}
 	}
 	
 	public void actualiser(Joueur j1, Joueur j2){

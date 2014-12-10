@@ -21,18 +21,16 @@ import java.awt.event.*;
 //import javax.swing.JButton;
 
 public class Case extends JButton{
-
-	
 	protected boolean couleur; /* noir (false) - blanc (true) */
     protected boolean cliquable;
 	protected String estOccupe;
 	protected Position pos;
-	protected int id;
 	
 	/**
 	 * Constructeur de la classe Case
 	 * @param col : Booleen représentant true (Blanc) et false(Noir)
-	 * 
+	 * @param x : position en x sur l'échiquier
+	 * @param y : position en y sur l'échiquier
 	 */
 	
 	public Case(Boolean col, int x, int y) {
@@ -75,6 +73,7 @@ public class Case extends JButton{
 	 * Permet de mettre le fond de la case en bleu si jamais elle est cliquable.
 	 * Doit être exécutée sur chaque case au moment de la sélection d'une pièce à déplacer.
 	 */
+	
 	public void isCliquable() {
 		if (this.getCliquable()) this.setBackground(new Color(51, 153, 255));
 	}
@@ -84,6 +83,7 @@ public class Case extends JButton{
 	 * Permet de savoir quelle action effectuer en fonction de "l'ordre" du clic (1 ou 2)
 	 * @param game La partie en cours
 	 */
+	
 	public void actions(final Partie game){
 		Piece[] tPW = new Piece[Joueur.NBPIECE]; 
 		if (game.settings.getJoueurActuel()==1) tPW = game.jA.tbPiece;
@@ -91,7 +91,7 @@ public class Case extends JButton{
 		
 		final Joueur j = new Joueur(tPW);
 		
-		if (Param.clic ==0){
+		if (Param.clic ==0) {
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
 					Param.clic1 = new Position(pos.getX(), pos.getY());
@@ -103,7 +103,7 @@ public class Case extends JButton{
 					game.plateau.echiq[Param.clic1.getX()][Param.clic1.getY()].setCliquable(true);
 					}
 			});
-		}else if (Param.clic ==1){
+		} else if (Param.clic ==1){
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
 					Param.clic2 = new Position(pos.getX(), pos.getY());
@@ -117,8 +117,8 @@ public class Case extends JButton{
 		}
 	}
 	
-	/**
-	 * TOUS LES GETTERS ET SETTERS
+	/*
+	 * GETTERS ET SETTERS
 	 */
 	
 	public boolean getCouleur() {
@@ -147,17 +147,4 @@ public class Case extends JButton{
 	public boolean getCliquable() {
 		return cliquable;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Position getPos() {
-		return pos;
-	}
-	
 }
