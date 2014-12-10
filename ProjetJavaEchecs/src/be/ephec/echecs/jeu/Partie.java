@@ -14,7 +14,8 @@ import java.awt.*;
 public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
 	protected Joueur  jA = new Joueur("");
-	protected Joueur  jB = new Joueur(""); 
+	protected Joueur  jB = new Joueur("");
+	protected Joueur  jEnCours = new Joueur("");
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 	protected boolean reset;
@@ -26,6 +27,13 @@ public class Partie {
 				game.initialisation();
 				game.plateau.setButtonNCliquable();
 				game.plateau.echiq[4][4].setCliquable(true);
+				
+				//Début de tour
+				
+				Position deplacPossibles[][] = new Position[Joueur.NBPIECE][Reine.NBMOV];
+				for (int i=0;i<Joueur.NBPIECE;i++){
+					if (jEnCours.==null) ;
+				};
 				
 				do {
 					if (Param.clic==0) {
