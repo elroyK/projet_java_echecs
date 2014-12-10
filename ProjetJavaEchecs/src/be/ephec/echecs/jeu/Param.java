@@ -14,9 +14,9 @@ public class Param {
 	public static int NBCASE = 8;
 	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
-	protected boolean clic; // CLIQUE 1 ou 2
-	protected Position clic1 = new Position();
-	protected Position clic2 = new Position();
+	protected static int clic; // CLIQUE 1 ou 2
+	protected static Position clic1 = new Position();
+	protected static Position clic2 = new Position();
 	
 	/**
 	 * Constructeur de la classe Param 
@@ -25,7 +25,7 @@ public class Param {
 	
 	public Param() {
 		this.setJoueurActuel(1);
-		this.setClic(true); // mise à un du clic
+		this.setClic(0); // mise à un du clic
 	}
 	
 	public Position getClic1() {
@@ -44,11 +44,11 @@ public class Param {
 		this.clic2 = clic2;
 	}
 
-	public boolean isClic() {
+	public int getClic() {
 		return clic;
 	}
 
-	public void setClic(boolean clic) {
+	public void setClic(int clic) {
 		this.clic = clic;
 	}
 

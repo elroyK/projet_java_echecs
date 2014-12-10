@@ -21,11 +21,26 @@ public class Partie {
 	
 	public static void main(String[] args) {
 		Partie game = new Partie();	
-		do {
+	//	do {
 			Echiquier.main(null);
 			game.initialisation();
-			while (game.finPartie()==true) {
-				game.plateau.setButtonNCliquable();
+			game.plateau.setButtonNCliquable();
+			game.plateau.echiq[4][4].setCliquable(true);
+			
+			do {
+				if (Param.clic==0) {
+					
+				} else if (Param.clic==1) {
+					game.plateau.echiq[Param.clic1.getX()][Param.clic1.getY()].actualise("/img/pionB.gif");
+					game.plateau.setVisible(true);
+				}
+				
+				
+			} while(Param.clic !=2);
+		
+			
+		/*	while (game.finPartie()==true) {
+				
 				
 				// IMPLEMENTATION A UN JOUEUR
 				
@@ -53,12 +68,12 @@ public class Partie {
 					/*
 					 *  TODO :  .... inversément 
 					 
-				}*/
+				}
 				game.settings.chgmJoueurActuel();
 			}
 			
 			// TODO : A la fin de la partie demander l'accord de deux joueurs pour recommencer une partie
-		} while (game.reset==true);
+		} while (game.reset==true);*/
 		 
 		 
 	}
@@ -69,6 +84,7 @@ public class Partie {
 	
 	public Partie() {
 		this.reset = false;
+		Param.clic = 0;
 	}
 	
 	/**

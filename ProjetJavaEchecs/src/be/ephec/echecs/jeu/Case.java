@@ -43,11 +43,23 @@ public class Case extends JButton {
 		this.pos = new Position(x, y);
 		this.setPreferredSize(new Dimension(50, 50));
 		
-	/*	this.addActionListener(new ActionListener {
-			public void actionPerformed(ActionEvent arg0,this.pos){
-				Partie.settings.clic1 = new Position(pos);
-			}}); */
-	} 
+		if (Param.clic ==0){
+			this.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent arg0){
+					Param.clic1 = new Position(pos.getX(), pos.getY());
+					Param.clic++;
+					}
+				});
+			}else if (Param.clic ==1){
+				this.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent arg0){
+						Param.clic2 = new Position(pos.getX(), pos.getY());
+						Param.clic++;
+						}
+				});
+			}
+	}
+		
 	
 	/**
 	 * Actualise l'image de fond d'une case
@@ -57,25 +69,6 @@ public class Case extends JButton {
 		this.setIcon(new ImageIcon(getClass().getResource(add)));
 	}
 	
-	/**
-	 *  NE MARCHE PAS
-	 */
-	
-	public void Clic(Partie game) {
-		if (game.settings.isClic()) {
-			// CLIC 1 : déclenche l'évènement tableau de case possibles pour un déplacement 
-			this.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0){
-				}}); 
-		} else {
-			// CLIC 2 : déplace la pièce et plusieurs évenements peuvent se passer
-			this.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0){
-				
-				}}); 	
-		}
-	}
-
 	/**
 	 * Permet de mettre le fond de la case en noir ou blanc
 	 * @param col : couleur 
