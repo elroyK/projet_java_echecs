@@ -27,6 +27,30 @@ public class Joueur {
 		this.setNbVict(0);	
 	}
 	
+	/**
+	 * 
+	 * @param plateau : échiquier de la partie
+	 * @return un tableau avec toutes les pièces de ce joueur qui ont la possibilité de faire un mouvement ce tour-ci
+	 */
+	public Piece[] genererSelect(Echiquier plateau){
+		Piece work[] = new Piece[NBPIECE];
+		int n = 0;
+		for (int i=0;i<NBPIECE;i++){
+			if (this.tbPiece[i].isInGame()==true) {
+				int k=0;
+				Position tbPos[] = this.tbPiece[i].genererPos(plateau);
+				while (tbPos[k] == null && k<tbPos.length){
+					k++;
+				};
+				if (k<tbPos.length){
+					work[n] = this.tbPiece[i];
+					n++;
+				}
+			}
+		}
+		return work;
+	}
+	
 	// GETTERS ET SETTERS
 	
 	public static int getNBPIECE() {

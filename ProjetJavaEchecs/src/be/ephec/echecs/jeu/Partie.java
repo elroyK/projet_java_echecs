@@ -30,10 +30,9 @@ public class Partie {
 				
 				//Début de tour
 				
-				Position deplacPossibles[][] = new Position[Joueur.NBPIECE][Reine.NBMOV];
-				for (int i=0;i<Joueur.NBPIECE;i++){
-					if (game.settings.getJoueurActuel()==1) ;
-				};
+				if (game.settings.getJoueurActuel()==1)
+					game.jA.genererSelect(game.plateau);
+				else game.jB.genererSelect(game.plateau);
 				
 				do {
 					int i = game.findPiece(game.jA);
@@ -244,7 +243,6 @@ public class Partie {
 		
 		this.plateau.setVisible(true);
 }
-			
 	
 	/**
 	 * finPartie, permet de mettre fin à une partie
