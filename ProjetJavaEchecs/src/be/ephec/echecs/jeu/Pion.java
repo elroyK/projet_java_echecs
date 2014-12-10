@@ -7,9 +7,8 @@ package be.ephec.echecs.jeu;
  */
 
 public class Pion extends Piece {
-	private boolean dejaJoue;
-
-	private static String COULNOIR = "noir";
+	final static int NBMOV = 2;
+	protected boolean dejaJoue;
 	
 	/**
 	 * Constructeur de la classe Pion
@@ -17,18 +16,21 @@ public class Pion extends Piece {
 	 * @param y : position en y
 	 * @param addImage : adresse de l'image du pion
 	 */
+	
 	public Pion(int x, int y, String addImage) {
 		super("Pion",addImage,true,x,y);
 		setDejaJoue(false);
 	}
 	
 	/**
+	 * genererPos : créer un tableau de position possible pour le pion en fonction des cases de l'échiquier
+	 * @param : plateau : l'échiquier
 	 * @return : un tableau de position possible par le pion
 	 */
 	
 	public Position[] genererPos(Echiquier plateau) {
 		
-		Position work[] = new Position[2];
+		Position work[] = new Position[NBMOV];
 		
 		if (this.getColor() == Param.BLANC) {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].estOccupe;
@@ -63,8 +65,9 @@ public class Pion extends Piece {
 	 * Si c'est joueur noir => les pièces descendent
 	 * Si c'est joueur blanc => les pièces montent
 	 */
+	
 	public void promotion(String jCol) {
-		if (jCol==COULNOIR) {
+		if (jCol==Param.NOIR) {
 			if (this.pos.getY()==0) {
 				this.setInGame(false);
 				// TODO : Implementer la méthode

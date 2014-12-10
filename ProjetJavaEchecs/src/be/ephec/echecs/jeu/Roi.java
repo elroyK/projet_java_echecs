@@ -8,13 +8,27 @@ package be.ephec.echecs.jeu;
 
 public class Roi extends Piece {
 	final static int NBMOV = 8;
+	
 	protected boolean estEchec;
 	protected boolean estMat;
 	protected boolean estRoquable;
 	
+	/**
+	 * Constructeur de la classe Roi
+	 * @param x : position en x sur l'échiquier
+	 * @param y : position en y sur l'échiquier
+	 * @param addImage : adresse de l'image du bouton
+	 */
+	
 	public Roi (int x, int y, String addImage) {
 		super("Cavalier",addImage,true,x,y);
 	}
+	
+	/**
+	 * genererPos : créer un tableau de position possible pour le roi en fonction des cases de l'échiquier
+	 * @param : plateau : l'échiquier
+	 * @return : un tableau de position possible par le roi
+	 */
 	
 	public Position[] genererPos(Echiquier plateau) {
 		Position work[] = new Position[NBMOV];

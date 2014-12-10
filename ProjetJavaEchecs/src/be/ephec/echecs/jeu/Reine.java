@@ -24,6 +24,12 @@ public class Reine extends Piece {
 		super("Reine",addImage,true,x,y);
 	}
 	
+	/**
+	 * genererPos : créer un tableau de position possible pour la reine en fonction des cases de l'échiquier
+	 * @param : plateau : l'échiquier
+	 * @return : un tableau de position possible par la reine
+	 */
+	
 	public Position[] genererPos(Echiquier plateau) {
 		Position work1[] = new Position[NBMOV/2];
 		Position work2[] = new Position[NBMOV/2];

@@ -8,28 +8,29 @@ package be.ephec.echecs.jeu;
 
 public class Tour extends Piece {
 	final static int NBMOV = 14;
+	
 	protected boolean estRoquable;
 
 	public Tour() {
 		super();
 	}
-	
+
 	/**
 	 * Constructeur de la classe Tour
 	 * @param x : position en x
 	 * @param y : position en y
 	 * @param addImage : adresse de l'image
-	 * 
 	 */
 	
 	public Tour (int x, int y, String addImage) {
 		super("Tour",addImage,true,x,y);
+		this.setEstRoquable(true);
 	}
 	
 	/**
-	 * Procédure qui génère l'ensemble des positions possible de la pièce à partir
-	 * de sa position actuelle
-	 * @return work = tableau de la classe Position, contenant un couple de coord (x,y)
+	 * genererPos : créer un tableau de position possible pour la tour en fonction des cases de l'échiquier
+	 * @param : plateau : l'échiquier
+	 * @return : un tableau de position possible par la tour
 	 */
 
 	public Position[] genererPos(Echiquier plateau){
@@ -86,6 +87,16 @@ public class Tour extends Piece {
 			}
 			
 		return work;
+	}
+	
+	// GETTERS ET SETTERS
+	
+	public boolean isEstRoquable() {
+		return estRoquable;
+	}
+
+	public void setEstRoquable(boolean estRoquable) {
+		this.estRoquable = estRoquable;
 	}
 }
 
