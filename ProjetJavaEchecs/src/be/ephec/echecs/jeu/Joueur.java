@@ -3,7 +3,7 @@ package be.ephec.echecs.jeu;
  * Classe Joueur, représentant un joueur
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 04/12/14
+ * date de modification : 10/12/14
  */
 
 public class Joueur {
