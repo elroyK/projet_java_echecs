@@ -40,7 +40,7 @@ public class Partie {
 					for (int i = 0; i<Joueur.NBPIECE; i++)
 						game.plateau.echiq[workS[i].pos.getX()][workS[i].pos.getY()].setCliquable(true);
 					
-				} while(Param.clic !=2);
+				} while(game.settings.getClic() !=2);
 		
 			
 		/*	while (game.finPartie()==true) {
@@ -88,7 +88,7 @@ public class Partie {
 	
 	public Partie() {
 		this.reset = false;
-		Param.clic = 0;
+		this.settings.setClic(0);
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class Partie {
 	public int findPiece(Joueur j)  {
 		int work=-1;
 		for (int i=0;i<Joueur.NBPIECE;i++) {
-			if (Param.clic1==j.tbPiece[i].pos) {
+			if (this.settings.clic1.equals(j.tbPiece[i].pos)) {
 				work=i;
 			}
 		}

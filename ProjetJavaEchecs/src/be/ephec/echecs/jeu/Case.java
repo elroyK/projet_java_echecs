@@ -91,25 +91,25 @@ public class Case extends JButton{
 		
 		final Joueur j = new Joueur(tPW);
 		
-		if (Param.clic ==0) {
+		if (game.settings.getClic() == 0) {
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
-					Param.clic1 = new Position(pos.getX(), pos.getY());
-					Param.clic++;
+					game.settings.clic1 = new Position(pos.getX(), pos.getY());
+					game.settings.setClic(game.settings.getClic()+1);
 					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau);
 					for (int i=0;i<work.length;i++){
 						game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);
 					}
-					game.plateau.echiq[Param.clic1.getX()][Param.clic1.getY()].setCliquable(true);
+					game.plateau.echiq[game.settings.clic1.getX()][game.settings.clic1.getY()].setCliquable(true);
 					}
 			});
-		} else if (Param.clic ==1){
+		} else if (game.settings.clic ==1){
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
-					Param.clic2 = new Position(pos.getX(), pos.getY());
-					if (Param.clic2.equals(Param.clic1)) Param.clic = 0;
+					game.settings.clic2 = new Position(pos.getX(), pos.getY());
+					if (game.settings.clic2.equals(game.settings.clic1)) game.settings.setClic(0);
 					else {
-						Param.clic++;
+						game.settings.setClic(game.settings.getClic()+1);
 						//TODO Faire bouger la pièce
 					}
 				}

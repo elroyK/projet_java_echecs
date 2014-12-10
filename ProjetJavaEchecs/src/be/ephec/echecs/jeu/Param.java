@@ -12,9 +12,9 @@ public class Param {
 	public final static String LIBRE = "LIBRE";
 	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
-	public static int clic; // CLIQUE 1 ou 2
-	public static Position clic1 = new Position();
-	public static Position clic2 = new Position();
+	protected int clic; // CLIQUE 1 ou 2
+	protected Position clic1 = new Position();
+	protected Position clic2 = new Position();
 	
 	/**
 	 * Constructeur de la classe Param 
@@ -23,7 +23,7 @@ public class Param {
 	
 	public Param() {
 		this.setJoueurActuel(1);
-		Param.clic = 0;
+		this.setClic(0);
 	}
 
 	/**
@@ -43,6 +43,30 @@ public class Param {
 
 	public void setJoueurActuel(int JoueurActuel) {
 		this.joueurActuel = JoueurActuel;
+	}
+
+	public int getClic() {
+		return clic;
+	}
+
+	public void setClic(int clic) {
+		this.clic = clic;
+	}
+
+	public Position getClic1() {
+		return clic1;
+	}
+
+	public void setClic1(Position clic1) {
+		this.clic1 = clic1;
+	}
+
+	public Position getClic2() {
+		return clic2;
+	}
+
+	public void setClic2(Position clic2) {
+		this.clic2 = clic2;
 	}
 
 }
