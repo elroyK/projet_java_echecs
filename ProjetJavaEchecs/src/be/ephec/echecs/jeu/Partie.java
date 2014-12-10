@@ -3,7 +3,9 @@ package be.ephec.echecs.jeu;
 import be.ephec.echecs.gui.*;
 
 import javax.swing.*;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
 /**
  * Classe Partie, programme mère du projet
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -26,7 +28,7 @@ public class Partie {
 				Echiquier.main(null);
 				game.initialisation();
 				game.plateau.setButtonNCliquable();
-				game.plateau.echiq[4][4].setCliquable(true);
+				game.plateau.echiq[4][7].setCliquable(true);
 				
 				//Début de tour
 				
@@ -35,23 +37,8 @@ public class Partie {
 				else game.jB.genererSelect(game.plateau);
 				
 				do {
-					int i = game.findPiece(game.jA);
-					if (Param.clic==0) {
-						// TODO : proposer les pieces  possibles
-						
-					} else if (Param.clic==1) {
-						game.jA.tbPiece[i].move(game.plateau);
-						// TODO : proposer les cases de déplacement possible
-					} else {
-						if (Param.clic1==Param.clic2) {
-							Param.clic=0;
-						} else {
-							game.jA.tbPiece[i].deplacement(game.plateau); // DEPLACEMENT
-							game.testPosPiece(); // KILL
-						}
-						
-					}			
-				} while(Param.clic !=3);
+					
+				} while(Param.clic !=2);
 		
 			
 		/*	while (game.finPartie()==true) {
@@ -240,6 +227,13 @@ public class Partie {
 		this.jB.tbPiece[15] = new Reine(4,0,"/img/reineN.gif");
 		this.plateau.echiq[3][0].setEstOccupe("NOIR");
 		this.plateau.echiq[3][0].actualise(this.jB.tbPiece[15].getAddIcone());
+		
+		ActionListener listener = new CaseListener(this);
+		for (int x=0;x<Echiquier.NLIGNES;x++){
+			for (int y=0;y<Echiquier.NLIGNES;y++){
+				this.plateau.echiq[x][y].addActionListener(listener);
+			}
+		}
 		
 		this.plateau.setVisible(true);
 }

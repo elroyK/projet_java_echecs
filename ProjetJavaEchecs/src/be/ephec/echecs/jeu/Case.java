@@ -1,10 +1,13 @@
 package be.ephec.echecs.jeu;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import java.util.EventListener.*;
 import java.awt.event.*;
 
@@ -17,7 +20,7 @@ import java.awt.event.*;
 
 //import javax.swing.JButton;
 
-public class Case extends JButton {
+public class Case extends JButton{
 
 	
 	protected boolean couleur; /* noir (false) - blanc (true) */
@@ -42,22 +45,6 @@ public class Case extends JButton {
 		}
 		this.pos = new Position(x, y);
 		this.setPreferredSize(new Dimension(50, 50));
-		
-		if (Param.clic ==0){
-			this.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0){
-					Param.clic1 = new Position(pos.getX(), pos.getY());
-					Param.clic++;
-					}
-				});
-			}else if (Param.clic ==1){
-				this.addActionListener(new ActionListener(){
-					public void actionPerformed(ActionEvent arg0){
-						Param.clic2 = new Position(pos.getX(), pos.getY());
-						Param.clic++;
-						}
-				});
-			}
 	}
 		
 	
@@ -90,6 +77,44 @@ public class Case extends JButton {
 	 */
 	public void isCliquable() {
 		if (this.getCliquable()) this.setBackground(new Color(51, 153, 255));
+	}
+	
+	
+	/**
+	 * Permet de savoir quelle action effectuer en fonction de "l'ordre" du clic (1 ou 2)
+	 * @param game La partie en cours
+	 */
+	public void actions(final Partie game){
+		Piece[] tPW = new Piece[Joueur.NBPIECE]; 
+		if (game.settings.getJoueurActuel()==1) tPW = game.jA.tbPiece;
+		else tPW = game.jB.tbPiece;			
+		
+		final Joueur j = new Joueur(tPW);
+		
+		if (Param.clic ==0){
+			this.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent arg0){
+					Param.clic1 = new Position(pos.getX(), pos.getY());
+					Param.clic++;
+					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau);
+					for (int i=0;i<work.length;i++){
+						game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);
+					}
+					game.plateau.echiq[Param.clic1.getX()][Param.clic1.getY()].setCliquable(true);
+					}
+			});
+		}else if (Param.clic ==1){
+			this.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent arg0){
+					Param.clic2 = new Position(pos.getX(), pos.getY());
+					if (Param.clic2.equals(Param.clic1)) Param.clic = 0;
+					else {
+						Param.clic++;
+						//TODO Faire bouger la pièce
+					}
+				}
+			});
+		}
 	}
 	
 	/**

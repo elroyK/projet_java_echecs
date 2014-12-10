@@ -27,6 +27,12 @@ public class Joueur {
 		this.setNbVict(0);	
 	}
 	
+	public Joueur(Piece[] tP){
+		this.setNom(null);
+		this.setNbVict(0);
+		this.tbPiece = tP;
+	}
+	
 	/**
 	 * 
 	 * @param plateau : échiquier de la partie
