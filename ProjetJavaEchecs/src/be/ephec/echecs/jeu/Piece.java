@@ -48,9 +48,7 @@ abstract public class Piece {
 		Position tbPos[] = this.genererPos(plateau);
 		this.genererCaseCliquable(plateau, tbPos);
 		// TODO : AFFICHER LES CASES DISPOBIBLES EN VERT
-		// TODO : CHOPER LA POSITION CLIQUE PAR LE JOUEUR
-		Position zone = new Position(0,0); // A IMPLEMENTER AVEC LA POSITION DU JOUEUR
-		this.deplacement(plateau,zone);
+		this.deplacement(plateau);
 	}
 	
 	/**
@@ -94,18 +92,14 @@ abstract public class Piece {
 	/**
 	 * deplacement, permet le déplacement d'une pièce sur l'echiquier
 	 * @param plateau : echiquier 
-	 * @param pos : position ou on veut déplacer le joueur
 	 */
 	
-	public void deplacement(Echiquier plateau, Position pos) {
-		if (plateau.echiq[pos.getX()][pos.getY()].getEstOccupe()!=Param.LIBRE) {
-			// TODO : KILL LA PIECE OCCUPE MAIS COMMENT ??
-			this.pos.setX(pos.getX());
-			this.pos.setY(pos.getY());
-		} else {
-			this.pos.setX(pos.getX());
-			this.pos.setY(pos.getY());
-		}
+	public void deplacement(Echiquier plateau) {
+			// la case quitté est libre
+			plateau.echiq[Param.clic1.getX()][Param.clic2.getY()].setEstOccupe(Param.LIBRE);
+			this.pos = new Position(Param.clic2.getX(),Param.clic2.getY());
+			// la nouvelle case est occupée
+			plateau.echiq[Param.clic1.getX()][Param.clic2.getY()].setEstOccupe(this.getColor());		
 	}
 	
 	/* GETTERS ET SETTERS */
