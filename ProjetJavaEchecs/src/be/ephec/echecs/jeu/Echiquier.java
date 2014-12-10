@@ -73,7 +73,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * Créé les paramètres pour les cases du GridBagLayout
+	 * Créer les paramètres pour les cases du GridBagLayout
 	 */
 
 	public void creationTableaux(){
@@ -92,7 +92,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * setButtonCliquable : rend tous les boutons cliquables ou non
+	 * setButtonCliquable : rend tous les boutons cliquables où non
 	 * @param b : true, rend les boutons cliquables
 	 */
 	public void setButtonsCliquable(boolean b) {
@@ -129,7 +129,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * showPieceChoice : permet de montrer à l'utilisateur les pieces ou peut cliquer
+	 * showPieceChoice : permet de montrer à l'utilisateur les pièces où peut cliquer
 	 * @param tbP : tableau de pièces qu'on peut déplacer
 	 */
 	
@@ -142,8 +142,8 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * showChoiceAvailable : permet de montrer à l'utilisateur les zones ou on peut deplacer la pièce
-	 * @param tbP : tableau de posisitons disponible pour déplacer la pièce
+	 * showChoiceAvailable : permet de montrer à l'utilisateur les zones où on peut déplacer la pièce.
+	 * @param tbP : tableau de positions disponibles pour déplacer la pièce.
 	 */
 	
 	public void showChoiceAvailable (Position tbP[]) {

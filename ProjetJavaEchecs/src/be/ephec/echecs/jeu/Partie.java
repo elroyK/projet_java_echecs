@@ -92,8 +92,11 @@ public class Partie {
 	}
 	
 	/**
-	 * 
+	 * findPiece, trouve la pièce ou se trouve clic1
+	 * @param : Le joueur, pour avoir ses pièces
+	 * @return : l'indice où se trouve la pièce dans le tableau de pièces du Joueur
 	 */
+	
 	public int findPiece(Joueur j)  {
 		int work=-1;
 		for (int i=0;i<Joueur.NBPIECE;i++) {
