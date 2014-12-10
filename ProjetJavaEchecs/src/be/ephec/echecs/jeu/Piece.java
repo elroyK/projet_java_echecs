@@ -11,7 +11,6 @@ abstract public class Piece {
 	protected String addIcone; // Adresse de l'image
 	protected boolean inGame;
 	protected Position pos = new Position();
-	protected int id;
 	
 	public Piece() {
 		
@@ -42,13 +41,6 @@ abstract public class Piece {
 	public void kill(){
 		this.setInGame(false);
 		this.pos = new Position(8,8);
-	}
-	
-	public void move(Echiquier plateau) {
-		Position tbPos[] = this.genererPos(plateau);
-		this.genererCaseCliquable(plateau, tbPos);
-		// TODO : AFFICHER LES CASES DISPOBIBLES EN VERT
-		this.deplacement(plateau);
 	}
 	
 	/**
@@ -89,19 +81,6 @@ abstract public class Piece {
 		}	
 	}
 	
-	/**
-	 * deplacement, permet le déplacement d'une pièce sur l'echiquier
-	 * @param plateau : echiquier 
-	 */
-	
-	public void deplacement(Echiquier plateau) {
-			// la case quitté est libre
-			plateau.echiq[Param.clic1.getX()][Param.clic2.getY()].setEstOccupe(Param.LIBRE);
-			this.pos = new Position(Param.clic2.getX(),Param.clic2.getY());
-			// la nouvelle case est occupée
-			plateau.echiq[Param.clic1.getX()][Param.clic2.getY()].setEstOccupe(this.getColor());		
-	}
-	
 	/* GETTERS ET SETTERS */
 	
 	public String getNom() {
@@ -134,14 +113,6 @@ abstract public class Piece {
 
 	public void setColor(String color) {
 		this.color = color;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}	
 }
 

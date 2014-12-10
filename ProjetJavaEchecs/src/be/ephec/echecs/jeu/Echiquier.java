@@ -55,10 +55,10 @@ public class Echiquier extends JFrame {
 		}
 	}
 	
-	public void setButtonNCliquable() {
+	public void setButtonCliquable(boolean b) {
 		for (int i=0;i<NLIGNES;i++) {
 			for (int j=0;j<NLIGNES;j++) {
-				this.echiq[i][j].setCliquable(false);
+				this.echiq[i][j].setCliquable(b);
 			}
 		}
 	}
@@ -109,6 +109,9 @@ public class Echiquier extends JFrame {
 		//}
 	}
 	
+	/**
+	 * Vide toutes les images des cases, afin de rafraîchir l'echiquier
+	 */
 	
 	public void viderEchiquier(){
 		for (int i=0; i<Echiquier.NLIGNES;i++){
@@ -117,5 +120,16 @@ public class Echiquier extends JFrame {
 			}
 		}
 	}
+	
+	/**
+	 * showChoice : permet de montrer à l'utilisateur les zone où on peut cliquer
+	 * @param tbP : tableau de pièces qu'on peut déplacer
+	 */
+	public void showPieceChoice(Piece tbP[]) {
+		this.setButtonCliquable(false);
 		
+		for (int i=0;i<tbP.length;i++) {
+			this.echiq[tbP[i].pos.getX()][tbP[i].pos.getY()].setCliquable(true);
+		}
+	}
 }
