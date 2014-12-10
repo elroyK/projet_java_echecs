@@ -32,22 +32,23 @@ public class Partie {
 				
 				Position deplacPossibles[][] = new Position[Joueur.NBPIECE][Reine.NBMOV];
 				for (int i=0;i<Joueur.NBPIECE;i++){
-					if (jEnCours.==null) ;
+					if (game.settings.getJoueurActuel()==1) ;
 				};
 				
 				do {
+					int i = game.findPiece(game.jA);
 					if (Param.clic==0) {
 						// TODO : proposer les pieces  possibles
 						
 					} else if (Param.clic==1) {
-						int i = game.findPiece(game.jA);
 						game.jA.tbPiece[i].move(game.plateau);
 						// TODO : proposer les cases de déplacement possible
 					} else {
 						if (Param.clic1==Param.clic2) {
 							Param.clic=0;
 						} else {
-							// TODO : faire le déplacement et faire un éventuelle kill
+							game.jA.tbPiece[i].deplacement(game.plateau); // DEPLACEMENT
+							game.testPosPiece(); // KILL
 						}
 						
 					}			
