@@ -95,7 +95,7 @@ public class Echiquier extends JFrame {
 	 * setButtonCliquable : rend tous les boutons cliquables ou non
 	 * @param b : true, rend les boutons cliquables
 	 */
-	public void setButtonCliquable(boolean b) {
+	public void setButtonsCliquable(boolean b) {
 		for (int i=0;i<NLIGNES;i++) {
 			for (int j=0;j<NLIGNES;j++) {
 				this.echiq[i][j].setCliquable(b);
@@ -129,14 +129,28 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * showChoice : permet de montrer à l'utilisateur les zone où on peut cliquer
+	 * showPieceChoice : permet de montrer à l'utilisateur les pieces ou peut cliquer
 	 * @param tbP : tableau de pièces qu'on peut déplacer
 	 */
+	
 	public void showPieceChoice(Piece tbP[]) {
-		this.setButtonCliquable(false);
+		this.setButtonsCliquable(false);
 		
 		for (int i=0;i<tbP.length;i++) {
 			this.echiq[tbP[i].pos.getX()][tbP[i].pos.getY()].setCliquable(true);
+		}
+	}
+	
+	/**
+	 * showChoiceAvailable : permet de montrer à l'utilisateur les zones ou on peut deplacer la pièce
+	 * @param tbP : tableau de posisitons disponible pour déplacer la pièce
+	 */
+	
+	public void showChoiceAvailable (Position tbP[]) {
+		this.setButtonsCliquable(false);
+		
+		for (int i=0;i<tbP.length;i++) {
+			this.echiq[tbP[i].getX()][tbP[i].getY()].setCliquable(true);
 		}
 	}
 }

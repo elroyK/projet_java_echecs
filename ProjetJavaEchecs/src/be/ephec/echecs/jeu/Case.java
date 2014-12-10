@@ -96,10 +96,13 @@ public class Case extends JButton{
 				public void actionPerformed(ActionEvent arg0){
 					game.settings.clic1 = new Position(pos.getX(), pos.getY());
 					game.settings.setClic(game.settings.getClic()+1);
+					
 					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau);
+					
 					for (int i=0;i<work.length;i++){
 						game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);
-					}
+						}
+					
 					game.plateau.echiq[game.settings.clic1.getX()][game.settings.clic1.getY()].setCliquable(true);
 					}
 			});
