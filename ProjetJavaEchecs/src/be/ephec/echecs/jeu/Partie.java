@@ -14,29 +14,45 @@ import java.awt.*;
 public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
 	protected Joueur  jA = new Joueur("");
-	protected Joueur  jB = new Joueur(""); 
+	protected Joueur  jB = new Joueur("");
+	protected Joueur  jEnCours = new Joueur("");
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 	protected boolean reset;
 	
 	public static void main(String[] args) {
 		Partie game = new Partie();	
-	//	do {
-			Echiquier.main(null);
-			game.initialisation();
-			game.plateau.setButtonNCliquable();
-			game.plateau.echiq[4][4].setCliquable(true);
-			
-			do {
-				if (Param.clic==0) {
-					
-				} else if (Param.clic==1) {
-					game.plateau.echiq[Param.clic1.getX()][Param.clic1.getY()].actualise("/img/pionB.gif");
-					game.plateau.setVisible(true);
-				}
+//		do {
+				Echiquier.main(null);
+				game.initialisation();
+				game.plateau.setButtonNCliquable();
+				game.plateau.echiq[4][4].setCliquable(true);
 				
+				//Début de tour
 				
-			} while(Param.clic !=2);
+				Position deplacPossibles[][] = new Position[Joueur.NBPIECE][Reine.NBMOV];
+				for (int i=0;i<Joueur.NBPIECE;i++){
+					if (game.settings.getJoueurActuel()==1) ;
+				};
+				
+				do {
+					int i = game.findPiece(game.jA);
+					if (Param.clic==0) {
+						// TODO : proposer les pieces  possibles
+						
+					} else if (Param.clic==1) {
+						game.jA.tbPiece[i].move(game.plateau);
+						// TODO : proposer les cases de déplacement possible
+					} else {
+						if (Param.clic1==Param.clic2) {
+							Param.clic=0;
+						} else {
+							game.jA.tbPiece[i].deplacement(game.plateau); // DEPLACEMENT
+							game.testPosPiece(); // KILL
+						}
+						
+					}			
+				} while(Param.clic !=3);
 		
 			
 		/*	while (game.finPartie()==true) {
@@ -85,6 +101,19 @@ public class Partie {
 	public Partie() {
 		this.reset = false;
 		Param.clic = 0;
+	}
+	
+	/**
+	 * 
+	 */
+	public int findPiece(Joueur j)  {
+		int work=-1;
+		for (int i=0;i<Joueur.NBPIECE;i++) {
+			if (Param.clic1==j.tbPiece[i].pos) {
+				work=i;
+			}
+		}
+		return work;
 	}
 	
 	/**

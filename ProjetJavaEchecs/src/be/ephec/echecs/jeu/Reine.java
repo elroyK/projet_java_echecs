@@ -7,7 +7,7 @@ package be.ephec.echecs.jeu;
  */
 
 public class Reine extends Piece {
-	final static int NBMOV = 14;
+	final static int NBMOV = 28;
 	
 	// UNE REINE EST UN FOU ET UNE TOUR EN MEME TEMPS POUR SE DEPLACER
 	private Fou f = new Fou();
@@ -25,19 +25,19 @@ public class Reine extends Piece {
 	}
 	
 	public Position[] genererPos(Echiquier plateau) {
-		Position work1[] = new Position[NBMOV];
-		Position work2[] = new Position[NBMOV];
+		Position work1[] = new Position[NBMOV/2];
+		Position work2[] = new Position[NBMOV/2];
 		work1 = f.genererPos(plateau);
 		work2 = t.genererPos(plateau);
 		
-		Position work[] = new Position[2*NBMOV];
+		Position work[] = new Position[NBMOV];
 		
 		// FUSION DES DEUX
-		for (int i=0;i<2*NBMOV;i++) {
-			if (i<NBMOV) {
+		for (int i=0;i<NBMOV;i++) {
+			if (i<NBMOV/2) {
 				work[i] = work1[i];
 			} else {
-				work[i] = work2[i-NBMOV];
+				work[i] = work2[i-NBMOV/2];
 			}
 		}
 		return work; 	
