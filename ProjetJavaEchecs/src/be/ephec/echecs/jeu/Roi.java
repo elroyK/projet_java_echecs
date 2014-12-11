@@ -33,14 +33,12 @@ public class Roi extends Piece {
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		Position work[] = new Position[NBMOV];
 		for (int i=0;i<NBMOV;i++)
-			work[i]=new Position();
+			work[i]=new Position(8,8);
 		
 		int c=0;
 		
 		for (int i=-1;i<=1;i++){
 			for (int j=-1;j<=1;j++){
-				work[c].setX(8);
-				work[c].setY(8);
 				if (!(i==0 && i==j)
 						&& this.pos.getX()+i >= 0
 						&& this.pos.getX()+i <= 7
@@ -50,7 +48,7 @@ public class Roi extends Piece {
 							work[c].setX(this.pos.getX()+i);
 							work[c].setY(this.pos.getY()+j);
 							c++;
-						}
+				}
 			}
 		}	
 		return work; 	

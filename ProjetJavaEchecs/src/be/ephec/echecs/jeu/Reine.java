@@ -35,8 +35,8 @@ public class Reine extends Piece {
 		Position work2[] = new Position[NBMOV/2];
 		
 		for (int i=0;i<NBMOV/2;i++){
-			work1[i]=new Position();
-			work2[i]=new Position();
+			work1[i]=new Position(8,8);
+			work2[i]=new Position(8,8);
 		}
 		
 		work1 = f.genererPos(plateau, isSameTeam);
@@ -45,16 +45,26 @@ public class Reine extends Piece {
 		Position work[] = new Position[NBMOV];
 		
 		for (int i=0;i<NBMOV;i++)
-			work[i]=new Position();
+			work[i]=new Position(8,8);
 		
 		// FUSION DES DEUX
-		for (int i=0;i<NBMOV;i++) {
-			if (i<NBMOV/2) {
-				work[i] = work1[i];
-			} else {
-				work[i] = work2[i-NBMOV/2];
-			}
+		int c=0;		
+		int i=0;
+		
+		while(!work1[i].equals(new Position(8,8))){
+			work[c]=work1[i];
+			i++;
+			c++;
 		}
+		
+		i=0;
+		
+		while(!work2[i].equals(new Position(8,8))){
+			work[c]=work2[i];
+			i++;
+			c++;
+		}
+		
 		return work; 	
 	}
 }

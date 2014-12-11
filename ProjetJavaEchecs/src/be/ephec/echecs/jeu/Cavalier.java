@@ -32,23 +32,18 @@ public class Cavalier extends Piece {
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		Position work[] = new Position[NBMOV];
 		
-		for (int i=0; i<NBMOV; i++) work[i]=new Position();
+		for (int i=0;i<NBMOV;i++) work[i] = new Position(8,8);
 		
 		int c=0;
 		
 		for (int i=-2;i<=2;i++){
 			for (int j=-2;j<=2;j++){
 				if (Math.abs(i)!=Math.abs(j) && i!=0 && j!=0){
-					if (this.pos.getX()+i<0
-						||this.pos.getX()+i>7
-						||this.pos.getY()+j<0
-						||this.pos.getY()+j>7
-						||plateau.echiq[this.pos.getX()+i][this.pos.getY()+j].getEstOccupe().equals(isSameTeam)){
-						work[c].setX(8);
-						work[c].setY(8);
-						c++;
-					}
-					else{
+					if (this.pos.getX()+i>=0
+						||this.pos.getX()+i<=7
+						||this.pos.getY()+j>=0
+						||this.pos.getY()+j<=7
+						||!plateau.echiq[this.pos.getX()+i][this.pos.getY()+j].getEstOccupe().equals(isSameTeam)){
 						work[c].setX(this.pos.getX()+i);
 						work[c].setY(this.pos.getY()+j);
 						c++;

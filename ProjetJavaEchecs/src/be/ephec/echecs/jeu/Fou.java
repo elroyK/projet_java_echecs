@@ -35,18 +35,13 @@ import java.lang.Math.*;
 		public Position[] genererPos(Echiquier plateau, String isSameTeam){
 			
 			Position work [] = new Position[NBMOV];
-			for (int i=0; i<NBMOV; i++) work[i]=new Position();
+			for (int i=0; i<NBMOV; i++) work[i] = new Position(8,8);
 			int tempX;
 			int tempY;
 			int c = 0;
 			
-			work[c].setX(8);
-			work[c].setY(8);
-			
 			for (int i=-1;i<=1;i++){
 				for (int j=-1;j<=1;j++){
-					work[c].setX(8);
-					work[c].setY(8);
 					if (Math.abs(i)==Math.abs(j) && i!=0){
 						tempX = pos.getX()+i;
 						tempY = pos.getY()+j;

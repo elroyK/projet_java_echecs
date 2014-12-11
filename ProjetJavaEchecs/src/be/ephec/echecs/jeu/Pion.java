@@ -31,30 +31,31 @@ public class Pion extends Piece {
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		
 		Position work[] = new Position[NBMOV];
-		for (int i=0; i<NBMOV; i++) work[i]=new Position();
 		
-		if (this.getColor() == Param.BLANC) {
-			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].estOccupe;
-			if (isBusy != Param.LIBRE){
-				work[0].setX(8);
-				work[0].setY(8);
+		for (int i=0;i<NBMOV;i++) work[i] = new Position(8,8);
+		
+		if (isSameTeam.equals(Param.BLANC)) {
+			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].estOccupe;
+			if (isBusy.equals(Param.LIBRE)){
 				return work;
 			}
-			work[0].setY(this.pos.getY()+1);
+			work[0].setX(this.pos.getX());
+			work[0].setY(this.pos.getY()-1);
 			if (!this.isDejaJoue()) {
-				work[1].setY(this.pos.getY()+2);
+				work[1].setX(this.pos.getX());
+				work[1].setY(this.pos.getY()-2);
 				setDejaJoue(true);
 			}		
 		} else {
-			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].estOccupe;
-			if (isBusy != Param.LIBRE){
-				work[0].setX(8);
-				work[0].setY(8);
+			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].estOccupe;
+			if (!isBusy.equals(Param.LIBRE)){
 				return work;
 			}
-			work[0].setY(this.pos.getY()-1);
+			work[0].setX(this.pos.getX());
+			work[0].setY(this.pos.getY()+1);
 			if (!this.isDejaJoue()) {
-				work[1].setY(this.pos.getY()-2);
+				work[1].setX(this.pos.getX());
+				work[1].setY(this.pos.getY()+2);
 				setDejaJoue(true);
 			}
 		}
