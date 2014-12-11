@@ -17,8 +17,8 @@ public class Pion extends Piece {
 	 * @param addImage : adresse de l'image du pion
 	 */
 	
-	public Pion(int x, int y, String addImage) {
-		super("Pion",addImage,true,x,y);
+	public Pion(int x, int y, String addImage, String color) {
+		super("Pion",addImage,true,x,y, color);
 		setDejaJoue(false);
 	}
 	
@@ -28,14 +28,16 @@ public class Pion extends Piece {
 	 * @return : un tableau de position possible par le pion
 	 */
 	
-	public Position[] genererPos(Echiquier plateau) {
+	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		
 		Position work[] = new Position[NBMOV];
+		for (int i=0; i<NBMOV; i++) work[i]=new Position();
 		
 		if (this.getColor() == Param.BLANC) {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].estOccupe;
 			if (isBusy != Param.LIBRE){
-				work[0] = null;
+				work[0].setX(8);
+				work[0].setY(8);
 				return work;
 			}
 			work[0].setY(this.pos.getY()+1);
@@ -46,7 +48,8 @@ public class Pion extends Piece {
 		} else {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].estOccupe;
 			if (isBusy != Param.LIBRE){
-				work[0] = null;
+				work[0].setX(8);
+				work[0].setY(8);
 				return work;
 			}
 			work[0].setY(this.pos.getY()-1);

@@ -1,4 +1,7 @@
 package be.ephec.echecs.jeu;
+
+import java.lang.Math.*;
+
 /**
  * Classe Cavalier, représentant la pièce Cavalier
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -16,8 +19,8 @@ public class Cavalier extends Piece {
 	 * @param addImage : adresse de l'image du pion
 	 */
 	
-	public Cavalier(int x, int y, String addImage) {
-		super("Cavalier",addImage,true,x,y);
+	public Cavalier(int x, int y, String addImage, String color) {
+		super("Cavalier",addImage,true,x,y,color);
 	}
 	
 	/**
@@ -26,91 +29,32 @@ public class Cavalier extends Piece {
 	 * @return : un tableau de position possible par le cavalier
 	 */
 
-	public Position[] genererPos(Echiquier plateau) {
+	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		Position work[] = new Position[NBMOV];
 		
-		String isSameTeam = plateau.echiq[this.pos.getX()][this.pos.getY()].getEstOccupe();
+		for (int i=0; i<NBMOV; i++) work[i]=new Position();
 		
-		int i=0;
+		int c=0;
 		
-		if ((((this.pos.getX()+1)>7)||((this.pos.getY()+2)>7))
-				||(plateau.echiq[this.pos.getX()+1][this.pos.getY()+2].estOccupe == isSameTeam)) {
-			work[i]=null;
-			i++;
-		} else {
-			work[i].setX(this.pos.getX()+1);
-			work[i].setY(this.pos.getY()+2);
-			i++;
-		}
-		
-		if ((((this.pos.getX()+1)>7)||((this.pos.getY()-2)<0))
-				||(plateau.echiq[this.pos.getX()+1][this.pos.getY()-2].estOccupe == isSameTeam)) {
-			work[i]=null;
-			i++;
-		} else {
-			work[i].setX(this.pos.getX()+1);
-			work[i].setY(this.pos.getY()-2);
-			i++;
-		}
-		
-		if ((((this.pos.getX()+2)>7)||((this.pos.getY()+1)>7))
-				||(plateau.echiq[this.pos.getX()+2][this.pos.getY()+1].estOccupe == isSameTeam)) {
-			work[i]=null;
-			i++;
-		} else{		
-			work[i].setX(this.pos.getX()+2);
-			work[i].setY(this.pos.getY()+1);
-			i++;
-		}
-		
-		if ((((this.pos.getX()+2)>7)||((this.pos.getY()-1)<0))
-				||(plateau.echiq[this.pos.getX()+2][this.pos.getY()-1].estOccupe == isSameTeam)) {
-			work[i]=null;
-			i++;
-		} else {
-			work[i].setX(this.pos.getX()+2);
-			work[i].setY(this.pos.getY()-1);
-			i++;
-		}
-		
-		if ((((this.pos.getX()-1)<0)||((this.pos.getY()+2)>0))
-				||(plateau.echiq[this.pos.getX()-1][this.pos.getY()+2].estOccupe == isSameTeam)) {
-			work[4]=null;
-			i++;
-		} else {
-			work[i].setX(this.pos.getX()-1);
-			work[i].setY(this.pos.getY()+2);
-			i++;
-		}
-		
-		if ((((this.pos.getX()-1)<0)||((this.pos.getY()-2)<0))
-				||(plateau.echiq[this.pos.getX()-1][this.pos.getY()-2].estOccupe == isSameTeam)) {
-			work[i]=null;
-			i++;
-		} else {
-			work[i].setX(this.pos.getX()-1);
-			work[i].setY(this.pos.getY()-2);
-			i++;
-		}
-		
-		if ((((this.pos.getX()-2)<0)||((this.pos.getY()+1)>7))
-				||(plateau.echiq[this.pos.getX()-2][this.pos.getY()+1].estOccupe == isSameTeam)) {
-			work[i]=null;
-			i++;
-		} else {
-			work[i].setX(this.pos.getX()-2);
-			work[i].setY(this.pos.getY()+1);
-			i++;
-		}
-		
-		if ((((this.pos.getX()-2)<0)||((this.pos.getY()-1)<0))
-				||(plateau.echiq[this.pos.getX()-2][this.pos.getY()-1].estOccupe == isSameTeam)) {
-			work[i]=null;
-			i++;
-		} else {
-			work[i].setX(this.pos.getX()-2);
-			work[i].setY(this.pos.getY()-1);
-			i++;
+		for (int i=-2;i<=2;i++){
+			for (int j=-2;j<=2;j++){
+				if (Math.abs(i)!=Math.abs(j) && i!=0 && j!=0){
+					if (this.pos.getX()+i<0
+						||this.pos.getX()+i>7
+						||this.pos.getY()+j<0
+						||this.pos.getY()+j>7
+						||plateau.echiq[this.pos.getX()+i][this.pos.getY()+j].getEstOccupe().equals(isSameTeam)){
+						work[c].setX(8);
+						work[c].setY(8);
+						c++;
+					}
+					else{
+						work[c].setX(this.pos.getX()+i);
+						work[c].setY(this.pos.getY()+j);
+						c++;
+					}
+				}
+			}
 		}
 			
 		return work; 	

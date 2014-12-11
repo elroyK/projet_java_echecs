@@ -22,8 +22,8 @@ public class Tour extends Piece {
 	 * @param addImage : adresse de l'image
 	 */
 	
-	public Tour (int x, int y, String addImage) {
-		super("Tour",addImage,true,x,y);
+	public Tour (int x, int y, String addImage, String color) {
+		super("Tour",addImage,true,x,y,color);
 		this.setEstRoquable(true);
 	}
 	
@@ -33,59 +33,38 @@ public class Tour extends Piece {
 	 * @return : un tableau de position possible par la tour
 	 */
 
-	public Position[] genererPos(Echiquier plateau){
+	public Position[] genererPos(Echiquier plateau, String isSameTeam){
 		
-		Position work [] = new Position[NBMOV]; 
-		int tempX = pos.getX() + 1;
-		int tempY = pos.getY();
-		int i = 0;
+		Position work [] = new Position[NBMOV];
+		for (int i=0; i<NBMOV; i++) work[i]=new Position();
+		int tempX;
+		int tempY;
+		int c = 0;
 		
-		work[i]=null;
+		work[c].setX(8);
+		work[c].setY(8);
 		
-		String isSameTeam = plateau.echiq[this.pos.getY()][this.pos.getX()].getEstOccupe();
-		
-		/*boucle pour l'horizontale droite */
-		while (tempX <= 7 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-			work[i].setX(tempX);
-			work[i].setY(tempY);
-			i++;
-			tempX++;
-		}
-		tempX = pos.getX() - 1;
-		
-		work[i]=null;
-		
-		/*boucle pour l'horizontale gauche*/
-		while (tempX >= 0 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-			work[i].setX(tempX);
-			work[i].setY(tempY);
-			i++;
-			tempX--;
-		}
-		tempX = pos.getX();
-		tempY = pos.getY() + 1;
-		
-		work[i]=null;
-		
-		/*boucle pour la verticale haute*/
-		while (tempY <= 7 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-			work[i].setY(tempY);
-			work[i].setX(tempX);
-			i++;
-			tempY++;
-		}
-		tempY = pos.getY() - 1;
-		
-		work[i]=null;
-		
-		/*boucle pour la verticale basse*/
-		while (tempY <= 0 && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-			work[i].setX(tempX);
-			work[i].setY(tempY);
-			i++;
-			tempY--;
+		for (int i=-1;i<=1;i++){
+			for (int j=-1;j<=1;j++){
+				work[c].setX(8);
+				work[c].setY(8);
+				if (Math.abs(i)!=Math.abs(j)){
+					tempX = pos.getX()+i;
+					tempY = pos.getY()+j;
+					while(tempX <= 7
+							&& tempX >= 0
+							&& tempY <= 7
+							&& tempY >= 0
+							&& !plateau.echiq[tempX][tempY].getEstOccupe().equals(isSameTeam)){
+						work[c].setX(tempX);
+						work[c].setY(tempY);
+						tempX += i;
+						tempY += j;
+						c++;
+					}
+				}
 			}
-			
+		}	
 		return work;
 	}
 	

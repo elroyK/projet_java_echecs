@@ -20,8 +20,8 @@ public class Reine extends Piece {
 	 * @param addImage : adresse de l'image
 	 */
 	
-	public Reine (int x, int y, String addImage) {
-		super("Reine",addImage,true,x,y);
+	public Reine (int x, int y, String addImage, String color) {
+		super("Reine",addImage,true,x,y,color);
 	}
 	
 	/**
@@ -30,13 +30,22 @@ public class Reine extends Piece {
 	 * @return : un tableau de position possible par la reine
 	 */
 	
-	public Position[] genererPos(Echiquier plateau) {
+	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		Position work1[] = new Position[NBMOV/2];
 		Position work2[] = new Position[NBMOV/2];
-		work1 = f.genererPos(plateau);
-		work2 = t.genererPos(plateau);
+		
+		for (int i=0;i<NBMOV/2;i++){
+			work1[i]=new Position();
+			work2[i]=new Position();
+		}
+		
+		work1 = f.genererPos(plateau, isSameTeam);
+		work2 = t.genererPos(plateau, isSameTeam);
 		
 		Position work[] = new Position[NBMOV];
+		
+		for (int i=0;i<NBMOV;i++)
+			work[i]=new Position();
 		
 		// FUSION DES DEUX
 		for (int i=0;i<NBMOV;i++) {

@@ -97,7 +97,7 @@ public class Case extends JButton{
 					game.settings.clic1 = new Position(pos.getX(), pos.getY());
 					game.settings.setClic(game.settings.getClic()+1);
 					
-					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau);
+					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau,j.tbPiece[0].getColor());
 					
 					for (int i=0;i<work.length;i++){
 						game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);

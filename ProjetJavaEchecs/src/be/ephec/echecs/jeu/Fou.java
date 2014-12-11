@@ -1,4 +1,6 @@
 package be.ephec.echecs.jeu;
+
+import java.lang.Math.*;
 /**
  * Classe Fou, représentant la pièce Fou
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -20,8 +22,8 @@ package be.ephec.echecs.jeu;
 		 * @param addImage : adresse de l'image
 		 */
 		
-		public Fou (int x, int y, String addImage) {
-			super("Fou",addImage,true,x,y);
+		public Fou (int x, int y, String addImage, String color) {
+			super("Fou",addImage,true,x,y, color);
 		}
 		
 		/**
@@ -30,68 +32,38 @@ package be.ephec.echecs.jeu;
 		 * @return : un tableau de position possible par le fou
 		 */
 		
-		public Position[] genererPos(Echiquier plateau){
+		public Position[] genererPos(Echiquier plateau, String isSameTeam){
 			
-			Position work [] = new Position[NBMOV]; 
-			int tempX = pos.getX() + 1;
-			int tempY = pos.getY() + 1;
-			int i = 0;
+			Position work [] = new Position[NBMOV];
+			for (int i=0; i<NBMOV; i++) work[i]=new Position();
+			int tempX;
+			int tempY;
+			int c = 0;
 			
-			work[i]=null;
+			work[c].setX(8);
+			work[c].setY(8);
 			
-			String isSameTeam = plateau.echiq[this.pos.getY()][this.pos.getX()].getEstOccupe();
-			
-			/*boucle pour la diagonale haute droite */
-			while ((tempX <= 7)&&(tempY <= 7) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-				work[i].setX(tempX);
-				work[i].setY(tempY);
-				i++;
-				tempX++;
-				tempY++;
-			}
-			
-			tempX = pos.getX() - 1;
-			tempY = pos.getY() + 1;
-			
-			work[i]=null;
-			
-			/*boucle pour la diagonale haute gauche*/
-			while ((tempX >= 0)&&(tempY <= 7) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-				work[i].setX(tempX);
-				work[i].setY(tempY);
-				i++;
-				tempX--;
-				tempY++;
-			}
-			
-			tempX = pos.getX() + 1;
-			tempY = pos.getY() - 1;
-			
-			work[i]=null;
-			
-			/*boucle pour la diagonale basse droite*/
-			while ((tempX >= 7)&&(tempY <= 0) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-				work[i].setX(tempX);
-				work[i].setY(tempY);
-				i++;
-				tempX++;
-				tempY--;
-			}
-			
-			tempX = pos.getX() - 1;
-			tempY = pos.getY() - 1;
-			
-			work[i]=null;
-			
-			/*boucle pour la diagonale basse gauche*/
-			while ((tempX >= 0)&&(tempY <= 0) && isSameTeam != plateau.echiq[tempX][tempY].getEstOccupe()) {
-				work[i].setX(tempX);
-				work[i].setY(tempY);
-				i++;
-				tempX--;
-				tempY--;
-			}
-			
+			for (int i=-1;i<=1;i++){
+				for (int j=-1;j<=1;j++){
+					work[c].setX(8);
+					work[c].setY(8);
+					if (Math.abs(i)==Math.abs(j) && i!=0){
+						tempX = pos.getX()+i;
+						tempY = pos.getY()+j;
+						while(tempX <= 7
+								&& tempX >= 0
+								&& tempY <= 7
+								&& tempY >= 0
+								&& !plateau.echiq[tempX][tempY].getEstOccupe().equals(isSameTeam)){
+							work[c].setX(tempX);
+							work[c].setY(tempY);
+							tempX += i;
+							tempY += j;
+							c++;
+						}
+					}
+				}
+			}		
 			
 			return work;
 		}

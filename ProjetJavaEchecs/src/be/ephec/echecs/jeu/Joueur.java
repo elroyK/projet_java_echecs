@@ -44,8 +44,8 @@ public class Joueur {
 		for (int i=0;i<NBPIECE;i++){
 			if (this.tbPiece[i].isInGame()==true) {
 				int k=0;
-				Position tbPos[] = this.tbPiece[i].genererPos(plateau);
-				while (k<tbPos.length && tbPos[k] == null){
+				Position tbPos[] = this.tbPiece[i].genererPos(plateau, this.tbPiece[i].getColor());
+				while (k<tbPos.length && tbPos[k].equals(new Position(8,8))){
 					k++;
 				};
 				if (k<tbPos.length){

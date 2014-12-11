@@ -24,15 +24,16 @@ abstract public class Piece {
 	 * @param x : position sur l'échiquier en x
 	 * @param y : position sur l'échiquier en y
 	 */
-	public Piece(String n, String i, boolean ig, int x, int y) {
+	public Piece(String n, String i, boolean ig, int x, int y, String c) {
 		setNom(n);
 		setAddIcone(i);
 		setInGame(true);
 		pos.setX(x);
-		pos.setY(y);	
+		pos.setY(y);
+		setColor(c);
 	}
 	
-	abstract public Position[] genererPos(Echiquier plateau);
+	abstract public Position[] genererPos(Echiquier plateau, String isSameTeam);
 	
 	/**
 	 * kill : permet de tuer une pièce
