@@ -75,7 +75,9 @@ public class Case extends JButton{
 	 */
 	
 	public void isCliquable() {
-		if (this.getCliquable()) this.setBackground(new Color(51, 153, 255));
+		if (this.getCliquable()){
+			if (this.getEstOccupe() == Param.LIBRE) this.setBackground(new Color(51, 153, 255));
+		}
 	}
 	
 	
@@ -92,9 +94,11 @@ public class Case extends JButton{
 		final Joueur j = new Joueur(tPW);
 		
 		if (game.settings.getClic() == 0) {
-			this.addActionListener(new ActionListener(){
+			/*this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
-					game.settings.clic1 = new Position(pos.getX(), pos.getY());
+					//game.settings.clic1 = new Position(pos.getX(), pos.getY());
+					game.settings.clic1.setX(0);
+					game.settings.clic1.setY(6);
 					game.settings.setClic(game.settings.getClic()+1);
 					
 					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau,j.tbPiece[0].getColor());
@@ -105,9 +109,23 @@ public class Case extends JButton{
 					
 					game.plateau.echiq[game.settings.clic1.getX()][game.settings.clic1.getY()].setCliquable(true);
 					}
+			});*/
+			this.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					game.settings.clic1.setX(pos.getX());
+					game.settings.clic1.setY(pos.getY());
+					game.settings.setClic(game.settings.getClic()+1);
+					
+					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau,j.tbPiece[0].getColor());
+					for (int i=0;i<work.length;i++){
+						game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);
+						}
+					
+					game.plateau.echiq[game.settings.clic1.getX()][game.settings.clic1.getY()].setCliquable(true);}
 			});
 		} else if (game.settings.clic ==1){
-			this.addActionListener(new ActionListener(){
+			/*this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
 					game.settings.clic2 = new Position(pos.getX(), pos.getY());
 					if (game.settings.clic2.equals(game.settings.clic1)) game.settings.setClic(0);
@@ -116,6 +134,16 @@ public class Case extends JButton{
 						//TODO Faire bouger la pièce
 					}
 				}
+			});*/
+			this.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					game.settings.clic2 = new Position(pos.getX(), pos.getY());
+					if (game.settings.clic2.equals(game.settings.clic1)) game.settings.setClic(0);
+					else {
+						game.settings.setClic(game.settings.getClic()+1);
+						//TODO Faire bouger la pièce
+					}}
 			});
 		}
 	}

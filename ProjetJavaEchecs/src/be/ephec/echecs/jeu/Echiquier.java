@@ -66,8 +66,7 @@ public class Echiquier extends JFrame {
 			contenu.add (this.echiq[c.gridx][c.gridy], c);		
 			
 			if (!((i+1)%8 == 0)){
-				if (couleur) couleur=false;
-				else couleur=true;
+				couleur = !couleur;
 			}
 		}
 	}

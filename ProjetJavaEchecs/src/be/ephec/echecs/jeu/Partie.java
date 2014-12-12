@@ -41,6 +41,11 @@ public class Partie {
 					game.plateau.echiq[workS[i].getX()][workS[i].getY()].setCliquable(true);
 				}
 				do {
+					for (int i=0;i<Echiquier.NLIGNES;i++){
+						for (int j=0;j<Echiquier.NLIGNES;j++){
+							game.plateau.echiq[i][j].actions(game);
+						}
+					}
 					game.plateau.setVisible(true);
 					//game.plateau.actualiser(game.jA, game.jB);
 					
@@ -206,12 +211,12 @@ public class Partie {
 		this.jB.tbPiece[15] = new Reine(4,0,"/img/reineN.gif",Param.NOIR);
 		this.plateau.echiq[3][0].setEstOccupe("NOIR");
 		
-		ActionListener listener = new CaseListener(this);
+		/*ActionListener listener = new CaseListener(this);
 		for (int x=0;x<Echiquier.NLIGNES;x++){
 			for (int y=0;y<Echiquier.NLIGNES;y++){
 				this.plateau.echiq[x][y].addActionListener(listener);
 			}
-		}
+		}*/
 		
 		this.plateau.setVisible(true);
 		this.settings.setJoueurActuel(1);
