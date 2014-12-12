@@ -57,7 +57,5 @@ public class Cavalier extends Piece {
 			finalWork[i]=work[i];
 		}
 		return finalWork; 	
-			
-		return work; 	
 	}
 }
