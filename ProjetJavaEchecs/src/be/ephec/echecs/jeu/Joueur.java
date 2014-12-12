@@ -45,7 +45,7 @@ public class Joueur {
 			if (this.tbPiece[i].isInGame()==true) {
 				int k=0;
 				Position tbPos[] = this.tbPiece[i].genererPos(plateau, this.tbPiece[i].getColor());
-				while (k<tbPos.length && !tbPos[k].equals(new Position(8,8))){
+				while (k<tbPos.length && !(tbPos[k] == (new Position(8,8)))){
 					k++;
 				};
 				if (k<tbPos.length){
@@ -55,6 +55,7 @@ public class Joueur {
 			}
 		}
 		return work;
+
 	}
 	
 	// GETTERS ET SETTERS

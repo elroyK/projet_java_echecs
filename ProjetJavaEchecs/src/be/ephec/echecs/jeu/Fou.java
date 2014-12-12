@@ -49,7 +49,7 @@ import java.lang.Math.*;
 								&& tempX >= 0
 								&& tempY <= 7
 								&& tempY >= 0
-								&& !plateau.echiq[tempX][tempY].getEstOccupe().equals(isSameTeam)){
+								&& !(plateau.echiq[tempX][tempY].getEstOccupe()==isSameTeam)){
 							work[c].setX(tempX);
 							work[c].setY(tempY);
 							tempX += i;

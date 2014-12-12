@@ -34,9 +34,9 @@ public class Pion extends Piece {
 		
 		for (int i=0;i<NBMOV;i++) work[i] = new Position(8,8);
 		
-		if (isSameTeam.equals(Param.BLANC)) {
+		if (isSameTeam==Param.BLANC) {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].estOccupe;
-			if (isBusy.equals(Param.LIBRE)){
+			if (isBusy==Param.LIBRE){
 				return work;
 			}
 			work[0].setX(this.pos.getX());

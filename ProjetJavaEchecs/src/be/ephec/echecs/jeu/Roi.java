@@ -44,7 +44,7 @@ public class Roi extends Piece {
 						&& this.pos.getX()+i <= 7
 						&& this.pos.getY()+j >= 0
 						&& this.pos.getY()+j <= 7
-						&& !plateau.echiq[this.pos.getX()+i][this.pos.getY()-j].getEstOccupe().equals(isSameTeam)){
+						&& !(plateau.echiq[this.pos.getX()+i][this.pos.getY()+j].getEstOccupe()==isSameTeam)){
 							work[c].setX(this.pos.getX()+i);
 							work[c].setY(this.pos.getY()+j);
 							c++;
