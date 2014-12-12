@@ -1,4 +1,4 @@
-package be.ephec.echecs.tcp;
+package be.ephec.echecs.gui;
 
 public class Param {
 	/**

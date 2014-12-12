@@ -1,22 +1,19 @@
-package be.ephec.echecs.gui;
+package be.ephec.echecs.tcp;
 
 import java.awt.EventQueue;
 
-import be.ephec.echecs.tcp.JFrameServeur;
-import be.ephec.echecs.tcp.ServeurTCP;
+import be.ephec.echecs.gui.JFrameServeur;
+import be.ephec.echecs.tcp.MonServeurTCP;
 
 public class ApplicationServeur {
-	protected JFrameServeur jFrameServeur;
-	protected ServeurTCP serveur; 
-	
+	private JFrameServeur jFrameServeur;
+	private MonServeurTCP serveur;
+
 	public ApplicationServeur(){
 		jFrameServeur = new JFrameServeur(this);
 		jFrameServeur.setVisible(true);
-		
 	}
 
-	//TODO Methode qui permet d'acceder au jTextArea plutot que via getters et setters
-	
 	public JFrameServeur getjFrameServeur() {
 		return jFrameServeur;
 	}
@@ -25,18 +22,19 @@ public class ApplicationServeur {
 		this.jFrameServeur = jFrameServeur;
 	}
 
-	public ServeurTCP getServeur() {
+	public MonServeurTCP getServeur() {
 		return serveur;
 	}
 
-	public void setServeur(ServeurTCP serveur) {
+	public void setServeur(MonServeurTCP serveur) {
 		this.serveur = serveur;
 	}
 
-	
 	public static void main(String[] args) {
 		ApplicationServeur applicationServeur = new ApplicationServeur();
 
 	}
-	
+
 }
+
+
