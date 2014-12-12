@@ -103,17 +103,23 @@ public class Echiquier extends JFrame {
 		}
 	}
 	
+	/**
+	 * actualiser, permet de refresh la l'echiquier pour pouvoir déplacer une pièce
+	 * @param j1 : joueur A, pour ses pièces
+	 * @param j2 : joueur B, pour ses pièces
+	 */
+	
 	public void actualiser(Joueur j1, Joueur j2){
-		//this.viderEchiquier(); 
-		//for (int i=0; i<Joueur.NBPIECE;i++){
+		this.viderEchiquier(); 
+		for (int i=0; i<Joueur.NBPIECE;i++){
 			if (j1.tbPiece[0].isInGame()){
-				this.echiq[0][1].setIcon(new ImageIcon(getClass().getResource("/img/pionB.gif")));
-				this.echiq[j1.tbPiece[0].pos.getX()][j1.tbPiece[0].pos.getY()].actualise(j1.tbPiece[0].getAddIcone());
+				this.echiq[j1.tbPiece[i].pos.getX()][j1.tbPiece[i].pos.getY()].actualise(j1.tbPiece[i].getAddIcone());
 			}
-			/*if (j2.tbPiece[i].isInGame()){
+			if (j2.tbPiece[i].isInGame()){
 				this.echiq[j2.tbPiece[i].pos.getX()][j2.tbPiece[i].pos.getY()].actualise(j2.tbPiece[i].getAddIcone()); 
-			}*/
-		//}
+			}
+		}
+		this.setVisible(true);
 	}
 	
 	/**
