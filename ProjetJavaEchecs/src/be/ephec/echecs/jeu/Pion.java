@@ -45,10 +45,13 @@ public class Pion extends Piece {
 				n++;
 			}
 			if (!this.isDejaJoue()) {
-				work[0] = new Position(this.pos.getX(),this.pos.getY()-2) ;
+				work[1] = new Position(this.pos.getX(),this.pos.getY()-2) ;
 				setDejaJoue(true);
 				n++;
-			}		
+			}	
+			if (this.prisePassant(plateau)!=(new Position())) {
+				work[2] = this.prisePassant(plateau);
+			}
 		} else {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].estOccupe;
 			if (isBusy==Param.LIBRE){
@@ -56,9 +59,12 @@ public class Pion extends Piece {
 				n++;
 			}
 			if (!this.isDejaJoue()) {
-				work[0] = new Position(this.pos.getX(),this.pos.getY()-2) ;
+				work[1] = new Position(this.pos.getX(),this.pos.getY()-2) ;
 				setDejaJoue(true);
 				n++;
+			}
+			if (this.prisePassant(plateau)!=(new Position())) {
+				work[2] = this.prisePassant(plateau);
 			}
 		}
 		
@@ -113,7 +119,7 @@ public class Pion extends Piece {
 	 */
 	
 	public Position prisePassant(Echiquier plateau) {
-		Position work = new Position(8,8);
+		Position work = new Position();
 		
 		if ((plateau.echiq[this.pos.getX()+1][this.pos.getY()].getEstOccupe() != Param.LIBRE) && 
 			 (plateau.echiq[this.pos.getX()+1][this.pos.getY()].getEstOccupe()!=this.getColor())) {
