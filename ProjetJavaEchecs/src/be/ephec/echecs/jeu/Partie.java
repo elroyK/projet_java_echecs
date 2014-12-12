@@ -36,7 +36,7 @@ public class Partie {
 					workS = game.jA.genererSelect(game.plateau);
 				else workS = game.jB.genererSelect(game.plateau);
 				
-				//game.plateau.setButtonsCliquable(false);
+				game.plateau.setButtonsCliquable(false);
 				for (int i = 0; i<workS.length; i++) {
 					game.plateau.echiq[workS[i].getX()][workS[i].getY()].setCliquable(true);
 				}

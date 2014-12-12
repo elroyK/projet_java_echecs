@@ -44,23 +44,20 @@ public class Joueur {
 		int n = 0;
 		for (int i=0;i<NBPIECE;i++){
 			if (this.tbPiece[i].isInGame()==true) {
-				int k=0;
 				Position tbPos[] = this.tbPiece[i].genererPos(plateau, this.tbPiece[i].getColor());
-				while (k<tbPos.length && !(tbPos[k] == (new Position(8,8)))){
-					k++;
-				};
-				if (k<tbPos.length){
+				if (tbPos.length>0) {
 					work[n].setX(this.tbPiece[i].pos.getX());
 					work[n].setY(this.tbPiece[i].pos.getY());
 					n++;
 				}
 			}
 		}
+		
 		Position finalWork[] = new Position[n];
 		
 		for (int i=0;i<n;i++){
 			finalWork[i] = work[i];
-		}
+		}	
 		
 		return finalWork;
 
