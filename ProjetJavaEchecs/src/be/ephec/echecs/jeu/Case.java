@@ -84,13 +84,7 @@ public class Case extends JButton {
 	 * @param game La partie en cours
 	 */
 	
-	public void actions(final Partie game){
-		Piece[] tPW = new Piece[Joueur.NBPIECE]; 
-		if (game.settings.getJoueurActuel()==1) tPW = game.jA.tbPiece;
-		else tPW = game.jB.tbPiece;			
-		
-		final Joueur j = new Joueur(tPW);
-		
+	public void actions(final Partie game){		
 		if (game.settings.getClic() == 0) {
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
