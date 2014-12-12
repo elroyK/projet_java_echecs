@@ -30,27 +30,20 @@ public class Partie {
 				game.plateau.actualiser(game.jA, game.jB); // Fonctionne
 				//Début de tour
 			
-			/*
-			 * Même pour un bête tableau générer ça ne fonctionne pas ? problème à l'initialisation ??
-			 * 
-			 */
-				Piece workS[] = new Piece[Joueur.NBPIECE];	
-				for (int i=0;i<Joueur.NBPIECE;i++) {
-					for (int j=0;j<8;j++) {
-						workS[i].pos.setX(j);
-						workS[i].pos.setY(4);
-					}
-				}
+				Position workS[] = new Position[Joueur.NBPIECE];
 				
-			/*	if (game.settings.getJoueurActuel()==1)
+				if (game.settings.getJoueurActuel()==1)
 					workS = game.jA.genererSelect(game.plateau);
-				else workS = game.jB.genererSelect(game.plateau);*/
+				else workS = game.jB.genererSelect(game.plateau);
 				
+				//game.plateau.setButtonsCliquable(false);
+				for (int i = 0; i<workS.length; i++) {
+					game.plateau.echiq[workS[i].getX()][workS[i].getY()].setCliquable(true);
+				}
 				do {
-					for (int i = 0; i<Joueur.NBPIECE; i++) {
-						game.plateau.echiq[workS[i].pos.getX()][workS[i].pos.getY()].setCliquable(true);
-					}
-					game.plateau.actualiser(game.jA, game.jB); 
+					game.plateau.setVisible(true);
+					//game.plateau.actualiser(game.jA, game.jB);
+					
 				} while(game.settings.getClic() !=2);
 		
 				
