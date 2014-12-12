@@ -36,10 +36,7 @@ public class Partie {
 					workS = game.jA.genererSelect(game.plateau);
 				else workS = game.jB.genererSelect(game.plateau);
 				
-				game.plateau.setButtonsCliquable(false);
-				for (int i = 0; i<workS.length; i++) {
-					game.plateau.echiq[workS[i].getX()][workS[i].getY()].setCliquable(true);
-				}
+				game.plateau.showPieceChoice(workS);
 				do {
 					for (int i=0;i<Echiquier.NLIGNES;i++){
 						for (int j=0;j<Echiquier.NLIGNES;j++){
@@ -50,7 +47,7 @@ public class Partie {
 					//game.plateau.actualiser(game.jA, game.jB);
 					
 				} while(game.settings.getClic() !=2);
-		
+				game.plateau.actualiser(game.jA, game.jB); // REFRESH
 				
 			
 		/*	while (game.finPartie()==true) {

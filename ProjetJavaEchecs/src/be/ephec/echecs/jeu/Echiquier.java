@@ -138,11 +138,11 @@ public class Echiquier extends JFrame {
 	 * @param tbP : tableau de pièces qu'on peut déplacer
 	 */
 	
-	public void showPieceChoice(Piece tbP[]) {
+	public void showPieceChoice(Position tbP[]) {
 		this.setButtonsCliquable(false);
 		
 		for (int i=0;i<tbP.length;i++) {
-			this.echiq[tbP[i].pos.getX()][tbP[i].pos.getY()].setCliquable(true);
+			this.echiq[tbP[i].getX()][tbP[i].getY()].setCliquable(true);
 		}
 	}
 	
