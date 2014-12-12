@@ -1,4 +1,7 @@
 package be.ephec.echecs.jeu;
+
+import be.ephec.echecs.gui.FenPromotion;
+
 /**
  * Classe Pion, représentant la pièce Pion
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -70,28 +73,69 @@ public class Pion extends Piece {
 	 * Si c'est joueur blanc => les pièces montent
 	 */
 	
-	public void promotion(String jCol) {
+	public String[] promotion(String jCol, Joueur j) {
+		String[] work = new String[8]; // Tableau de string représentant le nom des pièces mortes
+		int iWork =0;
 		if (jCol==Param.NOIR) {
 			if (this.pos.getY()==0) {
 				this.setInGame(false);
-				// TODO : Implementer la méthode
-				/*
-				 * Trouver toutes les pièces mortes
-				 * Proposer dans une liste déroulante les pièces disponible pour la promotion
-				 * Création de la pièce choisie
-				 * On place la pièce sur l'échiquier mais ou ??
-				 */
+				for (int i=0;i<j.tbPiece.length;i++) {
+					if (!j.tbPiece[i].isInGame()) {
+						if (!(j.tbPiece[i].getNom()=="Pion")) {
+						work[iWork] = j.tbPiece[i].getNom();
+						}
+					}
+				}			
 			}
 		} else {
 			if (this.pos.getY()==8) {
 				this.setInGame(false);
-				// TODO : Implementer la méthode
+				for (int i=0;i<j.tbPiece.length;i++) {
+					if (!j.tbPiece[i].isInGame()) {
+						if (!(j.tbPiece[i].getNom()=="Pion")) {
+						work[iWork] = j.tbPiece[i].getNom();
+						}
+					}
+				}
 			}
 		}
+		return work;	
 	}
 	
-	public void prisePassant() {
-		// TODO : implémenter la méthode
+	/**
+	 * prisePassant  : un pion peut prendre la pièce qui se trouve
+	 * @param plateau : l'échiquier pour savoir si la case est occupée
+	 * @return la position ou le pion peut se déplacer en prendre une pièce en passant
+	 */
+	
+	public Position prisePassant(Echiquier plateau) {
+		Position work = new Position(8,8);
+		
+		if ((plateau.echiq[this.pos.getX()+1][this.pos.getY()].getEstOccupe() != Param.LIBRE) && 
+			 (plateau.echiq[this.pos.getX()+1][this.pos.getY()].getEstOccupe()!=this.getColor())) {
+			if (this.getColor()==Param.BLANC) {
+				work.setX(this.pos.getX()+1);
+				work.setY(this.pos.getY()+1);
+			} else {
+				work.setX(this.pos.getX()+1);
+				work.setY(this.pos.getY()-1);
+			}
+			return work;
+		}
+		
+		if ((plateau.echiq[this.pos.getX()-1][this.pos.getY()].getEstOccupe() != Param.LIBRE) && 
+			(plateau.echiq[this.pos.getX()-1][this.pos.getY()].getEstOccupe()!=this.getColor())) {
+			if (this.getColor()==Param.BLANC) {
+				work.setX(this.pos.getX()-1);
+				work.setY(this.pos.getY()+1);
+			} else {
+				work.setX(this.pos.getX()-1);
+				work.setY(this.pos.getY()-1);
+			}
+				return work;
+			}
+		
+		return work;
 	}
 
 	/* GETTERS ET SETTERS */
