@@ -1,7 +1,5 @@
 package be.ephec.echecs.jeu;
 
-import be.ephec.echecs.gui.FenPromotion;
-
 /**
  * Classe Pion, représentant la pièce Pion
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -44,14 +42,17 @@ public class Pion extends Piece {
 				work[0] = new Position(this.pos.getX(),this.pos.getY()-1) ;
 				n++;
 			}
+			
 			if (!this.isDejaJoue()) {
 				work[1] = new Position(this.pos.getX(),this.pos.getY()-2) ;
 				setDejaJoue(true);
 				n++;
 			}	
-			if (this.prisePassant(plateau)!=(new Position())) {
+			
+		/*	if (this.prisePassant(plateau)==(new Position())) {
 				work[2] = this.prisePassant(plateau);
-			}
+			}*/
+			
 		} else {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].estOccupe;
 			if (isBusy==Param.LIBRE){
@@ -63,9 +64,9 @@ public class Pion extends Piece {
 				setDejaJoue(true);
 				n++;
 			}
-			if (this.prisePassant(plateau)!=(new Position())) {
+		/*	if (this.prisePassant(plateau)!=(new Position())) {
 				work[2] = this.prisePassant(plateau);
-			}
+			}*/
 		}
 		
 		Position finalWork[] = new Position[n];
