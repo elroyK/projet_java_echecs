@@ -44,26 +44,23 @@ public class Reine extends Piece {
 		
 		Position work[] = new Position[NBMOV];
 		
-		for (int i=0;i<NBMOV;i++)
-			work[i]=new Position(8,8);
-		
 		// FUSION DES DEUX
 		int c=0;		
 		int i=0;
 		
-		while(!work1[i].equals(new Position(8,8))){
+		if (work1.length>0){
 			work[c]=work1[i];
 			i++;
 			c++;
 		}
-		
 		i=0;
 		
-		while(!work2[i].equals(new Position(8,8))){
+		if (work2.length>0){
 			work[c]=work2[i];
 			i++;
 			c++;
 		}
+		i=0;
 		
 		return work; 	
 	}
