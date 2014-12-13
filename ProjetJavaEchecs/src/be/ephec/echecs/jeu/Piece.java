@@ -13,7 +13,6 @@ abstract public class Piece {
 	protected Position pos = new Position();
 	
 	public Piece() {
-		
 	}
 	
 	/**

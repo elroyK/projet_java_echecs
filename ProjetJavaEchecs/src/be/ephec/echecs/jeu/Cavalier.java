@@ -51,7 +51,11 @@ public class Cavalier extends Piece {
 				}
 			}
 		}
-			
-		return work; 	
+		
+		Position finalWork[] = new Position[c];
+		for (int i=0;i<c;i++) {
+			finalWork[i]=work[i];
+		}
+		return finalWork; 	
 	}
 }

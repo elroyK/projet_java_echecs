@@ -38,23 +38,28 @@ public class Joueur {
 	 * @param plateau : échiquier de la partie
 	 * @return un tableau avec toutes les pièces de ce joueur qui ont la possibilité de faire un mouvement ce tour-ci
 	 */
-	public Piece[] genererSelect(Echiquier plateau){
-		Piece work[] = new Piece[NBPIECE];
+	public Position[] genererSelect(Echiquier plateau){
+		Position work[] = new Position[NBPIECE];
+		for (int i=0; i<NBPIECE; i++) work[i]=new Position();
 		int n = 0;
 		for (int i=0;i<NBPIECE;i++){
 			if (this.tbPiece[i].isInGame()==true) {
-				int k=0;
 				Position tbPos[] = this.tbPiece[i].genererPos(plateau, this.tbPiece[i].getColor());
-				while (k<tbPos.length && !(tbPos[k] == (new Position(8,8)))){
-					k++;
-				};
-				if (k<tbPos.length){
-					work[n] = this.tbPiece[i];
+				if (tbPos.length>0) {
+					work[n].setX(this.tbPiece[i].pos.getX());
+					work[n].setY(this.tbPiece[i].pos.getY());
 					n++;
 				}
 			}
 		}
-		return work;
+		
+		Position finalWork[] = new Position[n];
+		
+		for (int i=0;i<n;i++){
+			finalWork[i] = work[i];
+		}	
+		
+		return finalWork;
 
 	}
 	

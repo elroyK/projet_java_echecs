@@ -20,7 +20,7 @@ import java.awt.event.*;
 
 //import javax.swing.JButton;
 
-public class Case extends JButton{
+public class Case extends JButton {
 	protected boolean couleur; /* noir (false) - blanc (true) */
     protected boolean cliquable;
 	protected String estOccupe;
@@ -75,7 +75,9 @@ public class Case extends JButton{
 	 */
 	
 	public void isCliquable() {
-		if (this.getCliquable()) this.setBackground(new Color(51, 153, 255));
+		if (this.getCliquable()){
+			if (this.getEstOccupe()==Param.LIBRE) this.setBackground(new Color(51, 153, 255));
+		}
 	}
 	
 	
@@ -84,37 +86,18 @@ public class Case extends JButton{
 	 * @param game La partie en cours
 	 */
 	
-	public void actions(final Partie game){
-		Piece[] tPW = new Piece[Joueur.NBPIECE]; 
-		if (game.settings.getJoueurActuel()==1) tPW = game.jA.tbPiece;
-		else tPW = game.jB.tbPiece;			
-		
-		final Joueur j = new Joueur(tPW);
-		
+	public void actions(final Partie game){		
 		if (game.settings.getClic() == 0) {
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
 					game.settings.clic1 = new Position(pos.getX(), pos.getY());
 					game.settings.setClic(game.settings.getClic()+1);
-					
-					Position work[] = j.tbPiece[game.findPiece(j)].genererPos(game.plateau,j.tbPiece[0].getColor());
-					
-					for (int i=0;i<work.length;i++){
-						game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);
-						}
-					
-					game.plateau.echiq[game.settings.clic1.getX()][game.settings.clic1.getY()].setCliquable(true);
-					}
-			});
+			}});
 		} else if (game.settings.clic ==1){
 			this.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
 					game.settings.clic2 = new Position(pos.getX(), pos.getY());
-					if (game.settings.clic2.equals(game.settings.clic1)) game.settings.setClic(0);
-					else {
-						game.settings.setClic(game.settings.getClic()+1);
-						//TODO Faire bouger la pièce
-					}
+					game.settings.setClic(game.settings.getClic()+1);
 				}
 			});
 		}
