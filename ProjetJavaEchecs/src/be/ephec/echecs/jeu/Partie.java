@@ -1,6 +1,7 @@
 package be.ephec.echecs.jeu;
 
 import be.ephec.echecs.gui.*;
+import be.ephec.echecs.tcp.ControlerTCP;
 
 import javax.swing.*;
 
@@ -24,7 +25,7 @@ public class Partie {
 	
 	public static void main(String[] args) {
 		Partie game = new Partie();	
-//		do {
+//		do {	
 				Echiquier.main(null);
 				game.initialisation();
 				game.plateau.actualiser(game.jA, game.jB); // Fonctionne
