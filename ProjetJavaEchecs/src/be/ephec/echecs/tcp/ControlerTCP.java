@@ -139,7 +139,7 @@ public class ControlerTCP {
 		try {
 			client.write(cible);
 			if(client.read(boolean.class)) {  
-				
+				//Do something
 			}else{
 				showWrongMove();			
 			}

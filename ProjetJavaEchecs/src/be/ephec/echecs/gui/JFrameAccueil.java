@@ -17,9 +17,6 @@ public class JFrameAccueil extends JFrame {
 	protected JPanel contentPane;
 	
 	
-
-	
-
 	public JButton getBtnJeVeuxEtreS() {
 		return btnJeVeuxEtreS;
 	}
@@ -46,7 +43,7 @@ public class JFrameAccueil extends JFrame {
 								
 					JFrameAccueil frame = new JFrameAccueil();
 					frame.setVisible(true);
-					ControlerTCP controler = new ControlerTCP(frame);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

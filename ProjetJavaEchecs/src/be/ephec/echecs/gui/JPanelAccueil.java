@@ -70,6 +70,7 @@ public class JPanelAccueil extends JPanel {
 		txtIpAdrverse.setColumns(10);
 		
 		JTextArea textArea = new JTextArea();
+		getIp();
 		textArea.setText("Votre ip est : "+getTxtIp());
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.gridwidth = 4;
