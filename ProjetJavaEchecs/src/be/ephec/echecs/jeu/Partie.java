@@ -18,7 +18,7 @@ public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
 	protected Joueur  jA = new Joueur("",Param.BLANC);
 	protected Joueur  jB = new Joueur("",Param.NOIR);
-	protected Joueur  jEnCours = new Joueur("","");
+	static public Joueur  jEnCours = new Joueur("","");
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 	protected boolean reset;

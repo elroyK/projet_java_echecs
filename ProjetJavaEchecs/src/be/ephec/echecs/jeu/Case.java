@@ -120,14 +120,15 @@ public class Case extends JButton {
 					else {
 						Param.clic = 2;
 						int work = game.findPiece(game.jEnCours);
-						game.jA.tbPiece[work].pos.setX(game.settings.clic2.getX());
-						game.jA.tbPiece[work].pos.setY(game.settings.clic2.getY());
+						game.jEnCours.tbPiece[work].pos.setX(game.settings.clic2.getX());
+						game.jEnCours.tbPiece[work].pos.setY(game.settings.clic2.getY());
 						
 						game.plateau.actualiser(game.jA,game.jB);
 						game.plateau.setVisible(true);
 						
 						game.settings.chgmJoueurActuel();
-						
+						if (game.settings.getJoueurActuel() == 1) game.jEnCours = game.jA;
+						else game.jEnCours = game.jB;
 						game.tour(game.jEnCours);
 						
 					}}}});

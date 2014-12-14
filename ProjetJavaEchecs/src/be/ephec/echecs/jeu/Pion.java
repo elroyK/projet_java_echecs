@@ -23,6 +23,11 @@ public class Pion extends Piece {
 		setDejaJoue(false);
 	}
 	
+	public Pion(Piece p){
+		super(p.getNom(), p.getAddIcone(), true, p.pos.getX(), p.pos.getY(), p.getColor());
+		setDejaJoue(true);
+	}
+	
 	/**
 	 * genererPos : créer un tableau de position possible pour le pion en fonction des cases de l'échiquier
 	 * @param : plateau : l'échiquier
