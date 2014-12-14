@@ -18,7 +18,7 @@ public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
 	protected Joueur  jA = new Joueur("",Param.BLANC);
 	protected Joueur  jB = new Joueur("",Param.NOIR);
-	static public Joueur  jEnCours = new Joueur("","");
+	private static Joueur  jEnCours = new Joueur("","");
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 	protected boolean reset;
@@ -28,9 +28,9 @@ public class Partie {
 			
 				Echiquier.main(null);
 				game.initialisation();
-				if (game.settings.getJoueurActuel()==1) game.jEnCours = game.jA;
-				else game.jEnCours = game.jB;
-				game.tour(game.jEnCours);
+				if (game.settings.getJoueurActuel()==1) game.setjEnCours(game.jA);
+				else game.setjEnCours(game.jB);
+				game.tour(game.getjEnCours());
 
 	}
 	
@@ -179,12 +179,12 @@ public class Partie {
 	Position workS[] = new Position[Joueur.NBPIECE];
 	
 	workS = joueur.genererSelect(this.plateau);
-	this.jEnCours = joueur;
+	this.setjEnCours(joueur);
 	
 	
 	this.plateau.showPieceChoice(workS);
-	if (this.settings.getJoueurActuel() == 1) this.jEnCours = this.jA;
-	else this.jEnCours = this.jB;
+	if (this.settings.getJoueurActuel() == 1) this.setjEnCours(this.jA);
+	else this.setjEnCours(this.jB);
 	
 	}
 	
@@ -197,6 +197,14 @@ public class Partie {
 	public boolean finPartie() {
 		// TODO : Implémenter la méthode avec tous les tests.......................
 		return true;
+	}
+
+	public static Joueur getjEnCours() {
+		return jEnCours;
+	}
+
+	public static void setjEnCours(Joueur jEnCours) {
+		Partie.jEnCours = jEnCours;
 	}
 
 }

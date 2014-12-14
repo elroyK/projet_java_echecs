@@ -95,8 +95,8 @@ public class Case extends JButton {
 					game.settings.clic1 = new Position(pos.getX(), pos.getY());
 					Param.clic = 1;
 					System.out.println(game.settings.clic1.getX()+" "+game.settings.clic1.getY());
-					int work = game.findPiece(game.jEnCours);
-					Position[] tbPos = game.jEnCours.tbPiece[work].genererPos(game.plateau, game.jEnCours.getCouleur());
+					int work = game.findPiece(Partie.getjEnCours());
+					Position[] tbPos = Partie.getjEnCours().tbPiece[work].genererPos(game.plateau, Partie.getjEnCours().getCouleur());
 					game.plateau.setButtonsCliquable(false);
 					for (int i=0; i<tbPos.length; i++){
 						game.plateau.echiq[tbPos[i].getX()][tbPos[i].getY()].setCliquable(true);
@@ -111,7 +111,7 @@ public class Case extends JButton {
 						Param.clic = 0;
 						System.out.println("Coucou");
 						game.plateau.setButtonsCliquable(false);
-						Position[] work = game.jEnCours.genererSelect(game.plateau);
+						Position[] work = Partie.getjEnCours().genererSelect(game.plateau);
 						for (int i=0;i<work.length;i++){
 							game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);
 						}
@@ -119,17 +119,23 @@ public class Case extends JButton {
 					}
 					else {
 						Param.clic = 2;
-						int work = game.findPiece(game.jEnCours);
-						game.jEnCours.tbPiece[work].pos.setX(game.settings.clic2.getX());
-						game.jEnCours.tbPiece[work].pos.setY(game.settings.clic2.getY());
+						int work = game.findPiece(Partie.getjEnCours());
+						Partie.getjEnCours().tbPiece[work].pos.setX(game.settings.clic2.getX());
+						Partie.getjEnCours().tbPiece[work].pos.setY(game.settings.clic2.getY());
+						game.plateau.echiq[game.settings.clic2.getX()]
+								[game.settings.clic2.getY()].setEstOccupe(Partie.getjEnCours().getCouleur());
+						game.plateau.echiq[game.settings.clic1.getX()]
+								[game.settings.clic1.getY()].setEstOccupe(Param.LIBRE);
 						
 						game.plateau.actualiser(game.jA,game.jB);
 						game.plateau.setVisible(true);
 						
 						game.settings.chgmJoueurActuel();
-						if (game.settings.getJoueurActuel() == 1) game.jEnCours = game.jA;
-						else game.jEnCours = game.jB;
-						game.tour(game.jEnCours);
+						if (game.settings.getJoueurActuel() == 1) {
+							Partie.setjEnCours(game.jA);
+						}
+						else Partie.setjEnCours(game.jB);
+						game.tour(Partie.getjEnCours());
 						
 					}}}});
 	}
