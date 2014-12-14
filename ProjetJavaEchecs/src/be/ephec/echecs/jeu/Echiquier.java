@@ -159,13 +159,5 @@ public class Echiquier extends JFrame {
 			this.echiq[tbP[i].getX()][tbP[i].getY()].setCliquable(true);
 		}
 	}
-
-	public Case[][] getEchiq() {
-		return echiq;
-	}
-
-	public void setEchiq(Case[][] echiq) {
-		this.echiq = echiq;
-	}
 	
 }

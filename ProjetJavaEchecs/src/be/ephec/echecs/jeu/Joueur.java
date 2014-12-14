@@ -12,6 +12,7 @@ public class Joueur {
 
 	protected String nom;
 	protected int nbVict;
+	protected String couleur;
 	
 	
 	// Tableau de 16 pièces
@@ -22,9 +23,10 @@ public class Joueur {
 	 * @param n : nom du joueur
 	 * @param c : couleur du joueur
 	 */
-	public Joueur(String n) {	
+	public Joueur(String n, String c) {	
 		this.setNom(n);
 		this.setNbVict(0);	
+		this.setCouleur(c);
 	}
 	
 	public Joueur(Piece[] tP){
@@ -83,6 +85,14 @@ public class Joueur {
 
 	public void setNbVict(int nbVict) {
 		this.nbVict = nbVict;
+	}
+	
+	public String getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
 	}
 
 }

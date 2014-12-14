@@ -16,27 +16,79 @@ import java.awt.event.ActionListener;
 
 public class Partie {
 	// nom du joueur à rentrer dans une fenetre 
-	protected Joueur  jA = new Joueur("");
-	protected Joueur  jB = new Joueur("");
-	protected Joueur  jEnCours = new Joueur("");
+	protected Joueur  jA = new Joueur("",Param.BLANC);
+	protected Joueur  jB = new Joueur("",Param.NOIR);
+	protected Joueur  jEnCours = new Joueur("","");
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 	protected boolean reset;
 	
 	public static void main(String[] args) {
 		Partie game = new Partie();	
-		
-		Echiquier.main(null);
-		game.initialisation();
-		game.plateau.actualiser(game.jA, game.jB);
+//		do {	
+				Echiquier.main(null);
+				game.initialisation();
+				game.plateau.actualiser(game.jA, game.jB); // Fonctionne
+				//Début de tour
 			
-		while (game.finPartie()==true) {			
+				Position workS[] = new Position[Joueur.NBPIECE];
 				
-                if (game.settings.getJoueurActuel() == 1)	game.tour(game.jA);
-				else									    game.tour(game.jB);
+				if (game.settings.getJoueurActuel()==1) {
+					workS = game.jA.genererSelect(game.plateau);
+					game.jEnCours = game.jA;
+				} else {
+					workS = game.jB.genererSelect(game.plateau);
+					game.jEnCours = game.jB;
+				}
 				
-				//game.settings.chgmJoueurActuel();
+				game.plateau.showPieceChoice(workS);
+				for (int i=0;i<Echiquier.NLIGNES;i++){
+					for (int j=0;j<Echiquier.NLIGNES;j++){
+						game.plateau.echiq[i][j].actions(game);
+					}
+				}
+			//	game.testPosPiece();
+				game.plateau.setVisible(true);
+				game.plateau.actualiser(game.jA, game.jB); // REFRESH
+				
+			
+		/*	while (game.finPartie()==true) {
+				
+				
+				// IMPLEMENTATION A UN JOUEUR
+				
+				
+				// FIN DE L IMPLEMENATION				
+				
+               /* if (game.settings.getJoueurActuel() == 1)
+					// TOUR DU JOUEUR 1
+				{
+					/*
+					 *  TODO :  1.locké tous les boutons pour le joueurs 2
+					 *  	   	2.le joueur 1 ne peut sélectionner que ces pièces (si elles sont toujours vivantes)
+					 *  		3.Après le premier clic :
+					 *  			retenir le premier clic 
+					 *  			générer cases vertes (déplacement) possibles
+					 *  			locké les cases impossibles à cliqué
+					 *  			p.s. : s'il clique sur une de ces pièces on rechange le premier clic ?
+					 *  		4.Après le second clic
+					 *  			faire le déplacement et eventuelles kills
+					 			
+					
+				} else
+					// TOUR DU JOUEUR 2
+				{
+					/*
+					 *  TODO :  .... inversément 
+					 
+				}
+				game.settings.chgmJoueurActuel();
 			}
+			
+			// TODO : A la fin de la partie demander l'accord de deux joueurs pour recommencer une partie
+		} while (game.reset==true);*/
+		 
+		 
 	}
 	
 	/**
@@ -57,7 +109,7 @@ public class Partie {
 	public int findPiece(Joueur j)  {
 		int work=-1;
 		for (int i=0;i<Joueur.NBPIECE;i++) {
-			if (this.settings.clic1==j.tbPiece[i].pos) {
+			if (this.settings.clic1.equals(j.tbPiece[i].pos)) {
 				work=i;
 			}
 		}
@@ -76,7 +128,7 @@ public class Partie {
 						this.jB.tbPiece[i].kill();
 					}
 				} else {
-					if (this.jA.tbPiece[i].pos==this.jB.tbPiece[j].pos) {
+					if (this.jA.tbPiece[i].pos.equals(this.jB.tbPiece[j].pos))  {
 						this.jA.tbPiece[i].kill();
 					}
 				}	
@@ -206,7 +258,7 @@ public class Partie {
 			}	
 	} while(!sortir);
 	
-	this.testPosPiece(); // KILL UNE EVENTUELLE PIECE
+	 // KILL UNE EVENTUELLE PIECE
 	this.plateau.actualiser(this.jA, this.jB); // REFRESH
 	this.plateau.setVisible(true);
 	}

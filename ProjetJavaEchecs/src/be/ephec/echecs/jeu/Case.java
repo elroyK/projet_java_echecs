@@ -43,6 +43,7 @@ public class Case extends JButton {
 		}
 		this.pos = new Position(x, y);
 		this.setPreferredSize(new Dimension(50, 50));
+		this.setEstOccupe(Param.LIBRE);
 	}
 		
 	
@@ -76,8 +77,9 @@ public class Case extends JButton {
 	
 	public void isCliquable() {
 		if (this.getCliquable()){
-			 this.setBackground(new Color(51, 153, 255));
+			if (this.getEstOccupe()==Param.LIBRE) this.setBackground(new Color(51, 153, 255));
 		}
+		else this.setBackgroundColor(this.couleur);
 	}
 	
 	
@@ -87,20 +89,44 @@ public class Case extends JButton {
 	 */
 	
 	public void actions(final Partie game){		
-		if (game.settings.getClic() == 0) {
-			this.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0){
+		this.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				if (Param.clic == 0) {
 					game.settings.clic1 = new Position(pos.getX(), pos.getY());
-					game.settings.setClic(game.settings.getClic()+1);
-			}});
-		} else if (game.settings.clic ==1){
-			this.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0){
+					Param.clic = 1;
+					System.out.println(game.settings.clic1.getX()+" "+game.settings.clic1.getY());
+					int work = game.findPiece(game.jEnCours);
+					Position[] tbPos = game.jEnCours.tbPiece[work].genererPos(game.plateau, game.jEnCours.getCouleur());
+					game.plateau.setButtonsCliquable(false);
+					for (int i=0; i<tbPos.length; i++){
+						game.plateau.echiq[tbPos[i].getX()][tbPos[i].getY()].setCliquable(true);
+						System.out.println(i +": "+tbPos[i].getX()+" "+tbPos[i].getY());
+					}
+					game.plateau.echiq[pos.getX()][pos.getY()].setCliquable(true);
+				} else if (Param.clic == 1) {
 					game.settings.clic2 = new Position(pos.getX(), pos.getY());
-					game.settings.setClic(game.settings.getClic()+1);
-				}
-			});
-		}
+					System.out.println(game.settings.clic2.getX()+" "+game.settings.clic2.getY());
+					System.out.println(Param.clic);
+					if (game.settings.clic2.equals(game.settings.clic1)){
+						Param.clic = 0;
+						System.out.println("Coucou");
+						game.plateau.setButtonsCliquable(false);
+						Position[] work = game.jEnCours.genererSelect(game.plateau);
+						for (int i=0;i<work.length;i++){
+							game.plateau.echiq[work[i].getX()][work[i].getY()].setCliquable(true);
+						}
+						game.plateau.setVisible(true);
+					}
+					else {
+						Param.clic = 2;
+						int work = game.findPiece(game.jEnCours);
+						game.jA.tbPiece[work].pos.setX(game.settings.clic2.getX());
+						game.jA.tbPiece[work].pos.setY(game.settings.clic2.getY());
+						
+						game.plateau.actualiser(game.jA,game.jB);
+						game.plateau.setVisible(true);
+						
+					}}}});
 	}
 	
 	/*
@@ -132,16 +158,6 @@ public class Case extends JButton {
 	
 	public boolean getCliquable() {
 		return cliquable;
-	}
-
-
-	public Position getPos() {
-		return pos;
-	}
-
-
-	public void setPos(Position pos) {
-		this.pos = pos;
 	}
 	
 }

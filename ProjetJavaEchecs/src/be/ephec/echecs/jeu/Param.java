@@ -12,7 +12,7 @@ public class Param {
 	public final static String LIBRE = "LIBRE";
 	
 	protected int joueurActuel; // 1 ou 2 (2joueurs..)
-	protected int clic; // CLIQUE 1 ou 2
+	static public int clic = 0; // CLIQUE 1 ou 2
 	protected Position clic1 = new Position();
 	protected Position clic2 = new Position();
 	
@@ -33,6 +33,11 @@ public class Param {
 	public void chgmJoueurActuel() {
 		if (this.getJoueurActuel()==1) {this.setJoueurActuel(this.getJoueurActuel()+1);}
 		else {this.setJoueurActuel(this.getJoueurActuel()-1);}
+	}
+	
+	public void incClic(boolean sens){
+		if (sens) this.clic++;
+		else this.clic--;
 	}
 
 	// GETTERS ET SETTERS

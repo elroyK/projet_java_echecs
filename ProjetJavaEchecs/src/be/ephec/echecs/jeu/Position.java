@@ -25,9 +25,9 @@ public class Position {
 	 * @param b : case en largeur
 	 */
 	
-	public Position(int a, int b) {
-		setX(b);
-		setY(a);
+	public Position(int x, int y) {
+		setX(x);
+		setY(y);
 	}
 	
 	/* GETTERS ET SETTERS */
