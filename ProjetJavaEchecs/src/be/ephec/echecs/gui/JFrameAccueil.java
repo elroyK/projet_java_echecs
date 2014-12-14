@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import be.ephec.echecs.tcp.*;
+
 import java.awt.GridBagLayout;
+import java.security.cert.CRLReason;
 
 public class JFrameAccueil extends JFrame {
 	protected JButton btnJeVeuxEtreS;
@@ -42,6 +44,7 @@ public class JFrameAccueil extends JFrame {
 				try {
 								
 					JFrameAccueil frame = new JFrameAccueil();
+					ControlerTCP c = new ControlerTCP(frame);
 					frame.setVisible(true);
 					
 				} catch (Exception e) {

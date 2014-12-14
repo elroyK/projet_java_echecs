@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 public class JPanelAccueil extends JPanel {
 	public String txtIp = new String();
 	private JTextField txtIpAdrverse;
+	protected ControlerTCP controler;
 	
 	public String getTxtIp() {
 		return txtIp;
@@ -73,7 +74,7 @@ public class JPanelAccueil extends JPanel {
 		getIp();
 		textArea.setText("Votre ip est : "+getTxtIp());
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
-		gbc_textArea.gridwidth = 4;
+		gbc_textArea.gridwidth = 3;
 		gbc_textArea.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
 		gbc_textArea.gridx = 3;

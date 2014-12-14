@@ -74,7 +74,7 @@ public class ControlerTCP {
 	 * @param b : Définit si c'est un Serveur ou un client
 	 */
 	
-	private void clientOuServeur(boolean b){	
+	public void clientOuServeur(boolean b){	
 		setServeur(b);
 		if(debug)System.out.println("debug isServer : "+b);
 		if(getIpFromLauncher()){
