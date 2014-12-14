@@ -76,7 +76,7 @@ public class Case extends JButton {
 	
 	public void isCliquable() {
 		if (this.getCliquable()){
-			if (this.getEstOccupe()==Param.LIBRE) this.setBackground(new Color(51, 153, 255));
+			 this.setBackground(new Color(51, 153, 255));
 		}
 	}
 	

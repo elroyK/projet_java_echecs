@@ -37,18 +37,42 @@ public class Partie {
 					workS = game.jA.genererSelect(game.plateau);
 				else workS = game.jB.genererSelect(game.plateau);
 				
-				game.plateau.showPieceChoice(workS);
+				int w = -1;
+				Position posWork[];
+				
+		
 				do {
 					for (int i=0;i<Echiquier.NLIGNES;i++){
 						for (int j=0;j<Echiquier.NLIGNES;j++){
 							game.plateau.echiq[i][j].actions(game);
 						}
 					}
-					game.plateau.setVisible(true);
-					//game.plateau.actualiser(game.jA, game.jB);
+					
+					// SI on a pas encore cliqué on montre les pièces disponibles
+					if (game.settings.getClic() == 0) {
+						game.plateau.showPieceChoice(workS);
+					}
+					
+					// Si on a cliqué sur une pièce, on propose les déplacements possibles
+					if (game.settings.getClic() == 1) {
+						w = game.findPiece(game.jA);
+						posWork = game.jA.tbPiece[w].genererPos(game.plateau, game.jA.tbPiece[w].getColor());
+						game.plateau.showMovement(posWork);
+					}
+					
+					if (game.settings.getClic()==2) {
+						// réinitialisation si on reclic sur la case
+						if (game.settings.getClic1()==game.settings.getClic2()) game.settings.setClic(0);
+						// déplacement de la pièce
+						game.jA.tbPiece[w].pos=game.settings.getClic2();
+					}
 					
 				} while(game.settings.getClic() !=2);
+				
+				
 				game.plateau.actualiser(game.jA, game.jB); // REFRESH
+				game.plateau.setVisible(true);
+				
 				
 			
 		/*	while (game.finPartie()==true) {
@@ -108,7 +132,7 @@ public class Partie {
 	public int findPiece(Joueur j)  {
 		int work=-1;
 		for (int i=0;i<Joueur.NBPIECE;i++) {
-			if (this.settings.clic1.equals(j.tbPiece[i].pos)) {
+			if (this.settings.clic1==j.tbPiece[i].pos) {
 				work=i;
 			}
 		}
@@ -123,11 +147,11 @@ public class Partie {
 		for (int i=0;i<Joueur.NBPIECE;i++) {
 			for (int j=0;j<Joueur.NBPIECE;i++) {
 				if (this.settings.getJoueurActuel()==1){
-					if (this.jA.tbPiece[i].pos.equals(this.jB.tbPiece[j].pos)) {
+					if (this.jA.tbPiece[i].pos==this.jB.tbPiece[j].pos) {
 						this.jB.tbPiece[i].kill();
 					}
 				} else {
-					if (this.jB.tbPiece[i].pos.equals(this.jB.tbPiece[j].pos)) {
+					if (this.jB.tbPiece[i].pos==this.jB.tbPiece[j].pos) {
 						this.jA.tbPiece[i].kill();
 					}
 				}	
@@ -209,12 +233,12 @@ public class Partie {
 		this.jB.tbPiece[15] = new Reine(4,0,"/img/reineN.gif",Param.NOIR);
 		this.plateau.echiq[3][0].setEstOccupe("NOIR");
 		
-		/*ActionListener listener = new CaseListener(this);
+		ActionListener listener = new CaseListener(this);
 		for (int x=0;x<Echiquier.NLIGNES;x++){
 			for (int y=0;y<Echiquier.NLIGNES;y++){
 				this.plateau.echiq[x][y].addActionListener(listener);
 			}
-		}*/
+		}
 		
 		this.plateau.setVisible(true);
 		this.settings.setJoueurActuel(1);
