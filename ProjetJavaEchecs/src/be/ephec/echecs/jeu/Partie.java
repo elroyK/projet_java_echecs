@@ -76,7 +76,7 @@ public class Partie {
 						this.jB.tbPiece[i].kill();
 					}
 				} else {
-					if (this.jB.tbPiece[i].pos==this.jB.tbPiece[j].pos) {
+					if (this.jA.tbPiece[i].pos==this.jB.tbPiece[j].pos) {
 						this.jA.tbPiece[i].kill();
 					}
 				}	
@@ -176,6 +176,8 @@ public class Partie {
 	
 		workS = joueur.genererSelect(this.plateau);
 		
+		boolean sortir = false;
+		
 		do {
 			for (int i=0;i<Echiquier.NLIGNES;i++){
 				for (int j=0;j<Echiquier.NLIGNES;j++){
@@ -199,10 +201,13 @@ public class Partie {
 				if (this.settings.getClic1()==this.settings.getClic2()) this.settings.setClic(0);
 				// déplacement de la pièce
 				joueur.tbPiece[w].pos=this.settings.getClic2();
+				sortir = true;
+				
 			}	
-	} while(this.settings.getClic() !=2);
+	} while(!sortir);
 	
-	this.plateau.actualiser(this.jA, this.jB); // REFRESH + KIll une éventuelle pièce
+	this.testPosPiece(); // KILL UNE EVENTUELLE PIECE
+	this.plateau.actualiser(this.jA, this.jB); // REFRESH
 	this.plateau.setVisible(true);
 	}
 	
