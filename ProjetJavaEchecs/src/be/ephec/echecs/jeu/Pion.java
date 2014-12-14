@@ -38,7 +38,7 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		
 		if (isSameTeam==Param.BLANC) {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].getEstOccupe();
-			if (isBusy==Param.LIBRE){
+			if (isBusy!=Param.BLANC){
 				work[0] = new Position(this.pos.getX(),this.pos.getY()-1) ;
 				n++;
 			}
@@ -55,7 +55,7 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 			
 		} else {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].getEstOccupe();
-			if (isBusy==Param.LIBRE){
+			if (isBusy!=Param.NOIR){
 				work[0] = new Position(this.pos.getX(),this.pos.getY()+1) ;
 				n++;
 			}
