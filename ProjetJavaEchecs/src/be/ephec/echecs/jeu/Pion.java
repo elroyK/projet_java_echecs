@@ -71,6 +71,7 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		
 		Position finalWork[] = new Position[n];
 		for (int i=0;i<n;i++) {
+			if (work[i].getX()<0) return new Position[0];
 			finalWork[i]=work[i];
 		}
 		
