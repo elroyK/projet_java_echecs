@@ -25,93 +25,18 @@ public class Partie {
 	
 	public static void main(String[] args) {
 		Partie game = new Partie();	
-//		do {	
-				Echiquier.main(null);
-				game.initialisation();
-				game.plateau.actualiser(game.jA, game.jB); // Fonctionne
-				//Début de tour
-			
-				Position workS[] = new Position[Joueur.NBPIECE];
-				
-				if (game.settings.getJoueurActuel()==1)
-					workS = game.jA.genererSelect(game.plateau);
-				else workS = game.jB.genererSelect(game.plateau);
-				
-				int w = -1;
-				Position posWork[];
-				
 		
-				do {
-					for (int i=0;i<Echiquier.NLIGNES;i++){
-						for (int j=0;j<Echiquier.NLIGNES;j++){
-							game.plateau.echiq[i][j].actions(game);
-						}
-					}
-					
-					// SI on a pas encore cliqué on montre les pièces disponibles
-					if (game.settings.getClic() == 0) {
-						game.plateau.showPieceChoice(workS);
-					}
-					
-					// Si on a cliqué sur une pièce, on propose les déplacements possibles
-					if (game.settings.getClic() == 1) {
-						w = game.findPiece(game.jA);
-						posWork = game.jA.tbPiece[w].genererPos(game.plateau, game.jA.tbPiece[w].getColor());
-						game.plateau.showMovement(posWork);
-					}
-					
-					if (game.settings.getClic()==2) {
-						// réinitialisation si on reclic sur la case
-						if (game.settings.getClic1()==game.settings.getClic2()) game.settings.setClic(0);
-						// déplacement de la pièce
-						game.jA.tbPiece[w].pos=game.settings.getClic2();
-					}
-					
-				} while(game.settings.getClic() !=2);
-				
-				
-				game.plateau.actualiser(game.jA, game.jB); // REFRESH
-				game.plateau.setVisible(true);
-				
-				
+		Echiquier.main(null);
+		game.initialisation();
+		game.plateau.actualiser(game.jA, game.jB);
 			
-		/*	while (game.finPartie()==true) {
+		while (game.finPartie()==true) {			
 				
+                if (game.settings.getJoueurActuel() == 1)	game.tour(game.jA);
+				else									    game.tour(game.jB);
 				
-				// IMPLEMENTATION A UN JOUEUR
-				
-				
-				// FIN DE L IMPLEMENATION				
-				
-               /* if (game.settings.getJoueurActuel() == 1)
-					// TOUR DU JOUEUR 1
-				{
-					/*
-					 *  TODO :  1.locké tous les boutons pour le joueurs 2
-					 *  	   	2.le joueur 1 ne peut sélectionner que ces pièces (si elles sont toujours vivantes)
-					 *  		3.Après le premier clic :
-					 *  			retenir le premier clic 
-					 *  			générer cases vertes (déplacement) possibles
-					 *  			locké les cases impossibles à cliqué
-					 *  			p.s. : s'il clique sur une de ces pièces on rechange le premier clic ?
-					 *  		4.Après le second clic
-					 *  			faire le déplacement et eventuelles kills
-					 			
-					
-				} else
-					// TOUR DU JOUEUR 2
-				{
-					/*
-					 *  TODO :  .... inversément 
-					 
-				}
-				game.settings.chgmJoueurActuel();
+				//game.settings.chgmJoueurActuel();
 			}
-			
-			// TODO : A la fin de la partie demander l'accord de deux joueurs pour recommencer une partie
-		} while (game.reset==true);*/
-		 
-		 
 	}
 	
 	/**
@@ -233,16 +158,54 @@ public class Partie {
 		this.jB.tbPiece[15] = new Reine(4,0,"/img/reineN.gif",Param.NOIR);
 		this.plateau.echiq[3][0].setEstOccupe("NOIR");
 		
-		ActionListener listener = new CaseListener(this);
+		/*ActionListener listener = new CaseListener(this);
 		for (int x=0;x<Echiquier.NLIGNES;x++){
 			for (int y=0;y<Echiquier.NLIGNES;y++){
 				this.plateau.echiq[x][y].addActionListener(listener);
 			}
-		}
+		}*/
 		
 		this.plateau.setVisible(true);
 		this.settings.setJoueurActuel(1);
-}
+	}
+	
+	public void tour(Joueur joueur) {
+		Position workS[] = new Position[Joueur.NBPIECE];
+    	int w = -1; // entier pour trouver la pièce séléctionnée
+		Position posWork[];
+	
+		workS = joueur.genererSelect(this.plateau);
+		
+		do {
+			for (int i=0;i<Echiquier.NLIGNES;i++){
+				for (int j=0;j<Echiquier.NLIGNES;j++){
+					this.plateau.echiq[i][j].actions(this);
+				}
+			}
+		
+			// SI on a pas encore cliqué on montre les pièces disponibles
+			if (this.settings.getClic() == 0) this.plateau.showPieceChoice(workS);
+		
+		
+			// Si on a cliqué sur une pièce, on propose les déplacements possibles
+			if (this.settings.getClic() == 1) {
+				w = this.findPiece(joueur);
+				posWork = joueur.tbPiece[w].genererPos(this.plateau, joueur.tbPiece[w].getColor());
+				this.plateau.showMovement(posWork);
+			}
+		
+			if (this.settings.getClic()==2) {
+				// réinitialisation si on reclic sur la case
+				if (this.settings.getClic1()==this.settings.getClic2()) this.settings.setClic(0);
+				// déplacement de la pièce
+				joueur.tbPiece[w].pos=this.settings.getClic2();
+			}	
+	} while(this.settings.getClic() !=2);
+	
+	this.plateau.actualiser(this.jA, this.jB); // REFRESH + KIll une éventuelle pièce
+	this.plateau.setVisible(true);
+	}
+	
 	
 	/**
 	 * finPartie, permet de mettre fin à une partie
