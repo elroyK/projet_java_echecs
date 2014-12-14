@@ -32,7 +32,7 @@ import be.ephec.echecs.jeu.Param;
 
 public class ControlerTCP { 
 	
-	protected boolean debug = true;
+	
 	protected JFrameAccueil launcher;
 	protected JPanelAccueil launcherJP;
 	
@@ -53,10 +53,10 @@ public class ControlerTCP {
 	private Client client = null;
 	
 	
-	public ControlerTCP(JFrameAccueil launcher){
+	public ControlerTCP(){
 		super();
-		this.launcher = launcher; 
-		actionBouton();
+		 
+		//actionBouton();
 		
 	}
 	
@@ -66,7 +66,8 @@ public class ControlerTCP {
 	/*Action du bouton d'accueil "je veux etre serveur"*/
 	launcher.getBtnJeVeuxEtreS().addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-			clientOuServeur(true);	
+			clientOuServeur(true);
+					
 		}
 	});
 	
@@ -79,6 +80,7 @@ public class ControlerTCP {
 	});
 	}	
 
+
 	/**
 	 * Méthode définissant si le joueur est le client ou le serveur
 	 * 
@@ -86,25 +88,26 @@ public class ControlerTCP {
 	 */
 	
 	public void clientOuServeur(boolean b){	
+		System.out.println("check 0");
 		setServeur(b);
-		if(debug)System.out.println("debug isServer : "+b);
+		System.out.println("check 1");
 		if(getIpFromLauncher()){
 			if(isServeur){
 				try {
 					serveur = new Serveur();
-					if(debug) System.out.println("Serveur en ligne et client accepté");
+					System.out.println("Serveur en ligne et client accepté");
 					serveur.write(new String("Bienvenue sur le seveur"));				
 				} catch (IOException e) {
-					//socketExceptionCatch(serveur);
+					e.printStackTrace();
 				}
 			} else {
 				try {
 					client = new Client(ipAdv,NUMPORT);
 					String str = client.read(String.class);
-					if(debug) System.out.println("Connecté au serveur");
-					if(debug) System.out.println(str);
+					 System.out.println("Connecté au serveur");
+					
 				} catch (IOException | ClassNotFoundException e) {
-					//socketExceptionCatch(client);
+				
 				}
 			}
 			launcher.dispose();
@@ -146,12 +149,13 @@ public class ControlerTCP {
 	/**
 	 * Méthode gérant l'envoi du client
 	 */
-	private void clientEnvoi(){
+/*	private void clientEnvoi(){
 		try {
-			client.write(cible);// Faire methode qui lie cible à clic2
+			client.write(game);// 
 			if(client.read(boolean.class)) {  
-				carre.actuali!se(null);//null doit être remplacé par l'adresse de la pièce qui vient de faire le mvt...
+				carre.actualise(null);//null doit être remplacé par l'adresse de la pièce qui vient de faire le mvt...
 				}						// ajouter un param de type Position à actualise()
+											
 			}catch (IOException | HeadlessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -180,6 +184,8 @@ public class ControlerTCP {
 				clientReception();
 			}
 		}
+}*/
 }
-}
+
+
 

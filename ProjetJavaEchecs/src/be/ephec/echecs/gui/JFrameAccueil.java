@@ -44,7 +44,7 @@ public class JFrameAccueil extends JFrame {
 				try {
 								
 					JFrameAccueil frame = new JFrameAccueil();
-					ControlerTCP c = new ControlerTCP(frame);
+					ControlerTCP c = new ControlerTCP();
 					frame.setVisible(true);
 					
 				} catch (Exception e) {
