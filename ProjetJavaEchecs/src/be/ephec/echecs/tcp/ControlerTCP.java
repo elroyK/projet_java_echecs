@@ -66,8 +66,7 @@ public class ControlerTCP {
 	/*Action du bouton d'accueil "je veux etre serveur"*/
 	launcher.getBtnJeVeuxEtreS().addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-			clientOuServeur(true);
-					
+			clientOuServeur(true);	
 		}
 	});
 	

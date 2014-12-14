@@ -63,6 +63,7 @@ public class JFrameAccueil extends JFrame {
 		setTitle("Launcher");
 		contentPane = new JPanelAccueil();
 		setContentPane(contentPane);
+		
 	}
 
 }

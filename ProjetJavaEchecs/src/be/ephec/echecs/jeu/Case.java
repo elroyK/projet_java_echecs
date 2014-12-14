@@ -126,6 +126,10 @@ public class Case extends JButton {
 						game.plateau.actualiser(game.jA,game.jB);
 						game.plateau.setVisible(true);
 						
+						game.settings.chgmJoueurActuel();
+						
+						game.tour(game.jEnCours);
+						
 					}}}});
 	}
 	
