@@ -26,6 +26,7 @@ public class Echiquier extends JFrame {
 	
 	protected Case echiq[][] = new Case[NLIGNES][NLIGNES];
 
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -158,4 +159,13 @@ public class Echiquier extends JFrame {
 			this.echiq[tbP[i].getX()][tbP[i].getY()].setCliquable(true);
 		}
 	}
+
+	public Case[][] getEchiq() {
+		return echiq;
+	}
+
+	public void setEchiq(Case[][] echiq) {
+		this.echiq = echiq;
+	}
+	
 }

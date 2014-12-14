@@ -133,4 +133,15 @@ public class Case extends JButton {
 	public boolean getCliquable() {
 		return cliquable;
 	}
+
+
+	public Position getPos() {
+		return pos;
+	}
+
+
+	public void setPos(Position pos) {
+		this.pos = pos;
+	}
+	
 }

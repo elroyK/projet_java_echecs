@@ -22,6 +22,8 @@ import javax.swing.JOptionPane;
 
 
 
+
+
 import be.ephec.echecs.gui.JFrameAccueil;
 import be.ephec.echecs.gui.JPanelAccueil;
 import be.ephec.echecs.jeu.*;
@@ -35,8 +37,9 @@ public class ControlerTCP {
 	protected JPanelAccueil launcherJP;
 	
 	protected Param clic;
-	protected Case cas;
+	protected Case carre;
 	protected Partie game;
+	protected Echiquier plateau;
 	
 	private boolean isServeur;
 	private String ipAdv;
@@ -146,20 +149,38 @@ public class ControlerTCP {
 	 */
 	private void clientEnvoi(){
 		try {
-			client.write(clic.getClic2());// soit 2 clic2 (moi et adv)//soit Position cible + methode pour lier au clic
+			client.write(cible);// Faire methode qui lie cible à clic2
 			if(client.read(boolean.class)) {  
-				game.testPosPiece();
-				if(client.read(boolean.class)) { 
-					cas.actualise(null);// Pas sur de devoir le faire ici mais null doit tre remplacé par l'adresse de la pièce qui vient de faire le mvt...
-				}
-			}else{
-				//déplacement			
-			}
-		} catch (IOException | HeadlessException | ClassNotFoundException e) {
+				carre.actuali!se(null);//null doit être remplacé par l'adresse de la pièce qui vient de faire le mvt...
+				}						// ajouter un param de type Position à actualise()
+			}catch (IOException | HeadlessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		//if(nbr de piece du joueur = 0){
 			showWin();
 		}
+	
+	
+	private void deuxiemeClic(MouseEvent evt){
+		
+		int x = ()evt.getSource()).getX();
+		int y = ()evt.getSource()).getY();
+		
+		cible = new Position(x,y);
+		if(plateau.getEchiq()[x][y].getEstOccupe()==Param.LIBRE) {
+			//déplacement
+		}
+		else{  
+			game.testPosPiece();
+			if(isServeur){
+				serveurEnvoi();
+				serveurReception();
+			}
+			else{
+				clientEnvoi();
+				clientReception();
+			}
+		}
+}
 }
 
