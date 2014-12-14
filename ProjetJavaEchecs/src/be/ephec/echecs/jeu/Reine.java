@@ -56,7 +56,7 @@ public class Reine extends Piece {
 		
 		Position finalWork[] = new Position[c];
 		for (int j=0;j<c;j++){
-			finalWork[i] = work[i];
+			finalWork[j] = work[j];
 		}
 		
 		return finalWork; 	

@@ -43,13 +43,13 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 				n++;
 			}
 			
-			//if (!this.isDejaJoue()) {
+			/*if (!this.isDejaJoue()) {
 				work[1] = new Position(this.pos.getX(),this.pos.getY()-2) ;
 				setDejaJoue(true);
 				n++;
-			//}	
+			}	
 			
-		/*	if (this.prisePassant(plateau)==(new Position())) {
+			if (this.prisePassant(plateau)==(new Position())) {
 				work[2] = this.prisePassant(plateau);
 			}*/
 			
@@ -59,12 +59,12 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 				work[0] = new Position(this.pos.getX(),this.pos.getY()+1) ;
 				n++;
 			}
-			if (!this.isDejaJoue()) {
+			/*	if (!this.isDejaJoue()) {
 				work[1] = new Position(this.pos.getX(),this.pos.getY()+2) ;
 				setDejaJoue(true);
 				n++;
 			}
-		/*	if (this.prisePassant(plateau)!=(new Position())) {
+			if (this.prisePassant(plateau)!=(new Position())) {
 				work[2] = this.prisePassant(plateau);
 			}*/
 		}
