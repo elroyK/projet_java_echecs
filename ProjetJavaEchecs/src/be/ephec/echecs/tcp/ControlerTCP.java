@@ -3,6 +3,8 @@ package be.ephec.echecs.tcp;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -18,16 +20,23 @@ import javax.swing.JOptionPane;
 
 
 
+
+
 import be.ephec.echecs.gui.JFrameAccueil;
 import be.ephec.echecs.gui.JPanelAccueil;
-import be.ephec.echecs.gui.Param;
-import be.ephec.echecs.jeu.Position;
+import be.ephec.echecs.jeu.*;
+import be.ephec.echecs.jeu.Param;
+
 
 public class ControlerTCP { 
 	
 	protected boolean debug = true;
 	protected JFrameAccueil launcher;
 	protected JPanelAccueil launcherJP;
+	
+	protected Param clic;
+	protected Case cas;
+	protected Partie game;
 	
 	private boolean isServeur;
 	private String ipAdv;
@@ -137,11 +146,14 @@ public class ControlerTCP {
 	 */
 	private void clientEnvoi(){
 		try {
-			client.write(cible);
+			client.write(clic.getClic2());// soit 2 clic2 (moi et adv)//soit Position cible + methode pour lier au clic
 			if(client.read(boolean.class)) {  
-				//Do something
+				game.testPosPiece();
+				if(client.read(boolean.class)) { 
+					cas.actualise(null);// Pas sur de devoir le faire ici mais null doit tre remplacé par l'adresse de la pièce qui vient de faire le mvt...
+				}
 			}else{
-				showWrongMove();			
+				//déplacement			
 			}
 		} catch (IOException | HeadlessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -149,6 +161,5 @@ public class ControlerTCP {
 		//if(nbr de piece du joueur = 0){
 			showWin();
 		}
-	}
- 
+}
 
