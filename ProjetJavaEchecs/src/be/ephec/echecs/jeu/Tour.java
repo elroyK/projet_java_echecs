@@ -1,15 +1,13 @@
 package be.ephec.echecs.jeu;
 /**
  * Classe Tour, représentant la pièce Tour
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 04/12/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  */
 
 public class Tour extends Piece {
 	final static int NBMOV = 14;
-	
-	protected boolean estRoquable;
 
 	public Tour() {
 		super();
@@ -24,13 +22,12 @@ public class Tour extends Piece {
 	
 	public Tour (int x, int y, String addImage, String color) {
 		super("Tour",addImage,true,x,y,color);
-		this.setEstRoquable(true);
 	}
 	
 	/**
-	 * genererPos : créer un tableau de position possible pour la tour en fonction des cases de l'échiquier
+	 * genererPos : créé un tableau de positions possibles pour la tour en fonction des cases de l'échiquier
 	 * @param : plateau : l'échiquier
-	 * @return : un tableau de position possible par la tour
+	 * @return : un tableau de positions possibles par la tour
 	 */
 
 	public Position[] genererPos(Echiquier plateau, String isSameTeam){
@@ -78,16 +75,6 @@ public class Tour extends Piece {
 		for (int i=0;i<c;i++) finalWork[i] = work[i];
 		
 		return finalWork;
-	}
-	
-	// GETTERS ET SETTERS
-	
-	public boolean isEstRoquable() {
-		return estRoquable;
-	}
-
-	public void setEstRoquable(boolean estRoquable) {
-		this.estRoquable = estRoquable;
 	}
 }
 

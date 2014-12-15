@@ -4,9 +4,9 @@ import java.lang.Math.*;
 
 /**
  * Classe Cavalier, représentant la pièce Cavalier
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 02/12/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  */
 
 public class Cavalier extends Piece {
@@ -24,9 +24,9 @@ public class Cavalier extends Piece {
 	}
 	
 	/**
-	 * genererPos : créer un tableau de position possible pour le cavalier en fonction des cases de l'échiquier
+	 * genererPos : créé un tableau de positions possibles pour le cavalier en fonction des cases de l'échiquier
 	 * @param : plateau : l'échiquier
-	 * @return : un tableau de position possible par le cavalier
+	 * @return : un tableau de positions possibles par le cavalier
 	 */
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		Position work[] = new Position[NBMOV];
