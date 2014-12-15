@@ -93,22 +93,22 @@ public class Case extends JButton {
 				if (Param.clic == 0) {
 					game.settings.clic1 = new Position(pos.getX(), pos.getY());
 					Param.clic = 1;
-					System.out.println(game.settings.clic1.getX()+" "+game.settings.clic1.getY());
 					int work = game.findPiece(Partie.getjEnCours(), game.settings.getClic1());
+					
 					Position[] tbPos = Partie.getjEnCours().tbPiece[work].genererPos(game.plateau, Partie.getjEnCours().getCouleur());
+					
 					game.plateau.setButtonsCliquable(false);
+					
 					for (int i=0; i<tbPos.length; i++){
 						game.plateau.echiq[tbPos[i].getX()][tbPos[i].getY()].setCliquable(true);
-						System.out.println(i +": "+tbPos[i].getX()+" "+tbPos[i].getY());
+		
 					}
 					game.plateau.echiq[pos.getX()][pos.getY()].setCliquable(true);
 				} else if (Param.clic == 1) {
 					game.settings.clic2 = new Position(pos.getX(), pos.getY());
-					System.out.println(game.settings.clic2.getX()+" "+game.settings.clic2.getY());
-					System.out.println(Param.clic);
+
 					if (game.settings.clic2.equals(game.settings.clic1)){
 						Param.clic = 0;
-						System.out.println("Coucou");
 						game.plateau.setButtonsCliquable(false);
 						Position[] work = Partie.getjEnCours().genererSelect(game.plateau);
 						for (int i=0;i<work.length;i++){
