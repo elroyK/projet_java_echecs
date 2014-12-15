@@ -1,15 +1,15 @@
 package be.ephec.echecs.jeu;
 /**
  * Classe Reine, représentant la pièce Reine
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 03/12/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  */
 
 public class Reine extends Piece {
 	final static int NBMOV = 28;
 	
-	// UNE REINE EST UN FOU ET UNE TOUR EN MEME TEMPS POUR SE DEPLACER
+	// UNE REINE EST UN FOU ET UNE TOUR EN MÊME TEMPS POUR SE DEPLACER
 	
 	/**
 	 * Constructeur de la classe Fou
@@ -23,9 +23,9 @@ public class Reine extends Piece {
 	}
 	
 	/**
-	 * genererPos : créer un tableau de position possible pour la reine en fonction des cases de l'échiquier
+	 * genererPos : créé un tableau de positions possibles pour la reine en fonction des cases de l'échiquier
 	 * @param : plateau : l'échiquier
-	 * @return : un tableau de position possible par la reine
+	 * @return : un tableau de positions possibles par la reine
 	 */
 	
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {

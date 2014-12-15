@@ -1,14 +1,14 @@
 package be.ephec.echecs.jeu;
 /**
  * Classe Piece, représentant une pièce de l'échiquier
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 04/12/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  */
 abstract public class Piece {
 	protected String nom;
 	protected String color;
-	protected String addIcone; // Adresse de l'image
+	protected String addIcone;
 	protected boolean inGame;
 	protected Position pos = new Position();
 	protected boolean dejaJoue;
@@ -37,7 +37,7 @@ abstract public class Piece {
 	abstract public Position[] genererPos(Echiquier plateau, String isSameTeam);
 	
 	/**
-	 * kill : permet de tuer une pièce
+	 * kill : permet de tuer la pièce
 	 */
 	
 	public void kill(){
@@ -48,15 +48,15 @@ abstract public class Piece {
 	/**
 	 * genererCaseCliquable : permet de générer les cases cliquables pour le déplacement de la pièce
 	 * @param plateau : Echiquier
-	 * @param tb : Tableau de position disponible pour les deplacements de la pièce
+	 * @param tb : Tableau de positions disponibles pour les déplacements de la pièce
 	 */
 	
 	public void genererCaseCliquable(Echiquier plateau, Position tb[]) {
-		// PARCOURS L ECHIQUIER EN X
+		// PARCOURS L'ECHIQUIER EN X
 		for (int i=0;i<8;i++) {
-			// PARCOURS L ECHIQUIER EN Y
+			// PARCOURS L'ECHIQUIER EN Y
 			for (int j=0;j<8;j++){	
-				// PARCOURS LE TABLEAU DE POSITION POSSIBLE PAR LA PIECE
+				// PARCOURS LE TABLEAU DE POSITIONS POSSIBLES PAR LA PIECE
 				for (int w=0;w<tb.length;w++) {
 					if (tb[w].equals(plateau.echiq[i][j].pos)) {
 						// SI LA CASE EST PRISE PAR UNE PIECE NOIRE
@@ -67,7 +67,7 @@ abstract public class Piece {
 							} else {
 								plateau.echiq[i][j].setCliquable(true);
 							}
-						} // SI LA CASE EST PRISE PAR UNE PIECE NOIRE
+						} // SI LA CASE EST PRISE PAR UNE PIECE BLANCHE
 						else if (plateau.echiq[i][j].getEstOccupe()==Param.BLANC){
 							// SI LA COULEUR DE CETTE PIECE EST BLANCHE
 							if (this.getColor()==Param.BLANC) {

@@ -1,9 +1,9 @@
 package be.ephec.echecs.jeu;
 /**
  * Classe Position, représentant la position d'une pièce sur l'échiquier
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 25/11/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  */
 
 public class Position {
@@ -20,7 +20,7 @@ public class Position {
 	}
 	
 	/**
-	 * Constructeur avec deux paramètres de la classe Position
+	 * Constructeur à deux paramètres de la classe Position
 	 * @param a : case en hauteur
 	 * @param b : case en largeur
 	 */

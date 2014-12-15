@@ -4,21 +4,19 @@ import java.awt.Color;
 
 /**
  * Classe Roi, représentant le Roi
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 03/12/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  */
 
 public class Roi extends Piece {
 	final static int NBMOV = 8;
 	
-	protected boolean estRoquable;
-	
 	/**
 	 * Constructeur de la classe Roi
 	 * @param x : position en x sur l'échiquier
 	 * @param y : position en y sur l'échiquier
-	 * @param addImage : adresse de l'image du bouton
+	 * @param addImage : adresse de l'image représentant le Roi
 	 */
 	
 	public Roi (int x, int y, String addImage, String color) {
@@ -26,7 +24,7 @@ public class Roi extends Piece {
 	}
 	
 	/**
-	 * genererPos : créer un tableau de position possible pour le roi en fonction des cases de l'échiquier
+	 * genererPos : créé un tableau de positions possibles pour le roi en fonction des cases de l'échiquier
 	 * @param : plateau : l'échiquier
 	 * @return : un tableau de position possible par le roi
 	 */
@@ -62,14 +60,5 @@ public class Roi extends Piece {
 		return finalWork; 	
 	}
 	
-	// GETTERS ET SETTERS
-
-	public boolean isEstRoquable() {
-		return estRoquable;
-	}
-
-	public void setEstRoquable(boolean estRoquable) {
-		this.estRoquable = estRoquable;
-	}
 }
 

@@ -3,9 +3,9 @@ package be.ephec.echecs.jeu;
 import java.lang.Math.*;
 /**
  * Classe Fou, représentant la pièce Fou
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 03/12/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  */
 	
 	public class Fou extends Piece {
@@ -27,9 +27,9 @@ import java.lang.Math.*;
 		}
 		
 		/**
-		 * genererPos : créer un tableau de position possible pour le fou en fonction des cases de l'échiquier
+		 * genererPos : créé un tableau de positions possibles pour le fou en fonction des cases de l'échiquier
 		 * @param : plateau : l'échiquier
-		 * @return : un tableau de position possible par le fou
+		 * @return : un tableau de positions possibles par le fou
 		 */
 		
 		public Position[] genererPos(Echiquier plateau, String isSameTeam){
