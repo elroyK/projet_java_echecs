@@ -94,7 +94,7 @@ public class Case extends JButton {
 					game.settings.clic1 = new Position(pos.getX(), pos.getY());
 					Param.clic = 1;
 					System.out.println(game.settings.clic1.getX()+" "+game.settings.clic1.getY());
-					int work = game.findPiece(Partie.getjEnCours());
+					int work = game.findPiece(Partie.getjEnCours(), game.settings.getClic1());
 					Position[] tbPos = Partie.getjEnCours().tbPiece[work].genererPos(game.plateau, Partie.getjEnCours().getCouleur());
 					game.plateau.setButtonsCliquable(false);
 					for (int i=0; i<tbPos.length; i++){
@@ -118,7 +118,7 @@ public class Case extends JButton {
 					}
 					else {
 						Param.clic = 2;
-						int work = game.findPiece(Partie.getjEnCours());
+						int work = game.findPiece(Partie.getjEnCours(), game.settings.getClic1());
 						Partie.getjEnCours().tbPiece[work].pos.setX(game.settings.clic2.getX());
 						Partie.getjEnCours().tbPiece[work].pos.setY(game.settings.clic2.getY());
 						game.plateau.echiq[game.settings.clic2.getX()]

@@ -1,7 +1,6 @@
 package be.ephec.echecs.jeu;
 
 import be.ephec.echecs.gui.*;
-import be.ephec.echecs.tcp.ControlerTCP;
 
 import javax.swing.*;
 
@@ -21,16 +20,15 @@ public class Partie {
 	private static Joueur  jEnCours = new Joueur("","");
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
-	protected boolean reset;
 
 	public static void main(String[] args) {
 		Partie game = new Partie();	
 			
 				Echiquier.main(null);
 				game.initialisation();
-				if (game.settings.getJoueurActuel()==1) game.setjEnCours(game.jA);
-				else game.setjEnCours(game.jB);
-				game.tour(game.getjEnCours());
+				if (game.settings.getJoueurActuel()==1) Partie.setjEnCours(game.jA);
+				else Partie.setjEnCours(game.jB);
+				game.tour(Partie.getjEnCours());
 
 	}
 	
@@ -39,25 +37,15 @@ public class Partie {
 	 */
 	
 	public Partie() {
-		this.reset = false;
-		this.settings.setClic(0);
+		Param.clic = 0;
 	}
 	
 	/**
 	 * findPiece, trouve la pièce ou se trouve clic1
-	 * @param : Le joueur, pour avoir ses pièces
+	 * @param j : Le joueur, pour avoir ses pièces
+	 * @param pos : La position pour laquelle on veut vérifier s'il y a une pièce dessus
 	 * @return : l'indice où se trouve la pièce dans le tableau de pièces du Joueur
 	 */
-	
-	public int findPiece(Joueur j)  {
-		int work=-1;
-		for (int i=0;i<Joueur.NBPIECE;i++) {
-			if (this.settings.clic1.equals(j.tbPiece[i].pos)) {
-				work=i;
-			}
-		}
-		return work;
-	}
 	
 	public int findPiece(Joueur j, Position pos)  {
 		int work=-1;
@@ -183,34 +171,53 @@ public class Partie {
 	
 	public void tour(Joueur joueur) {
 		
-	
 	Param.clic = 0;
-		
+	
 	Position workS[] = new Position[Joueur.NBPIECE];
 	
 	workS = joueur.genererSelect(this.plateau);
-	this.setjEnCours(joueur);
+	Partie.setjEnCours(joueur);
 	
 	
 	this.plateau.showPieceChoice(workS);
 	
-	if (this.settings.getJoueurActuel() == 1) this.setjEnCours(this.jA);
-	else this.setjEnCours(this.jB);
-	if (this.getjEnCours().estEchec(this)) {
-		this.plateau.echiq[Partie.getjEnCours().tbPiece[14].pos.getX()][Partie.getjEnCours().tbPiece[14].pos.getY()].setBackground(new Color(255,95,95));
-		this.plateau.setVisible(true);
-	}
+	if (this.settings.getJoueurActuel() == 1) Partie.setjEnCours(this.jA);
+	else Partie.setjEnCours(this.jB);
+	
+	Partie.getjEnCours().estEchec(this);
+	
+	if (this.estEnd()) this.finPartie();
 	
 	}
 	
 	
 	/**
 	 * finPartie, permet de mettre fin à une partie
-	 * @return : "true" si la partie est fini, "false" si la partie n'est pas fini
 	 */
+	public void finPartie() {
+		JFrame winEnd = new FenFinPartie(this);
+		winEnd.setVisible(true);
+	}
 	
-	public boolean finPartie() {
-		// TODO : Implémenter la méthode avec tous les tests.......................
+	public boolean estEnd() {
+		if (!Partie.getjEnCours().tbPiece[14].isInGame()) return true;
+		if (Partie.getjEnCours().estMat(this)) return true;
+		
+		return false;
+	}
+	
+	public boolean estPat(){
+		int nbPionsA=0;
+		int nbPionsB=0;
+		for (int i=0;i<8;i++){
+			if (this.jA.tbPiece[i].isInGame()) nbPionsA++;
+			if (this.jB.tbPiece[i].isInGame()) nbPionsB++;
+		}
+		if (nbPionsA > 1 || nbPionsB > 1) return false;
+		for (int i=8;i<16;i++){
+			if (this.jA.tbPiece[i].isInGame() && i!=14) return false;
+			if (this.jB.tbPiece[i].isInGame() && i!=14) return false;
+		}
 		return true;
 	}
 

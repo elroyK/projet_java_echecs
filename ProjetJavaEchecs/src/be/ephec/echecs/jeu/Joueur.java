@@ -14,7 +14,6 @@ public class Joueur {
 	final static int NBPIECE = 16;
 
 	protected String nom;
-	protected int nbVict;
 	protected String couleur;
 	
 	
@@ -28,13 +27,11 @@ public class Joueur {
 	 */
 	public Joueur(String n, String c) {	
 		this.setNom(n);
-		this.setNbVict(0);	
 		this.setCouleur(c);
 	}
 	
 	public Joueur(Piece[] tP){
 		this.setNom(null);
-		this.setNbVict(0);
 		this.tbPiece = tP;
 	}
 	
@@ -131,6 +128,8 @@ public class Joueur {
 		int p=0;
 		int nIdem=0;
 		
+		if (posW.length==0 || ennemi.length==0) return false;
+		
 		do{
 			do{
 				idem = posW[p].equals(ennemi[e]);
@@ -140,7 +139,10 @@ public class Joueur {
 			p++;
 			e=0;
 		} while(p<posW.length);
-		if (nIdem==posW.length) return true;
+		if (nIdem==posW.length && nIdem != 0 && this.estEchec(game)) {
+			System.out.println("Yolo");
+			return true;
+		}
 		return false;
 	}
 	
@@ -158,14 +160,6 @@ public class Joueur {
 		this.nom = nom;
 	}
 
-	public int getNbVict() {
-		return nbVict;
-	}
-
-	public void setNbVict(int nbVict) {
-		this.nbVict = nbVict;
-	}
-	
 	public String getCouleur() {
 		return couleur;
 	}
