@@ -1,4 +1,7 @@
 package be.ephec.echecs.jeu;
+
+import java.awt.Color;
+
 /**
  * Classe Joueur, représentant un joueur
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -63,6 +66,43 @@ public class Joueur {
 		
 		return finalWork;
 
+	}
+	
+	public boolean estEchec (Partie game) {
+		Joueur adverse = (game.settings.joueurActuel == 1) ? game.jB : game.jA;
+		Position work[] = adverse.genererSelect(game.plateau);
+		int i=0;
+		while(i<work.length && !this.tbPiece[14].pos.equals(work[i])) {
+			i++;
+		};
+		if (this.tbPiece[14].pos.equals(work[i])) {
+			game.plateau.echiq[this.tbPiece[14].pos.getX()][this.tbPiece[14].pos.getY()].setBackground(new Color(255,95,95));
+			game.plateau.setVisible(true);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean estMat (Partie game){
+		Joueur adverse = (game.settings.joueurActuel == 1) ? game.jB : game.jA;
+		Position ennemi[] = adverse.genererSelect(game.plateau);
+		Position posW[] = this.tbPiece[14].genererPos(game.plateau, this.getCouleur());
+		boolean idem = false;
+		int e=0;
+		int p=0;
+		int nIdem=0;
+		
+		do{
+			do{
+				idem = posW[p].equals(ennemi[e]);
+				if (idem) nIdem++;
+				e++;
+			}while (!idem && e<ennemi.length);
+			p++;
+			e=0;
+		} while(p<posW.length);
+		if (nIdem==posW.length) return true;
+		return false;
 	}
 	
 	// GETTERS ET SETTERS

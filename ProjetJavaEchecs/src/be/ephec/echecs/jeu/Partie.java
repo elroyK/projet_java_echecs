@@ -193,8 +193,13 @@ public class Partie {
 	
 	
 	this.plateau.showPieceChoice(workS);
+	
 	if (this.settings.getJoueurActuel() == 1) this.setjEnCours(this.jA);
 	else this.setjEnCours(this.jB);
+	if (this.getjEnCours().estEchec(this)) {
+		this.plateau.echiq[Partie.getjEnCours().tbPiece[14].pos.getX()][Partie.getjEnCours().tbPiece[14].pos.getY()].setBackground(new Color(255,95,95));
+		this.plateau.setVisible(true);
+	}
 	
 	}
 	

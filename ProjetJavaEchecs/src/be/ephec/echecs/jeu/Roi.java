@@ -1,4 +1,7 @@
 package be.ephec.echecs.jeu;
+
+import java.awt.Color;
+
 /**
  * Classe Roi, représentant le Roi
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -9,8 +12,6 @@ package be.ephec.echecs.jeu;
 public class Roi extends Piece {
 	final static int NBMOV = 8;
 	
-	protected boolean estEchec;
-	protected boolean estMat;
 	protected boolean estRoquable;
 	
 	/**
@@ -39,15 +40,17 @@ public class Roi extends Piece {
 		
 		for (int i=-1;i<=1;i++){
 			for (int j=-1;j<=1;j++){
+				int xW = this.pos.getX()+i;
+				int yW = this.pos.getY()+j;
 				if (!(i==0 && i==j)
-						&& this.pos.getX()+i >= 0
-						&& this.pos.getX()+i <= 7
-						&& this.pos.getY()+j >= 0
-						&& this.pos.getY()+j <= 7
-						&& !(plateau.echiq[this.pos.getX()+i][this.pos.getY()+j].getEstOccupe()==isSameTeam)){
-							work[c].setX(this.pos.getX()+i);
-							work[c].setY(this.pos.getY()+j);
-							c++;
+						&& xW >= 0
+						&& xW <= 7
+						&& yW >= 0
+						&& yW <= 7
+						&& !(plateau.echiq[xW][yW].getEstOccupe()==isSameTeam)){
+					work[c].setX(xW);
+					work[c].setY(yW);
+					c++;
 				}
 			}
 		}
@@ -60,22 +63,6 @@ public class Roi extends Piece {
 	}
 	
 	// GETTERS ET SETTERS
-
-	public boolean isEstEchec() {
-		return estEchec;
-	}
-
-	public void setEstEchec(boolean estEchec) {
-		this.estEchec = estEchec;
-	}
-
-	public boolean isEstMat() {
-		return estMat;
-	}
-
-	public void setEstMat(boolean estMat) {
-		this.estMat = estMat;
-	}
 
 	public boolean isEstRoquable() {
 		return estRoquable;
