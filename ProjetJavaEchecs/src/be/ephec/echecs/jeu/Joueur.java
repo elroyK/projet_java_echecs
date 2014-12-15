@@ -2,8 +2,6 @@ package be.ephec.echecs.jeu;
 
 import java.awt.Color;
 
-import be.ephec.echecs.gui.FenPromotion;
-
 /**
  * Classe Joueur, représentant un joueur
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
