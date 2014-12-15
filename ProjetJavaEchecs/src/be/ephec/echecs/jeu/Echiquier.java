@@ -8,9 +8,10 @@ import java.awt.*;
 
 /**
  * Classe Echiquier, représentant le plateau du jeu (8/8 cases)
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 25/11/14
+ * date de modification : 02/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
+
  */
 public class Echiquier extends JFrame {
 	
@@ -73,7 +74,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * Créer les paramètres pour les cases du GridBagLayout
+	 * Créé les paramètres pour les cases du GridBagLayout
 	 */
 
 	public void creationTableaux(){
@@ -92,7 +93,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * setButtonCliquable : rend tous les boutons cliquables où non
+	 * setButtonCliquable : rend tous les boutons cliquables ou non
 	 * @param b : true, rend les boutons cliquables
 	 */
 	public void setButtonsCliquable(boolean b) {
@@ -104,7 +105,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * actualiser, permet de refresh la l'echiquier pour pouvoir déplacer une pièce
+	 * actualiser, permet de refresh l'échiquier pour pouvoir déplacer une pièce
 	 * @param j1 : joueur A, pour ses pièces
 	 * @param j2 : joueur B, pour ses pièces
 	 */
@@ -123,7 +124,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * Vide toutes les images des cases, afin de rafraîchir l'echiquier
+	 * Vide toutes les images des cases, afin de rafraîchir l'échiquier
 	 */
 	
 	public void viderEchiquier(){
@@ -135,7 +136,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * showPieceChoice : permet de montrer à l'utilisateur les pièces où peut cliquer
+	 * showPieceChoice : permet de montrer à l'utilisateur les pièces où il peut cliquer
 	 * @param tbP : tableau de pièces qu'on peut déplacer
 	 */
 	
@@ -148,7 +149,7 @@ public class Echiquier extends JFrame {
 	}
 	
 	/**
-	 * showChoiceAvailable : permet de montrer à l'utilisateur les zones où on peut déplacer la pièce.
+	 * showChoiceAvailable : permet de montrer à l'utilisateur les zones où il peut déplacer la pièce.
 	 * @param tbP : tableau de positions disponibles pour déplacer la pièce.
 	 */
 	

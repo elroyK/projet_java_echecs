@@ -1,9 +1,10 @@
 package be.ephec.echecs.jeu;
 /**
  * Classe Param, représentant les paramètres de la partie
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 26/11/14
+ * date de modification : 14/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
+ * 
  */
 
 public class Param {
@@ -33,11 +34,6 @@ public class Param {
 	public void chgmJoueurActuel() {
 		if (this.getJoueurActuel()==1) {this.setJoueurActuel(this.getJoueurActuel()+1);}
 		else {this.setJoueurActuel(this.getJoueurActuel()-1);}
-	}
-	
-	public void incClic(boolean sens){
-		if (sens) this.clic++;
-		else this.clic--;
 	}
 
 	// GETTERS ET SETTERS

@@ -8,14 +8,12 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import java.util.EventListener.*;
-import java.awt.event.*;
-
 /**
  * Classe Case, représentant une case de l'échiquier
- * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 25/11/14
- * date de modification : 08/12/14
+ * date de modification : 15/12/14
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
+ * 
  */
 
 //import javax.swing.JButton;
@@ -28,7 +26,7 @@ public class Case extends JButton {
 	
 	/**
 	 * Constructeur de la classe Case
-	 * @param col : Booleen représentant true (Blanc) et false(Noir)
+	 * @param col : Booleen représentant Blanc (true) et Noir (false)
 	 * @param x : position en x sur l'échiquier
 	 * @param y : position en y sur l'échiquier
 	 */
@@ -49,6 +47,7 @@ public class Case extends JButton {
 	
 	/**
 	 * Actualise l'image de fond d'une case
+	 * @param add : adresse de l'image
 	 */
 	
 	public void actualise(String add) {

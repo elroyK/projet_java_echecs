@@ -1,5 +1,13 @@
 package be.ephec.echecs.gui;
 
+/**
+* Classe JPanelAccueil, permet de créer le contenu de ce qui sera affiché dans la JFrameAccueil
+* date de création : 13/12/14
+* date de modification : 15/12/14
+* @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
+* 
+*/
+
 import javax.swing.JPanel;
 
 import java.awt.GridBagLayout;
@@ -23,26 +31,18 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 public class JPanelAccueil extends JPanel {
-	public String txtIp = new String();
-	private JTextField txtIpAdrverse;
-	protected ControlerTCP controler;
-	public Serveur serveur;
-	public Client client;
-	private String ipAdv;
-	public boolean isServeur;
+	protected String txtIp = new String();
+	protected JTextField txtIpAdrverse;
 	
-	private static int NUMPORT=62500;
+	protected Serveur serveur;
+	protected Client client;
+	protected String ipAdv;
+	protected boolean isServeur;
 	
-	public String getTxtIp() {
-		return txtIp;
-	}
-
-	public void setTxtIp(String txtIp) {
-		this.txtIp = txtIp;
-	}
+	protected static int NUMPORT=62500;
 	
 	/**
-	 * Create the panel.
+	 * Constructeur du JPanel
 	 */
 	public JPanelAccueil() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -56,15 +56,7 @@ public class JPanelAccueil extends JPanel {
 		JButton btnJeVeuxEtreS = new JButton("Je veux etre serveur");
 		btnJeVeuxEtreS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Serveur");
-				try {
-					serveur = new Serveur();
-					System.out.println("Serveur en ligne et client accepté");
-					serveur.write(new String("Bienvenue sur le seveur"));				
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				//controler.clientOuServeur(true);
+			clientOuServeur(true);
 						
 			}
 		});
@@ -77,22 +69,9 @@ public class JPanelAccueil extends JPanel {
 		
 		/*Bouton d'accueil pour devenir client*/ 
 		JButton btnJeVeuxEtreC = new JButton("Je veux etre client");
-		
 		btnJeVeuxEtreC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					System.out.println("check client");
-					ipAdv = getTxtIpAdrverse().getText();
-					System.out.println(ipAdv);
-					client = new Client(ipAdv,NUMPORT);
-					String str = client.read(String.class);
-					 System.out.println("Connecté au serveur");
-					 System.out.println(str);
-					
-				} catch (IOException | ClassNotFoundException e) {
-				
-				}
-				//controler.clientOuServeur(false);
+				clientOuServeur(false);
 			}
 		});
 	
@@ -134,18 +113,15 @@ public class JPanelAccueil extends JPanel {
 	/**
 	 * Méthode définissant si le joueur est le client ou le serveur
 	 * 
-	 * @param b : Définit si c'est un Serveur ou un client
+	 * @param b : true si serveur, false si client
 	 */
 	
 	public void clientOuServeur(boolean b){	
-		
 		setServeur(b);
-		
 		if(getIpFromLauncher()){
 			if(isServeur){
 				try {
 					serveur = new Serveur();
-					System.out.println("Serveur en ligne et client accepté");
 					serveur.write(new String("Bienvenue sur le seveur"));				
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -154,7 +130,7 @@ public class JPanelAccueil extends JPanel {
 				try {
 					client = new Client(ipAdv,NUMPORT);
 					String str = client.read(String.class);
-					 System.out.println("Connecté au serveur");
+					 System.out.println(str);
 					
 				} catch (IOException | ClassNotFoundException e) {
 				
@@ -185,15 +161,10 @@ public class JPanelAccueil extends JPanel {
 		}
 		return true;
 	}
-	
-	public JTextField getTxtIpAdrverse() {
-		return txtIpAdrverse;
-	}
-
-	public void setTxtIpAdrverse(JTextField txtIpAdrverse) {
-		this.txtIpAdrverse = txtIpAdrverse;
-	}
-
+	/**
+	 * Méthode qui recupère l'adresse ip du pc et la transforme en String 
+	 * @return txtIp : adresse ip sous forme d'un string
+	 */
 	public String getIp(){
 		try {
 			txtIp = Inet4Address.getLocalHost().toString();
@@ -204,5 +175,22 @@ public class JPanelAccueil extends JPanel {
 		return txtIp;
 	}
 	
+	//GETTERS ET SETTERS
+	public JTextField getTxtIpAdrverse() {
+		return txtIpAdrverse;
 	}
+
+	public void setTxtIpAdrverse(JTextField txtIpAdrverse) {
+		this.txtIpAdrverse = txtIpAdrverse;
+	}
+	
+	public String getTxtIp() {
+		return txtIp;
+	}
+
+	public void setTxtIp(String txtIp) {
+		this.txtIp = txtIp;
+	}
+}	
+
 	

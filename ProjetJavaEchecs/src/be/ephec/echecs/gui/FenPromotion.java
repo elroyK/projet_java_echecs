@@ -1,4 +1,12 @@
 package be.ephec.echecs.gui;
+/**
+* Classe FenPromotion, crée la fenêtre de choix lorsque la promotion est disponible pour un pion
+* date de création : 14/12/14
+* date de modification : 14/12/14
+* @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
+* 
+*/
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -54,7 +62,7 @@ public class FenPromotion extends JFrame {
 		
 		txtChoisissezEnQuoi = new JTextField();
 		txtChoisissezEnQuoi.setEditable(false);
-		txtChoisissezEnQuoi.setText("Choisissez en quoi votre pi\u00E8ce sera promue :");
+		txtChoisissezEnQuoi.setText("Choisissez en quoi votre piece sera promue :");
 		getContentPane().add(txtChoisissezEnQuoi, BorderLayout.NORTH);
 		txtChoisissezEnQuoi.setColumns(10);
 		

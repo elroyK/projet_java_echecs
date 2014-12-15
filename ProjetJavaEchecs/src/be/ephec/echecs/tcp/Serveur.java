@@ -10,27 +10,33 @@ import java.net.Socket;
 import javax.swing.JOptionPane;
 
 /**
- * La classe Serveur permet de créer un serveur à l'aide d'un Socket
+ *La classe Serveur permet de créer un serveur à l'aide d'un ServerSocket
+ *date de création : 12/12/14
+ *date de modification : 14/12/14
+ *@author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * 
  */
-
+ 
 public class Serveur {
 	
-	private ServerSocket serverSock;
-	private Socket socketForAccept;
+	protected ServerSocket serverSocket;
+	protected Socket socketForAccept;
 	
-	private ObjectOutputStream out;
-	private ObjectInputStream in;
+	protected ObjectOutputStream out;
+	protected ObjectInputStream in;
 	
-	private int numPort = 62500;
+	protected int numPort = 62500;
 	
+	/**
+	 * Constructeur de la classe Serveur, se connecte directement sur le port passé 
+	 * en variable (numPort)
+	 */
 	
 	public Serveur(){
 			try {
-				serverSock = new ServerSocket(numPort);
-				System.out.println("Debug");
+				serverSocket = new ServerSocket(numPort);
 				JOptionPane.showMessageDialog(null, "Serveur à l'écoute sur le port "+numPort);
-				socketForAccept = serverSock.accept();
+				socketForAccept = serverSocket.accept();
 				
 				out = new ObjectOutputStream(socketForAccept.getOutputStream());
 					out.flush();
@@ -38,7 +44,7 @@ public class Serveur {
 				in = new ObjectInputStream(socketForAccept.getInputStream());
 
 			} catch (IOException e) {
-
+					e.printStackTrace();
 			}
 
 	}
