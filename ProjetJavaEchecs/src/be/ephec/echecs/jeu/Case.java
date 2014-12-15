@@ -127,6 +127,9 @@ public class Case extends JButton {
 						game.plateau.echiq[game.settings.clic1.getX()]
 								[game.settings.clic1.getY()].setEstOccupe(Param.LIBRE);
 						
+						if (!Partie.getjEnCours().tbPiece[work].isDejaJoue())
+							Partie.getjEnCours().tbPiece[work].setDejaJoue(true);
+						
 						int iJA = game.findPiece(game.jA, game.settings.clic2);
 						int iJB = game.findPiece(game.jB, game.settings.clic2);
 						

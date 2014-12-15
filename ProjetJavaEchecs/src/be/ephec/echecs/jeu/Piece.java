@@ -11,6 +11,7 @@ abstract public class Piece {
 	protected String addIcone; // Adresse de l'image
 	protected boolean inGame;
 	protected Position pos = new Position();
+	protected boolean dejaJoue;
 	
 	public Piece() {
 	}
@@ -30,6 +31,7 @@ abstract public class Piece {
 		pos.setX(x);
 		pos.setY(y);
 		setColor(c);
+		setDejaJoue(false);
 	}
 	
 	abstract public Position[] genererPos(Echiquier plateau, String isSameTeam);
@@ -113,7 +115,14 @@ abstract public class Piece {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public boolean isDejaJoue() {
+		return dejaJoue;
+	}
+	
+	public void setDejaJoue(boolean dejaJoue) {
+		this.dejaJoue = dejaJoue;
 	}	
+
 }
-
-

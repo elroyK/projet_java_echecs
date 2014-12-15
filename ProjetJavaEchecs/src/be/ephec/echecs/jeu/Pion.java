@@ -8,8 +8,7 @@ package be.ephec.echecs.jeu;
  */
 
 public class Pion extends Piece {
-	final static int NBMOV = 2;
-	protected boolean dejaJoue;
+	final static int NBMOV = 4;
 	
 	/**
 	 * Constructeur de la classe Pion
@@ -20,7 +19,6 @@ public class Pion extends Piece {
 	
 	public Pion(int x, int y, String addImage, String color) {
 		super("Pion",addImage,true,x,y, color);
-		setDejaJoue(false);
 	}
 	
 	/**
@@ -34,20 +32,28 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		Position work[] = new Position[NBMOV];
 		int n = 0;
 		
-		for (int i=0;i<NBMOV;i++) work[i] = new Position();
+		//for (int i=0;i<NBMOV;i++) work[i] = new Position();
 		
 		if (isSameTeam==Param.BLANC) {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].getEstOccupe();
 			if (isBusy==Param.LIBRE){
-				work[0] = new Position(this.pos.getX(),this.pos.getY()-1) ;
+				work[n] = new Position(this.pos.getX(),this.pos.getY()-1) ;
 				n++;
+				if (!this.isDejaJoue()) {
+					work[n] = new Position(this.pos.getX(),this.pos.getY()-2) ;
+					n++;
+				}
 			}
-			
-			//if (!this.isDejaJoue()) {
-				work[1] = new Position(this.pos.getX(),this.pos.getY()-2) ;
-				setDejaJoue(true);
-				n++;
-			//}	
+			for (int w=-1; w<=1; w++){
+				if (w!=0 && this.pos.getX()>0 && this.pos.getX()<7){
+					if (this.pos.getX()+w>=0
+							&& this.pos.getX()+w<=7
+							&& plateau.echiq[this.pos.getX()+w][this.pos.getY()-1].getEstOccupe() == Param.NOIR){
+						work[n] = new Position(this.pos.getX()+w, this.pos.getY()-1);
+						n++;
+					}
+				}
+			}
 			
 		/*	if (this.prisePassant(plateau)==(new Position())) {
 				work[2] = this.prisePassant(plateau);
@@ -56,15 +62,25 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		} else {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].getEstOccupe();
 			if (isBusy==Param.LIBRE){
-				work[0] = new Position(this.pos.getX(),this.pos.getY()+1) ;
+				work[n] = new Position(this.pos.getX(),this.pos.getY()+1) ;
 				n++;
+				if (!this.isDejaJoue()) {
+					work[n] = new Position(this.pos.getX(),this.pos.getY()+2) ;
+					n++;
+				}
 			}
-			/*	if (!this.isDejaJoue()) {
-				work[1] = new Position(this.pos.getX(),this.pos.getY()+2) ;
-				setDejaJoue(true);
-				n++;
+			for (int w=-1; w<=1; w++){
+				if (w!=0 && this.pos.getX()>=0 && this.pos.getX()<=7){
+					if (this.pos.getX()+w>=0
+							&& this.pos.getX()+w<=7
+							&& plateau.echiq[this.pos.getX()+w][this.pos.getY()+1].getEstOccupe() == Param.BLANC){
+						work[n] = new Position(this.pos.getX()+w, this.pos.getY()+1);
+						n++;
+					}
+				}
 			}
-			if (this.prisePassant(plateau)!=(new Position())) {
+			
+			/*if (this.prisePassant(plateau)!=(new Position())) {
 				work[2] = this.prisePassant(plateau);
 			}*/
 		}
@@ -149,14 +165,4 @@ public Position[] genererPos(Echiquier plateau, String isSameTeam) {
 		
 		return work;
 	}
-
-	/* GETTERS ET SETTERS */
-	public boolean isDejaJoue() {
-		return dejaJoue;
-	}
-
-	public void setDejaJoue(boolean dejaJoue) {
-		this.dejaJoue = dejaJoue;
-	}
-	
 }
