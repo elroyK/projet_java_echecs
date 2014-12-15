@@ -22,7 +22,7 @@ public class Partie {
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 	protected boolean reset;
-	
+
 	public static void main(String[] args) {
 		Partie game = new Partie();	
 			
@@ -220,6 +220,14 @@ public class Partie {
 
 	public static void setjEnCours(Joueur jEnCours) {
 		Partie.jEnCours = jEnCours;
+	}
+	
+	public Joueur getJA() {
+		return jA;
+	}
+	
+	public Joueur getJB() {
+		return jB;
 	}
 
 }
