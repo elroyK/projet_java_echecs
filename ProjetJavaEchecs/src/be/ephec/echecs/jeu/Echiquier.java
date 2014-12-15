@@ -112,7 +112,7 @@ public class Echiquier extends JFrame {
 	public void actualiser(Joueur j1, Joueur j2){
 		this.viderEchiquier(); 
 		for (int i=0; i<Joueur.NBPIECE;i++){
-			if (j1.tbPiece[0].isInGame()){
+			if (j1.tbPiece[i].isInGame()){
 				this.echiq[j1.tbPiece[i].pos.getX()][j1.tbPiece[i].pos.getY()].actualise(j1.tbPiece[i].getAddIcone());
 			}
 			if (j2.tbPiece[i].isInGame()){

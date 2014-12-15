@@ -68,16 +68,55 @@ public class Joueur {
 
 	}
 	
+	public Position[] allMove(Echiquier plateau){
+		Position work[] = new Position[Reine.NBMOV];
+		Position finalWork[] = new Position[Echiquier.NBOUTONS];
+		int fWLength = 0;
+		for (int i=0;i<this.tbPiece.length;i++){
+			if (this.tbPiece[i].isInGame()){
+				work = this.tbPiece[i].genererPos(plateau, this.getCouleur());
+				for (int j=0;j<work.length;j++){
+					finalWork[fWLength] = work[j];
+					fWLength++;
+				}
+			}
+		}
+		Position aReturn[] = new Position[fWLength];
+		for (int i=0;i<fWLength;i++){
+			aReturn[i] = finalWork[i];
+		}
+		
+		return aReturn;
+	}
+	
 	public boolean estEchec (Partie game) {
 		Joueur adverse = (game.settings.joueurActuel == 1) ? game.jB : game.jA;
-		Position work[] = adverse.genererSelect(game.plateau);
+		Joueur present = (game.settings.joueurActuel == 1) ? game.jA : game.jB;
+		
+		/*for (int i=0;i<adverse.tbPiece.length;i++) {
+			if (adverse.tbPiece[i].isInGame()){
+				Position work[]=adverse.tbPiece[i].genererPos(game.plateau, adverse.getCouleur());
+				for (int j=0;j<work.length;j++) {
+					if (present.tbPiece[14].pos.equals(adverse.tbPiece[i].genererPos))
+						game.plateau.echiq[present.tbPiece[14].pos.getX()][present.tbPiece[14].pos.getY()].setBackground(new Color(255,95,95));
+						
+						return true;
+				}
+			}
+		}
+		return false;*/
+		
+		
+		
+		Position pWork[] = adverse.allMove(game.plateau);
 		int i=0;
-		while(i<work.length && !this.tbPiece[14].pos.equals(work[i])) {
+		while(i<pWork.length && !this.tbPiece[14].pos.equals(pWork[i])) {
 			i++;
 		};
-		if (this.tbPiece[14].pos.equals(work[i])) {
+		if (i<pWork.length && this.tbPiece[14].pos.equals(pWork[i])) {
 			game.plateau.echiq[this.tbPiece[14].pos.getX()][this.tbPiece[14].pos.getY()].setBackground(new Color(255,95,95));
 			game.plateau.setVisible(true);
+			System.out.println("Ahoy");
 			return true;
 		}
 		return false;
@@ -85,7 +124,7 @@ public class Joueur {
 	
 	public boolean estMat (Partie game){
 		Joueur adverse = (game.settings.joueurActuel == 1) ? game.jB : game.jA;
-		Position ennemi[] = adverse.genererSelect(game.plateau);
+		Position ennemi[] = adverse.allMove(game.plateau);
 		Position posW[] = this.tbPiece[14].genererPos(game.plateau, this.getCouleur());
 		boolean idem = false;
 		int e=0;

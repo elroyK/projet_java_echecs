@@ -135,7 +135,7 @@ public class Case extends JButton {
 						
 						switch (game.settings.joueurActuel){
 						case 1 : if (iJB != -1) game.jB.tbPiece[iJB].kill();break;
-						case 2 : if (iJA != -1) game.jB.tbPiece[iJA].kill();break;
+						case 2 : if (iJA != -1) game.jA.tbPiece[iJA].kill();break;
 						}
 						game.plateau.actualiser(game.jA,game.jB);
 						game.plateau.setVisible(true);

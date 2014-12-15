@@ -49,11 +49,25 @@ import java.lang.Math.*;
 								&& tempX >= 0
 								&& tempY <= 7
 								&& tempY >= 0
-								&& !(plateau.echiq[tempX][tempY].getEstOccupe()==isSameTeam)){
+								&& plateau.echiq[tempX][tempY].getEstOccupe().equals(Param.LIBRE)){
 							work[c].setX(tempX);
 							work[c].setY(tempY);
 							tempX += i;
 							tempY += j;
+							c++;
+						}
+						String oppositeTeam = "";
+						switch (isSameTeam){
+						case Param.BLANC : oppositeTeam = Param.NOIR;break;
+						case Param.NOIR : oppositeTeam = Param.BLANC;break;
+						}
+						if (tempX <= 7
+								&& tempX >= 0
+								&& tempY <= 7
+								&& tempY >= 0
+								&& plateau.echiq[tempX][tempY].getEstOccupe().equals(oppositeTeam)){
+							work[c].setX(tempX);
+							work[c].setY(tempY);
 							c++;
 						}
 					}
