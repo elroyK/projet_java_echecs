@@ -17,6 +17,7 @@ import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -28,6 +29,7 @@ public class JPanelAccueil extends JPanel {
 	public Serveur serveur;
 	public Client client;
 	private String ipAdv;
+	public boolean isServeur;
 	
 	private static int NUMPORT=62500;
 	
@@ -129,10 +131,60 @@ public class JPanelAccueil extends JPanel {
 		gbc_textArea.gridy = 5;
 		add(textArea, gbc_textArea);
 		}
+	/**
+	 * Méthode définissant si le joueur est le client ou le serveur
+	 * 
+	 * @param b : Définit si c'est un Serveur ou un client
+	 */
 	
-	
-	
+	public void clientOuServeur(boolean b){	
 		
+		setServeur(b);
+		
+		if(getIpFromLauncher()){
+			if(isServeur){
+				try {
+					serveur = new Serveur();
+					System.out.println("Serveur en ligne et client accepté");
+					serveur.write(new String("Bienvenue sur le seveur"));				
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else {
+				try {
+					client = new Client(ipAdv,NUMPORT);
+					String str = client.read(String.class);
+					 System.out.println("Connecté au serveur");
+					
+				} catch (IOException | ClassNotFoundException e) {
+				
+				}
+			}
+		
+			JOptionPane.showMessageDialog(null, "Connexion établie !\n");
+		}
+		else JOptionPane.showMessageDialog(null, "Adresse Ip non valide");
+	}
+	
+	private void setServeur(boolean isServeur){
+		this.isServeur = isServeur;		
+	}
+	
+	/**
+	 * Méthode qui obtient l'adresse ip du launcher et la place dans une variable 
+	 * 
+	 * @return false si l'adresse ip n'est pas valide, sinon True.
+	 */
+	private boolean getIpFromLauncher(){
+		ipAdv = getTxtIpAdrverse().getText();	
+		try {
+	
+			InetAddress ip = InetAddress.getByName(ipAdv);
+		} catch (UnknownHostException e) {
+			return false;
+		}
+		return true;
+	}
 	
 	public JTextField getTxtIpAdrverse() {
 		return txtIpAdrverse;
@@ -150,16 +202,6 @@ public class JPanelAccueil extends JPanel {
 			e.printStackTrace();
 		}
 		return txtIp;
-	}
-	private boolean getIpFromLauncher(){
-		ipAdv = this.getTxtIpAdrverse().getText();	
-		try {
-	
-			InetAddress ip = InetAddress.getByName(ipAdv);
-		} catch (UnknownHostException e) {
-			return false;
-		}
-		return true;
 	}
 	
 	}
