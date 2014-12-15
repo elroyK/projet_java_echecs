@@ -24,8 +24,8 @@ public class Reine extends Piece {
 	
 	/**
 	 * genererPos : créé un tableau de positions possibles pour la reine en fonction des cases de l'échiquier
-	 * @param : plateau : l'échiquier
-	 * @return : un tableau de positions possibles par la reine
+	 * @param plateau : l'échiquier
+	 * @return un tableau de positions possibles par la reine
 	 */
 	
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {

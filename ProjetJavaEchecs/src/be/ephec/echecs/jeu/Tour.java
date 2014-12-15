@@ -26,8 +26,9 @@ public class Tour extends Piece {
 	
 	/**
 	 * genererPos : créé un tableau de positions possibles pour la tour en fonction des cases de l'échiquier
-	 * @param : plateau : l'échiquier
-	 * @return : un tableau de positions possibles par la tour
+	 * @param plateau : l'échiquier
+	 * @param isSameTeam : la couleur de "l'équipe" du pion
+	 * @return un tableau de positions possibles par la tour
 	 */
 
 	public Position[] genererPos(Echiquier plateau, String isSameTeam){

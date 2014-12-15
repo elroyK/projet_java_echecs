@@ -13,6 +13,12 @@ import javax.swing.border.EmptyBorder;
 import be.ephec.echecs.jeu.Param;
 import be.ephec.echecs.jeu.Partie;
 
+/**
+ * Classe FenFinPartie, qui est la JFrame qui s'ouvre lorsque la partie est finie et qui affiche le gagnant ou l'égalité
+ * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
+ * date de création : 15/12/14
+ * date de modification : 15/12/14
+ */
 public class FenFinPartie extends JFrame {
 
 	private JPanel contentPane;

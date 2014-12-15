@@ -1,7 +1,5 @@
 package be.ephec.echecs.jeu;
 
-import java.lang.Math.*;
-
 /**
  * Classe Cavalier, représentant la pièce Cavalier
  * date de création : 26/11/14
@@ -17,6 +15,7 @@ public class Cavalier extends Piece {
 	 * @param x : position en x
 	 * @param y : position en y
 	 * @param addImage : adresse de l'image du pion
+	 * @param color : couleur de la pièce
 	 */
 	
 	public Cavalier(int x, int y, String addImage, String color) {
@@ -25,7 +24,7 @@ public class Cavalier extends Piece {
 	
 	/**
 	 * genererPos : créé un tableau de positions possibles pour le cavalier en fonction des cases de l'échiquier
-	 * @param : plateau : l'échiquier
+	 * @param plateau : l'échiquier
 	 * @return : un tableau de positions possibles par le cavalier
 	 */
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {

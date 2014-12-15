@@ -21,8 +21,8 @@ public class Position {
 	
 	/**
 	 * Constructeur à deux paramètres de la classe Position
-	 * @param a : case en hauteur
-	 * @param b : case en largeur
+	 * @param x : abscisse de la case
+	 * @param y : ordonnée de la case
 	 */
 	
 	public Position(int x, int y) {

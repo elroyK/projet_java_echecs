@@ -4,8 +4,6 @@ import be.ephec.echecs.gui.*;
 
 import javax.swing.*;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
 /**
  * Classe Partie, programme mère du projet
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
@@ -21,6 +19,10 @@ public class Partie {
 	protected Echiquier plateau = new Echiquier();
 	protected Param settings = new Param();
 
+	/**
+	 * Lance la partie et le premier tour. A partir de là, c'est la fin du tour (à clic==2) d'un joueur qui lance le tour suivant.
+	 * @param args : rien
+	 */
 	public static void main(String[] args) {
 		Partie game = new Partie();	
 			
@@ -58,7 +60,7 @@ public class Partie {
 	}
 	
 	/**
-	 * Test les positions des pièces des deux joueurs si = -> kill une éventuelle pièce
+	 * Teste les positions des pièces des deux joueurs ; si idem alors kill une éventuelle pièce
 	 */
 	
 	public void testPosPiece (){
@@ -78,7 +80,8 @@ public class Partie {
 	}
 	
 	/**
-	 * initialisation, initialise toutes les pièces à leurs places respectives
+	 * initialisation : initialise toutes les pièces à leurs places respectives,
+	 * met les actionListener sur les cases, et décide du premier joueur
 	 */
 	public void initialisation() {
 		// Initialisation pièces blanches
@@ -151,13 +154,6 @@ public class Partie {
 		this.jB.tbPiece[15] = new Reine(3,0,"/img/reineN.gif",Param.NOIR);
 		this.plateau.echiq[3][0].setEstOccupe(Param.NOIR);
 		
-		/*ActionListener listener = new CaseListener(this);
-		for (int x=0;x<Echiquier.NLIGNES;x++){
-			for (int y=0;y<Echiquier.NLIGNES;y++){
-				this.plateau.echiq[x][y].addActionListener(listener);
-			}
-		}*/
-		
 		for (int i=0;i<Echiquier.NLIGNES;i++){
 			for (int j=0;j<Echiquier.NLIGNES;j++){
 				this.plateau.echiq[i][j].actions(this);
@@ -169,25 +165,32 @@ public class Partie {
 		this.settings.setJoueurActuel(1);
 	}
 	
+	/**
+	 * Le tour d'un joueur
+	 * @param joueur dont c'est le tour
+	 */
 	public void tour(Joueur joueur) {
 		
-	Param.clic = 0;
-	
-	Position workS[] = new Position[Joueur.NBPIECE];
-	
-	workS = joueur.genererSelect(this.plateau);
-	Partie.setjEnCours(joueur);
-	
-	
-	this.plateau.showPieceChoice(workS);
-	
-	if (this.settings.getJoueurActuel() == 1) Partie.setjEnCours(this.jA);
-	else Partie.setjEnCours(this.jB);
-	
-	Partie.getjEnCours().estEchec(this);
-	
-	if (this.estEnd()) this.finPartie();
-	
+		Param.clic = 0;
+		
+		Position workS[] = new Position[Joueur.NBPIECE];
+		
+		workS = joueur.genererSelect(this.plateau);
+		Partie.setjEnCours(joueur);
+		
+		
+		this.plateau.showPieceChoice(workS);
+		
+		//Partie.getjEnCours().fairePromotion();
+		
+		
+		if (this.settings.getJoueurActuel() == 1) Partie.setjEnCours(this.jA);
+		else Partie.setjEnCours(this.jB);
+		
+		Partie.getjEnCours().estEchec(this);
+		
+		if (this.estEnd()) this.finPartie();
+		
 	}
 	
 	
@@ -202,10 +205,15 @@ public class Partie {
 	public boolean estEnd() {
 		if (!Partie.getjEnCours().tbPiece[14].isInGame()) return true;
 		if (Partie.getjEnCours().estMat(this)) return true;
+		if (this.estPat()) return true;
 		
 		return false;
 	}
 	
+	/**
+	 * Fait un scan des deux tableaux de pièces pour savoir si c'est Pat (égalité, si chacun n'a qu'un pion et le roi en jeu)
+	 * @return un boolean qui est true si c'est pat
+	 */
 	public boolean estPat(){
 		int nbPionsA=0;
 		int nbPionsB=0;
@@ -220,7 +228,9 @@ public class Partie {
 		}
 		return true;
 	}
-
+	
+	//GETTERS & SETTERS
+	
 	public static Joueur getjEnCours() {
 		return jEnCours;
 	}

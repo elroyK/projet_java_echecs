@@ -28,7 +28,8 @@ public class Client {
 	 * 
 	 * @param adr : adresse ip du (serveur pour s'y connecter)
 	 * @param port : port du serveur (pour s'y connecter)
-	 * 
+	 * @throws UnknownHostException si hôte inconnu
+	 * @throws IOException si erreur de connexion
 	 */
 	public Client(String adr, int port) throws UnknownHostException, IOException{
 		socket = new Socket(adr, port);
@@ -37,18 +38,34 @@ public class Client {
 			out.flush();
 	}
 	
-	
+	/**
+	 * Ecrit le flux
+	 * @param obj : L'objet à envoyer
+	 * @param <E> ?
+	 * @throws IOException si erreur de connexion
+	 */
 	public <E> void write(E obj) throws IOException{
 		out.writeObject(obj);
 			out.flush();
 	}
 	
 
-	
+	/**
+	 * Lit le flux
+	 * @param readClass ?
+	 * @param <E> ?
+	 * @return l'info lue
+	 * @throws ClassNotFoundException Si jamais il n'arrive pas à lire
+	 * @throws IOException si erreur de connexion
+	 */
 	public <E> E read(Class<E> readClass) throws ClassNotFoundException, IOException{
 		return (E)in.readObject();
 	}
-
+	
+	/**
+	 * Ferme la connexion
+	 * @throws IOException si erreur de connexion
+	 */
 	public void close() throws IOException{
 		in.close();
 		out.close();

@@ -1,6 +1,5 @@
 package be.ephec.echecs.jeu;
 
-import java.lang.Math.*;
 /**
  * Classe Fou, représentant la pièce Fou
  * date de création : 26/11/14
@@ -28,8 +27,8 @@ import java.lang.Math.*;
 		
 		/**
 		 * genererPos : créé un tableau de positions possibles pour le fou en fonction des cases de l'échiquier
-		 * @param : plateau : l'échiquier
-		 * @return : un tableau de positions possibles par le fou
+		 * @param plateau : l'échiquier
+		 * @return un tableau de positions possibles par le fou
 		 */
 		
 		public Position[] genererPos(Echiquier plateau, String isSameTeam){

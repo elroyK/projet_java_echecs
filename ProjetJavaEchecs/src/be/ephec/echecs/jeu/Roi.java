@@ -1,7 +1,5 @@
 package be.ephec.echecs.jeu;
 
-import java.awt.Color;
-
 /**
  * Classe Roi, représentant le Roi
  * date de création : 25/11/14
@@ -17,6 +15,7 @@ public class Roi extends Piece {
 	 * @param x : position en x sur l'échiquier
 	 * @param y : position en y sur l'échiquier
 	 * @param addImage : adresse de l'image représentant le Roi
+	 * @param color : la couleur de la pièce
 	 */
 	
 	public Roi (int x, int y, String addImage, String color) {
@@ -25,8 +24,8 @@ public class Roi extends Piece {
 	
 	/**
 	 * genererPos : créé un tableau de positions possibles pour le roi en fonction des cases de l'échiquier
-	 * @param : plateau : l'échiquier
-	 * @return : un tableau de position possible par le roi
+	 * @param plateau : l'échiquier
+	 * @return un tableau de position possible par le roi
 	 */
 	
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {

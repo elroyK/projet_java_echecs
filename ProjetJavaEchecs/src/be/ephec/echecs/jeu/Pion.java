@@ -23,8 +23,8 @@ public class Pion extends Piece {
 	
 	/**
 	 * genererPos : créé un tableau de positions possibles pour le pion en fonction des cases de l'échiquier
-	 * @param : plateau : l'échiquier
-	 * @return : un tableau de positions possibles par le pion
+	 * @param plateau : l'échiquier
+	 * @return un tableau de positions possibles par le pion
 	 */
 	
 	public Position[] genererPos(Echiquier plateau, String isSameTeam) {
@@ -34,7 +34,7 @@ public class Pion extends Piece {
 		
 		//for (int i=0;i<NBMOV;i++) work[i] = new Position();
 		
-		if (isSameTeam==Param.BLANC) {
+		if (isSameTeam==Param.BLANC && this.pos.getY()!=0) {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()-1].getEstOccupe();
 			
 			if (isBusy==Param.LIBRE){
@@ -47,7 +47,7 @@ public class Pion extends Piece {
 			}
 			
 			for (int w=-1; w<=1; w++){
-				if (w!=0 && this.pos.getX()>0 && this.pos.getX()<7){
+				if (w!=0 && this.pos.getX()>=0 && this.pos.getX()<=7){
 					if (this.pos.getX()+w>=0
 							&& this.pos.getX()+w<=7
 							&& plateau.echiq[this.pos.getX()+w][this.pos.getY()-1].getEstOccupe() == Param.NOIR){
@@ -57,7 +57,7 @@ public class Pion extends Piece {
 				}
 			}
 			
-		} else {
+		} else if(this.pos.getY()!=7) {
 			String isBusy = plateau.echiq[this.pos.getX()][this.pos.getY()+1].getEstOccupe();
 			
 			if (isBusy==Param.LIBRE){
@@ -90,19 +90,20 @@ public class Pion extends Piece {
 		return finalWork;
 	}
 	
+	/*
 	/**
 	 * Permet de promouvoir un pion en n'importe quelle pièce "morte"
 	 * @param j : Le joueur à qui on va promouvoir
 	 * @return : La liste des pièces mortes
 	 */
 	
-	public String[] promotion(Joueur j) {
+	/*public static String[] promotion(Joueur j, Piece p) {
 		String[] work = new String[8]; // Tableau de string représentant le nom des pièces mortes
 		int iWork =0;
 		if (j.getCouleur()==Param.NOIR) {
-			if (this.pos.getY()==0) {
-				this.setInGame(false);
-				for (int i=0;i<j.tbPiece.length;i++) {
+			if (p.pos.getY()==7) {
+				p.setInGame(false);
+				for (int i=8;i<j.tbPiece.length;i++) {
 					if (!j.tbPiece[i].isInGame()) {
 						if (!(j.tbPiece[i].getNom()=="Pion")) {
 						work[iWork] = j.tbPiece[i].getNom();
@@ -112,17 +113,23 @@ public class Pion extends Piece {
 				}			
 			}
 		} else {
-			if (this.pos.getY()==8) {
-				this.setInGame(false);
-				for (int i=0;i<j.tbPiece.length;i++) {
+			if (p.pos.getY()==0) {
+				p.setInGame(false);
+				for (int i=8;i<j.tbPiece.length;i++) {
 					if (!j.tbPiece[i].isInGame()) {
-						if (!(j.tbPiece[i].getNom()=="Pion")) {
 						work[iWork] = j.tbPiece[i].getNom();
-						}
+						iWork++;
 					}
 				}
 			}
 		}
-		return work;	
-	}
+		
+		String[] finalWork = new String[iWork];
+		
+		for (int i=0;i<iWork;i++){
+			finalWork[i] = work[i];
+		}
+		
+		return finalWork;
+	}*/
 }

@@ -23,6 +23,7 @@ abstract public class Piece {
 	 * @param ig: mettre la pièce en jeu ou pas
 	 * @param x : position sur l'échiquier en x
 	 * @param y : position sur l'échiquier en y
+	 * @param c : La couleur de la pièce
 	 */
 	public Piece(String n, String i, boolean ig, int x, int y, String c) {
 		setNom(n);
@@ -82,6 +83,8 @@ abstract public class Piece {
 			}
 		}	
 	}
+	
+	
 	
 	/* GETTERS ET SETTERS */
 	

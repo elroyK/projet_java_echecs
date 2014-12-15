@@ -2,11 +2,13 @@ package be.ephec.echecs.jeu;
 
 import java.awt.Color;
 
+import be.ephec.echecs.gui.FenPromotion;
+
 /**
  * Classe Joueur, représentant un joueur
  * @author Leroy Christophe - Pierret Cyril - Yaranossian Enzo
  * date de création : 26/11/14
- * date de modification : 10/12/14
+ * date de modification : 15/12/14
  */
 
 public class Joueur {
@@ -36,7 +38,7 @@ public class Joueur {
 	}
 	
 	/**
-	 * 
+	 * Genere un tableau avec toutes les pièces sélectionnables ce tour-ci.
 	 * @param plateau : échiquier de la partie
 	 * @return un tableau avec toutes les pièces de ce joueur qui ont la possibilité de faire un mouvement ce tour-ci
 	 */
@@ -65,6 +67,11 @@ public class Joueur {
 
 	}
 	
+	/**
+	 * Genere un tableau de positions avec toutes les cases qui pourrraient accueillir une pièce du joueur après un mouvement.
+	 * @param plateau : échiquier de la partie
+	 * @return un tableau de positions (utilisé pour savoir si le Roi est échec (et mat)
+	 */
 	public Position[] allMove(Echiquier plateau){
 		Position work[] = new Position[Reine.NBMOV];
 		Position finalWork[] = new Position[Echiquier.NBOUTONS];
@@ -86,25 +93,13 @@ public class Joueur {
 		return aReturn;
 	}
 	
+	/**
+	 * Savoir si le roi du joueur est en échec ou non
+	 * @param game : La partie en cours
+	 * @return un boolean qui signifie l'état d'échec ou non
+	 */
 	public boolean estEchec (Partie game) {
 		Joueur adverse = (game.settings.joueurActuel == 1) ? game.jB : game.jA;
-		Joueur present = (game.settings.joueurActuel == 1) ? game.jA : game.jB;
-		
-		/*for (int i=0;i<adverse.tbPiece.length;i++) {
-			if (adverse.tbPiece[i].isInGame()){
-				Position work[]=adverse.tbPiece[i].genererPos(game.plateau, adverse.getCouleur());
-				for (int j=0;j<work.length;j++) {
-					if (present.tbPiece[14].pos.equals(adverse.tbPiece[i].genererPos))
-						game.plateau.echiq[present.tbPiece[14].pos.getX()][present.tbPiece[14].pos.getY()].setBackground(new Color(255,95,95));
-						
-						return true;
-				}
-			}
-		}
-		return false;*/
-		
-		
-		
 		Position pWork[] = adverse.allMove(game.plateau);
 		int i=0;
 		while(i<pWork.length && !this.tbPiece[14].pos.equals(pWork[i])) {
@@ -113,12 +108,16 @@ public class Joueur {
 		if (i<pWork.length && this.tbPiece[14].pos.equals(pWork[i])) {
 			game.plateau.echiq[this.tbPiece[14].pos.getX()][this.tbPiece[14].pos.getY()].setBackground(new Color(255,95,95));
 			game.plateau.setVisible(true);
-			System.out.println("Ahoy");
 			return true;
 		}
 		return false;
 	}
 	
+	/**
+	 * Savoir si le roi du joueur est en échec et mat
+	 * @param game : La partie en cours
+	 * @return un boolean qui signifie l'état d'échec et mat
+	 */
 	public boolean estMat (Partie game){
 		Joueur adverse = (game.settings.joueurActuel == 1) ? game.jB : game.jA;
 		Position ennemi[] = adverse.allMove(game.plateau);
@@ -140,11 +139,46 @@ public class Joueur {
 			e=0;
 		} while(p<posW.length);
 		if (nIdem==posW.length && nIdem != 0 && this.estEchec(game)) {
-			System.out.println("Yolo");
 			return true;
 		}
 		return false;
 	}
+	
+	/*public void fairePromotion (){
+		// JOUEUR 1
+		int i=-1;
+		String[] work = new String[Joueur.NBPIECE/2];
+		do {
+			i++;
+			if (this.tbPiece[i].isInGame() && this.tbPiece[i].pos.getY()==0) {
+				work = Pion.promotion(this,this.tbPiece[i]);
+			}
+			
+		} while (i<Joueur.NBPIECE/2 && work==null);
+		
+		if (i == Joueur.NBPIECE/2){
+			FenPromotion f = new FenPromotion(work);
+			f.setVisible(true);
+			String choix = f.getChoix();
+			int j=-1;
+			boolean found = false;
+			do{
+				j++;
+				if (!this.tbPiece[j].isInGame()){
+					if (this.tbPiece[j].getNom().equals(choix)){
+						found=true;
+					}
+				}
+				
+			} while (j<Joueur.NBPIECE && !found);
+			if (found){
+				this.tbPiece[j].setInGame(true);
+				this.tbPiece[j].pos.setX(this.tbPiece[i].pos.getX());
+				this.tbPiece[j].pos.setY(this.tbPiece[i].pos.getY());
+				this.tbPiece[i].kill();
+			}
+		}
+	}*/
 	
 	// GETTERS ET SETTERS
 	
