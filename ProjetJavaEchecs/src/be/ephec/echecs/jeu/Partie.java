@@ -59,6 +59,16 @@ public class Partie {
 		return work;
 	}
 	
+	public int findPiece(Joueur j, Position pos)  {
+		int work=-1;
+		for (int i=0;i<Joueur.NBPIECE;i++) {
+			if (pos.equals(j.tbPiece[i].pos)) {
+				work=i;
+			}
+		}
+		return work;
+	}
+	
 	/**
 	 * Test les positions des pièces des deux joueurs si = -> kill une éventuelle pièce
 	 */

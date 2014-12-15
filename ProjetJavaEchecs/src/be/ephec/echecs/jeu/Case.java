@@ -127,6 +127,13 @@ public class Case extends JButton {
 						game.plateau.echiq[game.settings.clic1.getX()]
 								[game.settings.clic1.getY()].setEstOccupe(Param.LIBRE);
 						
+						int iJA = game.findPiece(game.jA, game.settings.clic2);
+						int iJB = game.findPiece(game.jB, game.settings.clic2);
+						
+						switch (game.settings.joueurActuel){
+						case 1 : if (iJB != -1) game.jB.tbPiece[iJB].kill();break;
+						case 2 : if (iJA != -1) game.jB.tbPiece[iJA].kill();break;
+						}
 						game.plateau.actualiser(game.jA,game.jB);
 						game.plateau.setVisible(true);
 						
