@@ -24,7 +24,7 @@ public class Param {
 	
 	public Param() {
 		this.setJoueurActuel(1);
-		this.setClic(0);
+		clic=0;
 	}
 
 	/**
@@ -46,13 +46,6 @@ public class Param {
 		this.joueurActuel = JoueurActuel;
 	}
 
-	public int getClic() {
-		return clic;
-	}
-
-	public void setClic(int clic) {
-		this.clic = clic;
-	}
 
 	public Position getClic1() {
 		return clic1;
